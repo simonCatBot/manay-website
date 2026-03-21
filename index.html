@@ -15,16 +15,19 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://simoncatbot.github.io/manay-website/">
-    <meta property="og:title" content="Manay - Your Home, Simplified | Bangalore Rental Management">
-    <meta property="og:description" content="Bangalore's smartest rental management platform. Automated rent collection, instant HRA receipts, and seamless communication.">
+    <meta property="og:title" content="Manay (ಮನೆ) - Your Home, Simplified | Bangalore Rental Management">
+    <meta property="og:description" content="Bangalore's smartest rental management platform. Karnataka 2026 Rental Law compliant: 2-month deposit cap, Kaveri 2.0 integration, automated rent collection.">
     <meta property="og:image" content="https://simoncatbot.github.io/manay-website/og-image.png">
+    <meta property="og:image:alt" content="Manay rental management platform interface showing rent notifications and HRA receipts">
+    <meta property="og:locale" content="en_IN">
     
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://simoncatbot.github.io/manay-website/">
-    <meta property="twitter:title" content="Manay - Your Home, Simplified">
-    <meta property="twitter:description" content="Bangalore's smartest rental management platform. Automated rent collection, instant HRA receipts.">
-    <meta property="twitter:image" content="https://simoncatbot.github.io/manay-website/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://simoncatbot.github.io/manay-website/">
+    <meta name="twitter:title" content="Manay (ಮನೆ) - Your Home, Simplified | Karnataka 2026 Law Compliant">
+    <meta name="twitter:description" content="Bangalore's smartest rental management platform. Karnataka 2026 Rental Law compliant: 2-month deposit cap, Kaveri 2.0 integration, automated rent collection.">
+    <meta name="twitter:image" content="https://simoncatbot.github.io/manay-website/og-image.png">
+    <meta name="twitter:image:alt" content="Manay rental management platform interface showing rent notifications and HRA receipts">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://simoncatbot.github.io/manay-website/">
@@ -199,19 +202,26 @@
     <!-- ARIA Live Region for Form Messages -->
     <div id="aria-live-region" class="sr-only" aria-live="assertive" aria-atomic="true"></div>
 
+    <!-- Page Skip Navigation for Accessibility -->
+    <nav aria-label="Skip links" class="skip-nav">
+        <a href="#landlords" class="skip-link">Skip to Landlords section</a>
+        <a href="#renters" class="skip-link">Skip to Renters section</a>
+        <a href="#pricing" class="skip-link">Skip to Pricing</a>
+    </nav>
+
     <!-- Navigation -->
-    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <nav class="navbar" id="navbar" aria-label="Main navigation">
         <div class="nav-glass-effect"></div>
         <div class="container">
             <div class="nav-brand">
                 <span class="logo" aria-hidden="true">ಮನೆ</span>
                 <span class="brand-name">Manay</span>
             </div>
-            <div class="nav-menu" id="navMenu" role="menubar">
-                <a href="#landlords" class="nav-link" role="menuitem" tabindex="0">For Landlords</a>
-                <a href="#renters" class="nav-link" role="menuitem" tabindex="0">For Renters</a>
-                <a href="#pricing" class="nav-link" role="menuitem" tabindex="0">Pricing</a>
-                <a href="#waitlist" class="nav-link cta-button" role="menuitem" tabindex="0">Join Waitlist</a>
+            <div class="nav-menu" id="navMenu">
+                <a href="#landlords" class="nav-link">For Landlords</a>
+                <a href="#renters" class="nav-link">For Renters</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#waitlist" class="nav-link cta-button">Join Waitlist</a>
             </div>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu" tabindex="0">
                 <span></span>
@@ -231,11 +241,11 @@
                 <p class="hero-subtitle">Built for Bangalore. Designed for trust. Automate rent, HRA receipts, and maintenance - all via WhatsApp.</p>
                 
                 <div class="hero-toggle" role="tablist" aria-label="User type selection">
-                    <button class="toggle-btn active" data-target="landlords" role="tab" aria-selected="true" aria-controls="landlords-cta" tabindex="0">
+                    <button class="toggle-btn active" data-target="landlords" role="tab" aria-selected="true" aria-controls="landlords-cta" id="landlord-tab">
                         <i class="fas fa-building" aria-hidden="true"></i>
                         I own property
                     </button>
-                    <button class="toggle-btn" data-target="renters" role="tab" aria-selected="false" aria-controls="renters-cta" tabindex="0">
+                    <button class="toggle-btn" data-target="renters" role="tab" aria-selected="false" aria-controls="renters-cta" id="renter-tab">
                         <i class="fas fa-home" aria-hidden="true"></i>
                         I rent property
                     </button>
@@ -244,14 +254,14 @@
                 <div class="hero-cta">
                     <div id="landlords-cta" class="cta-content active" role="tabpanel" aria-labelledby="landlord-tab">
                         <p class="cta-text">Professionalize your rental business for free. Zero-chase payments, automated compliance.</p>
-                        <button class="primary-button magnetic-btn" onclick="showWaitlist('landlord')" tabindex="0">
+                        <button class="primary-button magnetic-btn" onclick="showWaitlist('landlord')" type="button">
                             <span>Join Landlord Waitlist</span>
                             <i class="fas fa-arrow-right" aria-hidden="true"></i>
                         </button>
                     </div>
                     <div id="renters-cta" class="cta-content" role="tabpanel" aria-labelledby="renter-tab" hidden>
                         <p class="cta-text">Build credit, get instant HRA receipts, and protect your deposit. Starting at ₹99/month.</p>
-                        <button class="primary-button magnetic-btn" onclick="showWaitlist('renter')" tabindex="0">
+                        <button class="primary-button magnetic-btn" onclick="showWaitlist('renter')" type="button">
                             <span>Join Renter Waitlist</span>
                             <i class="fas fa-arrow-right" aria-hidden="true"></i>
                         </button>
@@ -310,7 +320,7 @@
             </div>
             
             <div class="features-grid">
-                <article class="feature-card lift-card" tabindex="0">
+                <article class="feature-card lift-card">
                     <div class="feature-icon">
                         <i class="fas fa-rupee-sign" aria-hidden="true"></i>
                     </div>
@@ -318,7 +328,7 @@
                     <p>Rent automatically deducted via UPI Mandate. We handle reminders; you just get the deposit. No more "Sir, please adjust" messages.</p>
                 </article>
                 
-                <article class="feature-card lift-card" tabindex="0">
+                <article class="feature-card lift-card">
                     <div class="feature-icon">
                         <i class="fas fa-shield-alt" aria-hidden="true"></i>
                     </div>
@@ -326,7 +336,7 @@
                     <p>Automatic agreement registration via Karnataka's Kaveri 2.0 portal within 60 days. Fully compliant with 2026 Rent Authority requirements.</p>
                 </article>
                 
-                <article class="feature-card lift-card" tabindex="0">
+                <article class="feature-card lift-card">
                     <div class="feature-icon">
                         <i class="fas fa-gavel" aria-hidden="true"></i>
                     </div>
@@ -334,7 +344,7 @@
                     <p>Complete documentation for fast-track Rent Courts. Resolve disputes in 60 days vs years in civil court. Evidence-ready digital trails.</p>
                 </article>
                 
-                <article class="feature-card lift-card" tabindex="0">
+                <article class="feature-card lift-card">
                     <div class="feature-icon">
                         <i class="fas fa-balance-scale" aria-hidden="true"></i>
                     </div>
@@ -372,7 +382,7 @@
             </div>
             
             <div class="features-grid">
-                <article class="feature-card lift-card" tabindex="0">
+                <article class="feature-card lift-card">
                     <div class="feature-icon">
                         <i class="fas fa-chart-line" aria-hidden="true"></i>
                     </div>
@@ -380,7 +390,7 @@
                     <p>We report your on-time rent payments to CIBIL. Watch your credit score go up just by paying rent. Crucial for home loans.</p>
                 </article>
                 
-                <article class="feature-card lift-card" tabindex="0">
+                <article class="feature-card lift-card">
                     <div class="feature-icon">
                         <i class="fas fa-receipt" aria-hidden="true"></i>
                     </div>
@@ -388,7 +398,7 @@
                     <p>Automatic monthly rent receipts with landlord PAN for tax exemption. No more awkward "Sir, please send receipt" messages.</p>
                 </article>
                 
-                <article class="feature-card lift-card" tabindex="0">
+                <article class="feature-card lift-card">
                     <div class="feature-icon">
                         <i class="fas fa-users" aria-hidden="true"></i>
                     </div>
@@ -396,7 +406,7 @@
                     <p>Split rent and utilities automatically. One person pays landlord, but app tracks who contributed what. No more spreadsheet wars.</p>
                 </article>
                 
-                <article class="feature-card lift-card" tabindex="0">
+                <article class="feature-card lift-card">
                     <div class="feature-icon">
                         <i class="fas fa-camera" aria-hidden="true"></i>
                     </div>
@@ -404,7 +414,7 @@
                     <p>New Karnataka laws cap deposits at 2 months. We help ensure you pay only what's legal. Timestamped move-in/move-out photos stored securely for dispute resolution.</p>
                 </article>
                 
-                <article class="feature-card lift-card" tabindex="0">
+                <article class="feature-card lift-card">
                     <div class="feature-icon">
                         <i class="fas fa-user-shield" aria-hidden="true"></i>
                     </div>
@@ -412,7 +422,7 @@
                     <p>Landlords must give 24hr notice before entry. We log all notices and alert you to violations. Protection from unannounced visits and harassment.</p>
                 </article>
                 
-                <article class="feature-card lift-card" tabindex="0">
+                <article class="feature-card lift-card">
                     <div class="feature-icon">
                         <i class="fas fa-bolt" aria-hidden="true"></i>
                     </div>
@@ -432,32 +442,32 @@
             </div>
             
             <div class="bangalore-grid">
-                <article class="bangalore-card lift-card glass-effect" tabindex="0">
+                <article class="bangalore-card lift-card glass-effect">
                     <h3><i class="fas fa-piggy-bank" aria-hidden="true"></i> 2-Month Deposit Cap</h3>
                     <p>Jan 2026: Karnataka law now caps deposits at 2 months (not 10). We track compliance and alert you if landlords demand more.</p>
                 </article>
                 
-                <article class="bangalore-card lift-card glass-effect" tabindex="0">
+                <article class="bangalore-card lift-card glass-effect">
                     <h3><i class="fas fa-file-contract" aria-hidden="true"></i> Kaveri 2.0 Registration</h3>
                     <p>Mandatory registration within 60 days via state portal. We auto-submit to Rent Authority with Aadhaar eSign.</p>
                 </article>
                 
-                <article class="bangalore-card lift-card glass-effect" tabindex="0">
+                <article class="bangalore-card lift-card glass-effect">
                     <h3><i class="fas fa-gavel" aria-hidden="true"></i> Fast-Track Rent Courts</h3>
                     <p>New Rent Tribunals resolve disputes in 60 days. We prepare complete documentation packages for quick resolution.</p>
                 </article>
                 
-                <article class="bangalore-card lift-card glass-effect" tabindex="0">
+                <article class="bangalore-card lift-card glass-effect">
                     <h3><i class="fas fa-user-shield" aria-hidden="true"></i> 24-Hour Privacy Rule</h3>
                     <p>Landlords must give 24hr notice before entry. We track all notices and protect you from harassment.</p>
                 </article>
                 
-                <article class="bangalore-card lift-card glass-effect" tabindex="0">
+                <article class="bangalore-card lift-card glass-effect">
                     <h3><i class="fas fa-bolt" aria-hidden="true"></i> Essential Service Protection</h3>
                     <p>Illegal to cut water/electricity during disputes. We provide immediate legal support contacts if this happens.</p>
                 </article>
                 
-                <article class="bangalore-card lift-card glass-effect" tabindex="0">
+                <article class="bangalore-card lift-card glass-effect">
                     <h3><i class="fas fa-chart-line" aria-hidden="true"></i> Rent Increase Limits</h3>
                     <p>Annual increases capped at 5-10% with 90-day notice. We flag illegal increases and auto-calculate fair rates.</p>
                 </article>
@@ -504,7 +514,7 @@
             </div>
             
             <div class="pricing-grid">
-                <article class="pricing-card lift-card" tabindex="0">
+                <article class="pricing-card lift-card">
                     <h3>For Landlords</h3>
                     <div class="price">Free</div>
                     <p class="price-subtitle">Forever for up to 3 units</p>
@@ -514,12 +524,12 @@
                         <li><i class="fas fa-check" aria-hidden="true"></i> Document vault</li>
                         <li><i class="fas fa-check" aria-hidden="true"></i> Police verification support</li>
                     </ul>
-                    <button class="secondary-button magnetic-btn" onclick="showWaitlist('landlord')" tabindex="0">
+                    <button class="secondary-button magnetic-btn" onclick="showWaitlist('landlord')" type="button">
                         <span>Get Started Free</span>
                     </button>
                 </article>
-                
-                <article class="pricing-card featured lift-card" tabindex="0">
+
+                <article class="pricing-card featured lift-card">
                     <div class="featured-badge">POPULAR</div>
                     <h3>For Renters</h3>
                     <div class="price">₹99<span>/mo</span></div>
@@ -531,13 +541,13 @@
                         <li><i class="fas fa-check" aria-hidden="true"></i> Roommate expense splitting</li>
                         <li><i class="fas fa-check" aria-hidden="true"></i> Priority support</li>
                     </ul>
-                    <button class="primary-button magnetic-btn" onclick="showWaitlist('renter')" tabindex="0">
+                    <button class="primary-button magnetic-btn" onclick="showWaitlist('renter')" type="button">
                         <span>Start Free Trial</span>
                         <i class="fas fa-arrow-right" aria-hidden="true"></i>
                     </button>
                 </article>
-                
-                <article class="pricing-card lift-card" tabindex="0">
+
+                <article class="pricing-card lift-card">
                     <h3>Digital Agreement</h3>
                     <div class="price">₹499</div>
                     <p class="price-subtitle">Per agreement (annual)</p>
@@ -547,7 +557,7 @@
                         <li><i class="fas fa-check" aria-hidden="true"></i> LegalDesk integration</li>
                         <li><i class="fas fa-check" aria-hidden="true"></i> Police verification form</li>
                     </ul>
-                    <button class="secondary-button magnetic-btn" onclick="showWaitlist('agreement')" tabindex="0">
+                    <button class="secondary-button magnetic-btn" onclick="showWaitlist('agreement')" type="button">
                         <span>Create Agreement</span>
                     </button>
                 </article>

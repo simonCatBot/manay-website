@@ -200,8 +200,19 @@ body {
 }
 
 /* ============================================
-   SKIP LINK
+   SKIP LINK & SKIP NAVIGATION
    ============================================ */
+
+.skip-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10001;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .skip-link {
     position: absolute;
@@ -216,11 +227,14 @@ body {
     z-index: 10001;
     font-weight: 600;
     transition: top 0.3s ease;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
 }
 
 .skip-link:focus {
     top: 0;
-    outline: 2px solid white;
+    outline: 3px solid white;
     outline-offset: 2px;
 }
 
@@ -2346,3 +2360,94 @@ body.menu-open {
 
 .hidden { display: none !important; }
 .invisible { visibility: hidden !important; }
+
+/* ============================================
+   ACCESSIBILITY IMPROVEMENTS
+   ============================================ */
+
+/* Enhanced Focus States for All Interactive Elements */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--focus-color);
+    outline-offset: 3px;
+    border-radius: var(--radius);
+}
+
+/* Feature Card Focus - Only when containing focused element */
+.feature-card:focus-within,
+.pricing-card:focus-within,
+.bangalore-card:focus-within {
+    outline: 2px solid var(--focus-color);
+    outline-offset: 2px;
+    transform: translateY(-4px);
+}
+
+/* Reduced Motion Support Enhancement */
+@media (prefers-reduced-motion: reduce) {
+    .scroll-progress-bar,
+    .page-loader,
+    .toast {
+        display: none !important;
+    }
+    
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* High Contrast Mode Enhancement */
+@media (prefers-contrast: high) {
+    .feature-card,
+    .pricing-card,
+    .testimonial,
+    .bangalore-card {
+        border-width: 3px;
+    }
+    
+    .nav-link:focus-visible,
+    button:focus-visible,
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        outline-width: 4px;
+    }
+}
+
+/* Screen Reader Only Text */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Skip Navigation Container */
+.skip-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10001;
+}
+
+.skip-nav .skip-link {
+    position: absolute;
+    left: -9999px;
+}
+
+.skip-nav .skip-link:focus {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
