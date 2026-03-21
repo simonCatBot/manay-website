@@ -43,18 +43,18 @@ class ManayApp {
     }
 
     // ============================================
-    // PAGE LOADER
+    // PAGE LOADER - IMMEDIATE HIDE
     // ============================================
     hidePageLoader() {
         const loader = document.getElementById('pageLoader');
         if (loader) {
-            // Simulate loading time for smooth UX
+            // Hide immediately for better UX
+            loader.style.opacity = '0';
+            loader.style.visibility = 'hidden';
+            loader.style.pointerEvents = 'none';
             setTimeout(() => {
-                loader.classList.add('hidden');
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                }, 500);
-            }, 800);
+                loader.style.display = 'none';
+            }, 300);
         }
     }
 
