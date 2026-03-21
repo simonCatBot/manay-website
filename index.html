@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manay - Your Home, Simplified | Bangalore Rental Management</title>
+    <meta name="description" content="Manay (ಮನೆ) - Bangalore's smartest rental management platform. Automated rent collection via UPI, instant HRA receipts, digital agreements, and seamless landlord-tenant communication.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="logo">ಮನೆ</span>
+                <span class="brand-name">Manay</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#landlords" class="nav-link">For Landlords</a>
+                <a href="#renters" class="nav-link">For Renters</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#waitlist" class="nav-link cta-button">Join Waitlist</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Finally, a Rental Experience Everyone Loves</h1>
+                <p class="hero-subtitle">Built for Bangalore. Designed for trust. Automate rent, HRA receipts, and maintenance - all via WhatsApp.</p>
+                
+                <div class="hero-toggle">
+                    <button class="toggle-btn active" data-target="landlords">
+                        <i class="fas fa-building"></i>
+                        I own property
+                    </button>
+                    <button class="toggle-btn" data-target="renters">
+                        <i class="fas fa-home"></i>
+                        I rent property
+                    </button>
+                </div>
+
+                <div class="hero-cta">
+                    <div id="landlords-cta" class="cta-content active">
+                        <p class="cta-text">Professionalize your rental business for free. Zero-chase payments, automated compliance.</p>
+                        <button class="primary-button" onclick="showWaitlist('landlord')">
+                            Join Landlord Waitlist
+                        </button>
+                    </div>
+                    <div id="renters-cta" class="cta-content">
+                        <p class="cta-text">Build credit, get instant HRA receipts, and protect your deposit. Starting at ₹99/month.</p>
+                        <button class="primary-button" onclick="showWaitlist('renter')">
+                            Join Renter Waitlist
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="phone-mockup">
+                    <div class="screen">
+                        <div class="app-interface">
+                            <div class="notification">
+                                <i class="fas fa-check-circle"></i>
+                                Rent received: ₹25,000
+                            </div>
+                            <div class="notification">
+                                <i class="fas fa-file-alt"></i>
+                                HRA receipt generated
+                            </div>
+                            <div class="notification">
+                                <i class="fas fa-tools"></i>
+                                Plumber assigned for repair
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Landlord Section -->
+    <section id="landlords" class="landlord-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Stop "Dealing" With Your Rental. Start Managing It.</h2>
+                <p>You don't need a property manager taking 10% of your income. You just need the right tools.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <h3>Zero-Chase Payments</h3>
+                    <p>Rent automatically deducted via UPI Mandate. We handle reminders; you just get the deposit. No more "Sir, please adjust" messages.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Police Verification & Compliance</h3>
+                    <p>Automated tenant verification form submission to local police stations. Digital agreements with e-stamping via LegalDesk integration.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Maintenance on Autopilot</h3>
+                    <p>Tenants submit tickets with photos via WhatsApp. Approve fixes with one tap. Auto-connect to verified plumbers via Urban Company.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-folder-open"></i>
+                    </div>
+                    <h3>Document Vault</h3>
+                    <p>Leases, inspections, and tax documents stored securely. Automatic HRA receipt generation for tenant tax savings.</p>
+                </div>
+            </div>
+            
+            <div class="testimonial">
+                <blockquote>
+                    "I used to manage my 3 HSR units on Excel and GPay. Manay professionalized my business overnight. My NRI tenants love the automatic receipts."
+                </blockquote>
+                <cite>- Rahul, Landlord in Koramangala</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- Renter Section -->
+    <section id="renters" class="renter-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Rent Smarter. Live Better.</h2>
+                <p>You pay your biggest expense every month—it's time you got something back for it.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Build Your CIBIL Score</h3>
+                    <p>We report your on-time rent payments to CIBIL. Watch your credit score go up just by paying rent. Crucial for home loans.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                    <h3>Instant HRA Receipts</h3>
+                    <p>Automatic monthly rent receipts with landlord PAN for tax exemption. No more awkward "Sir, please send receipt" messages.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Roommate Math Solved</h3>
+                    <p>Split rent and utilities automatically. One person pays landlord, but app tracks who contributed what. No more spreadsheet wars.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>Deposit Protection</h3>
+                    <p>Timestamped move-in/move-out photos stored securely. Ensure you get your 10-month deposit back with proof.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bangalore Features -->
+    <section class="bangalore-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Built for Bangalore's Unique Challenges</h2>
+                <p>We understand the 10-month deposit headache, HRA tax games, and the "bachelor" stigma.</p>
+            </div>
+            
+            <div class="bangalore-grid">
+                <div class="bangalore-card">
+                    <h3><i class="fas fa-piggy-bank"></i> Deposit Financing</h3>
+                    <p>Partner with NBFCs to offer loans for that massive 10-month deposit. Move in without liquidating savings.</p>
+                </div>
+                
+                <div class="bangalore-card">
+                    <h3><i class="fas fa-whatsapp"></i> WhatsApp-First</h3>
+                    <p>We integrate with WhatsApp because that's where Bangalore lives. No new app to learn.</p>
+                </div>
+                
+                <div class="bangalore-card">
+                    <h3><i class="fas fa-user-check"></i> "Good Bachelor" Profile</h3>
+                    <p>Build a verified tenant profile with payment history to overcome landlord hesitation.</p>
+                </div>
+                
+                <div class="bangalore-card">
+                    <h3><i class="fas fa-rupee-sign"></i> UPI Mandates</h3>
+                    <p>Recurring UPI payments so you never miss rent. Works with GPay, PhonePe, Paytm.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>From rent collection to repair tracking - all in 3 simple steps.</p>
+            </div>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Invite</h3>
+                    <p>Landlord invites tenant via email or WhatsApp. Setup takes 2 minutes with Aadhaar eSign.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Automate</h3>
+                    <p>Lease details uploaded, UPI autopay activated, HRA receipts auto-generated monthly.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Relax</h3>
+                    <p>We handle communication, payments, police verification, and tax docs. You get notified only when it matters.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Professional Features. Practical Pricing.</h2>
+                <p>Free for landlords up to 3 units. Renters pay only for premium features.</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>For Landlords</h3>
+                    <div class="price">Free</div>
+                    <p class="price-subtitle">Forever for up to 3 units</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> UPI rent collection</li>
+                        <li><i class="fas fa-check"></i> Maintenance ticketing</li>
+                        <li><i class="fas fa-check"></i> Document vault</li>
+                        <li><i class="fas fa-check"></i> Police verification support</li>
+                    </ul>
+                    <button class="secondary-button" onclick="showWaitlist('landlord')">Get Started Free</button>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div class="featured-badge">POPULAR</div>
+                    <h3>For Renters</h3>
+                    <div class="price">₹99<span>/mo</span></div>
+                    <p class="price-subtitle">Premium Tenant Plan</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> CIBIL score building</li>
+                        <li><i class="fas fa-check"></i> Automatic HRA receipts</li>
+                        <li><i class="fas fa-check"></i> Deposit protection vault</li>
+                        <li><i class="fas fa-check"></i> Roommate expense splitting</li>
+                        <li><i class="fas fa-check"></i> Priority support</li>
+                    </ul>
+                    <button class="primary-button" onclick="showWaitlist('renter')">Start Free Trial</button>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Digital Agreement</h3>
+                    <div class="price">₹499</div>
+                    <p class="price-subtitle">Per agreement (annual)</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> E-stamping & eSign</li>
+                        <li><i class="fas fa-check"></i> Aadhaar verification</li>
+                        <li><i class="fas fa-check"></i> LegalDesk integration</li>
+                        <li><i class="fas fa-check"></i> Police verification form</li>
+                    </ul>
+                    <button class="secondary-button" onclick="showWaitlist('agreement')">Create Agreement</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist Form -->
+    <section id="waitlist" class="waitlist-section">
+        <div class="container">
+            <div class="waitlist-form-container">
+                <h2>Ready to Upgrade Your Rental Relationship?</h2>
+                <p>Launching first in HSR Layout, Koramangala, and Whitefield. Secure your beta spot.</p>
+                
+                <form id="waitlistForm" class="waitlist-form">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" placeholder="Phone Number (WhatsApp)" required>
+                    </div>
+                    <div class="form-group">
+                        <select id="userType" required>
+                            <option value="">I am a...</option>
+                            <option value="landlord">Landlord</option>
+                            <option value="renter">Renter</option>
+                            <option value="both">Both</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="area" placeholder="Area (e.g., HSR Layout)">
+                    </div>
+                    <button type="submit" class="primary-button">Get Early Access</button>
+                </form>
+                
+                <div class="form-success" id="formSuccess">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>You're on the list!</h3>
+                    <p>We'll WhatsApp you when we're ready for beta testing in your area.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo">ಮನೆ</span>
+                    <span class="brand-name">Manay</span>
+                    <p>Your Home. Your Rules.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#landlords">For Landlords</a>
+                    <a href="#renters">For Renters</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#waitlist">Waitlist</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Manay Technologies Pvt Ltd. Built with ❤️ in Bangalore.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
