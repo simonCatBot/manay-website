@@ -609,6 +609,12 @@ body {
 .logo {
     font-size: 1.5rem;
     color: var(--primary-color);
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(99, 102, 241, 0.3);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .nav-menu {
