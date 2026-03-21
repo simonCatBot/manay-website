@@ -9,6 +9,9 @@
     <meta name="author" content="Manay Technologies Pvt Ltd">
     <meta name="robots" content="index, follow">
     
+    <!-- CSP Meta Tag (Content Security Policy) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdnjs.cloudflare.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io; frame-src 'none'; object-src 'none';">
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://simoncatbot.github.io/manay-website/">
@@ -26,87 +29,197 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://simoncatbot.github.io/manay-website/">
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
-    <link rel="stylesheet" href="styles.css">
+    <!-- Preconnect Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="https://formspree.io">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
+    
+    <!-- Google Analytics (Replace GA_MEASUREMENT_ID with actual ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    
+    <!-- JSON-LD Structured Data - LocalBusiness Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Manay - Rental Management Platform",
+        "alternateName": "ಮನೆ",
+        "description": "Bangalore's smartest rental management platform. Automated rent collection via UPI, instant HRA receipts, digital agreements, and seamless landlord-tenant communication.",
+        "url": "https://simoncatbot.github.io/manay-website/",
+        "logo": "https://simoncatbot.github.io/manay-website/og-image.png",
+        "image": "https://simoncatbot.github.io/manay-website/og-image.png",
+        "email": "hello@manay.in",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Bangalore",
+            "addressRegion": "Karnataka",
+            "addressCountry": "IN"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "12.9716",
+            "longitude": "77.5946"
+        },
+        "areaServed": {
+            "@type": "City",
+            "name": "Bangalore"
+        },
+        "serviceType": ["Rental Property Management", "Rent Collection", "Digital Rental Agreements"],
+        "priceRange": "₹99 - ₹499",
+        "foundingDate": "2026",
+        "sameAs": []
+    }
+    </script>
+    
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Manay Technologies Pvt Ltd",
+        "alternateName": "Manay",
+        "url": "https://simoncatbot.github.io/manay-website/",
+        "logo": "https://simoncatbot.github.io/manay-website/og-image.png",
+        "description": "Rental management technology company based in Bangalore",
+        "email": "hello@manay.in",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Bangalore",
+            "addressRegion": "Karnataka",
+            "addressCountry": "IN"
+        },
+        "sameAs": []
+    }
+    </script>
+    
+    <!-- Website Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Manay",
+        "url": "https://simoncatbot.github.io/manay-website/",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://simoncatbot.github.io/manay-website/?search={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader" aria-hidden="true">
+        <div class="loader-spinner" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <p aria-live="polite">Loading Manay...</p>
+    </div>
+
     <!-- Skip to main content -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie Consent Banner" aria-live="polite">
+        <div class="cookie-content">
+            <p>We use cookies to enhance your experience. By continuing to visit this site, you agree to our use of cookies. <a href="privacy-policy.html" class="cookie-link">Learn more</a></p>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-accept" id="cookieAccept" aria-label="Accept all cookies">Accept All</button>
+                <button class="cookie-btn cookie-decline" id="cookieDecline" aria-label="Decline cookies">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ARIA Live Region for Form Messages -->
+    <div id="aria-live-region" class="sr-only" aria-live="assertive" aria-atomic="true"></div>
+
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="container">
             <div class="nav-brand">
-                <span class="logo">ಮನೆ</span>
+                <span class="logo" aria-hidden="true">ಮನೆ</span>
                 <span class="brand-name">Manay</span>
             </div>
-            <div class="nav-menu">
-                <a href="#landlords" class="nav-link">For Landlords</a>
-                <a href="#renters" class="nav-link">For Renters</a>
-                <a href="#pricing" class="nav-link">Pricing</a>
-                <a href="#waitlist" class="nav-link cta-button">Join Waitlist</a>
+            <div class="nav-menu" id="navMenu" role="menubar">
+                <a href="#landlords" class="nav-link" role="menuitem" tabindex="0">For Landlords</a>
+                <a href="#renters" class="nav-link" role="menuitem" tabindex="0">For Renters</a>
+                <a href="#pricing" class="nav-link" role="menuitem" tabindex="0">Pricing</a>
+                <a href="#waitlist" class="nav-link cta-button" role="menuitem" tabindex="0">Join Waitlist</a>
             </div>
-            <div class="nav-toggle">
+            <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu" tabindex="0">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <main id="main-content">
-    <section class="hero">
+    <section class="hero" aria-label="Hero">
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title">Finally, a Rental Experience Everyone Loves</h1>
                 <p class="hero-subtitle">Built for Bangalore. Designed for trust. Automate rent, HRA receipts, and maintenance - all via WhatsApp.</p>
                 
-                <div class="hero-toggle">
-                    <button class="toggle-btn active" data-target="landlords">
-                        <i class="fas fa-building"></i>
+                <div class="hero-toggle" role="tablist" aria-label="User type selection">
+                    <button class="toggle-btn active" data-target="landlords" role="tab" aria-selected="true" aria-controls="landlords-cta" tabindex="0">
+                        <i class="fas fa-building" aria-hidden="true"></i>
                         I own property
                     </button>
-                    <button class="toggle-btn" data-target="renters">
-                        <i class="fas fa-home"></i>
+                    <button class="toggle-btn" data-target="renters" role="tab" aria-selected="false" aria-controls="renters-cta" tabindex="0">
+                        <i class="fas fa-home" aria-hidden="true"></i>
                         I rent property
                     </button>
                 </div>
 
                 <div class="hero-cta">
-                    <div id="landlords-cta" class="cta-content active">
+                    <div id="landlords-cta" class="cta-content active" role="tabpanel" aria-labelledby="landlord-tab">
                         <p class="cta-text">Professionalize your rental business for free. Zero-chase payments, automated compliance.</p>
-                        <button class="primary-button" onclick="showWaitlist('landlord')">
+                        <button class="primary-button" onclick="showWaitlist('landlord')" tabindex="0">
                             Join Landlord Waitlist
                         </button>
                     </div>
-                    <div id="renters-cta" class="cta-content">
+                    <div id="renters-cta" class="cta-content" role="tabpanel" aria-labelledby="renter-tab" hidden>
                         <p class="cta-text">Build credit, get instant HRA receipts, and protect your deposit. Starting at ₹99/month.</p>
-                        <button class="primary-button" onclick="showWaitlist('renter')">
+                        <button class="primary-button" onclick="showWaitlist('renter')" tabindex="0">
                             Join Renter Waitlist
                         </button>
                     </div>
                 </div>
             </div>
             <div class="hero-image">
-                <div class="phone-mockup">
+                <div class="phone-mockup" role="img" aria-label="Manay mobile app interface showing rent received notification, HRA receipt generated, and maintenance request">
                     <div class="screen">
                         <div class="app-interface">
                             <div class="notification">
-                                <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-check-circle" aria-hidden="true"></i>
                                 Rent received: ₹25,000
                             </div>
                             <div class="notification">
-                                <i class="fas fa-file-alt"></i>
+                                <i class="fas fa-file-alt" aria-hidden="true"></i>
                                 HRA receipt generated
                             </div>
                             <div class="notification">
-                                <i class="fas fa-tools"></i>
+                                <i class="fas fa-tools" aria-hidden="true"></i>
                                 Plumber assigned for repair
                             </div>
                         </div>
@@ -117,155 +230,155 @@
     </section>
 
     <!-- Landlord Section -->
-    <section id="landlords" class="landlord-section">
+    <section id="landlords" class="landlord-section" aria-labelledby="landlords-heading">
         <div class="container">
             <div class="section-header">
-                <h2>Stop "Dealing" With Your Rental. Start Managing It.</h2>
+                <h2 id="landlords-heading">Stop "Dealing" With Your Rental. Start Managing It.</h2>
                 <p>You don't need a property manager taking 10% of your income. You just need the right tools.</p>
             </div>
             
             <div class="features-grid">
-                <div class="feature-card">
+                <article class="feature-card" tabindex="0">
                     <div class="feature-icon">
-                        <i class="fas fa-rupee-sign"></i>
+                        <i class="fas fa-rupee-sign" aria-hidden="true"></i>
                     </div>
                     <h3>Zero-Chase Payments</h3>
                     <p>Rent automatically deducted via UPI Mandate. We handle reminders; you just get the deposit. No more "Sir, please adjust" messages.</p>
-                </div>
+                </article>
                 
-                <div class="feature-card">
+                <article class="feature-card" tabindex="0">
                     <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
+                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
                     </div>
                     <h3>Police Verification & Compliance</h3>
                     <p>Automated tenant verification form submission to local police stations. Digital agreements with e-stamping via LegalDesk integration.</p>
-                </div>
+                </article>
                 
-                <div class="feature-card">
+                <article class="feature-card" tabindex="0">
                     <div class="feature-icon">
-                        <i class="fas fa-tools"></i>
+                        <i class="fas fa-tools" aria-hidden="true"></i>
                     </div>
                     <h3>Maintenance on Autopilot</h3>
                     <p>Tenants submit tickets with photos via WhatsApp. Approve fixes with one tap. Auto-connect to verified plumbers via Urban Company.</p>
-                </div>
+                </article>
                 
-                <div class="feature-card">
+                <article class="feature-card" tabindex="0">
                     <div class="feature-icon">
-                        <i class="fas fa-folder-open"></i>
+                        <i class="fas fa-folder-open" aria-hidden="true"></i>
                     </div>
                     <h3>Document Vault</h3>
                     <p>Leases, inspections, and tax documents stored securely. Automatic HRA receipt generation for tenant tax savings.</p>
-                </div>
+                </article>
             </div>
             
-            <div class="testimonial">
-                <blockquote>
+            <figure class="testimonial">
+                <blockquote cite="#">
                     "I used to manage my 3 HSR units on Excel and GPay. Manay professionalized my business overnight. My NRI tenants love the automatic receipts."
                 </blockquote>
-                <cite>- Rahul, Landlord in Koramangala</cite>
-            </div>
+                <figcaption>— Rahul, Landlord in Koramangala</figcaption>
+            </figure>
         </div>
     </section>
 
     <!-- Renter Section -->
-    <section id="renters" class="renter-section">
+    <section id="renters" class="renter-section" aria-labelledby="renters-heading">
         <div class="container">
             <div class="section-header">
-                <h2>Rent Smarter. Live Better.</h2>
+                <h2 id="renters-heading">Rent Smarter. Live Better.</h2>
                 <p>You pay your biggest expense every month—it's time you got something back for it.</p>
             </div>
             
             <div class="features-grid">
-                <div class="feature-card">
+                <article class="feature-card" tabindex="0">
                     <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
+                        <i class="fas fa-chart-line" aria-hidden="true"></i>
                     </div>
                     <h3>Build Your CIBIL Score</h3>
                     <p>We report your on-time rent payments to CIBIL. Watch your credit score go up just by paying rent. Crucial for home loans.</p>
-                </div>
+                </article>
                 
-                <div class="feature-card">
+                <article class="feature-card" tabindex="0">
                     <div class="feature-icon">
-                        <i class="fas fa-receipt"></i>
+                        <i class="fas fa-receipt" aria-hidden="true"></i>
                     </div>
                     <h3>Instant HRA Receipts</h3>
                     <p>Automatic monthly rent receipts with landlord PAN for tax exemption. No more awkward "Sir, please send receipt" messages.</p>
-                </div>
+                </article>
                 
-                <div class="feature-card">
+                <article class="feature-card" tabindex="0">
                     <div class="feature-icon">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-users" aria-hidden="true"></i>
                     </div>
                     <h3>Roommate Math Solved</h3>
                     <p>Split rent and utilities automatically. One person pays landlord, but app tracks who contributed what. No more spreadsheet wars.</p>
-                </div>
+                </article>
                 
-                <div class="feature-card">
+                <article class="feature-card" tabindex="0">
                     <div class="feature-icon">
-                        <i class="fas fa-camera"></i>
+                        <i class="fas fa-camera" aria-hidden="true"></i>
                     </div>
                     <h3>Deposit Protection</h3>
                     <p>Timestamped move-in/move-out photos stored securely. Ensure you get your 10-month deposit back with proof.</p>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
     <!-- Bangalore Features -->
-    <section class="bangalore-section">
+    <section class="bangalore-section" aria-labelledby="bangalore-heading">
         <div class="container">
             <div class="section-header">
-                <h2>Built for Bangalore's Unique Challenges</h2>
+                <h2 id="bangalore-heading">Built for Bangalore's Unique Challenges</h2>
                 <p>We understand the 10-month deposit headache, HRA tax games, and the "bachelor" stigma.</p>
             </div>
             
             <div class="bangalore-grid">
-                <div class="bangalore-card">
-                    <h3><i class="fas fa-piggy-bank"></i> Deposit Financing</h3>
+                <article class="bangalore-card" tabindex="0">
+                    <h3><i class="fas fa-piggy-bank" aria-hidden="true"></i> Deposit Financing</h3>
                     <p>Partner with NBFCs to offer loans for that massive 10-month deposit. Move in without liquidating savings.</p>
-                </div>
+                </article>
                 
-                <div class="bangalore-card">
-                    <h3><i class="fas fa-whatsapp"></i> WhatsApp-First</h3>
+                <article class="bangalore-card" tabindex="0">
+                    <h3><i class="fas fa-whatsapp" aria-hidden="true"></i> WhatsApp-First</h3>
                     <p>We integrate with WhatsApp because that's where Bangalore lives. No new app to learn.</p>
-                </div>
+                </article>
                 
-                <div class="bangalore-card">
-                    <h3><i class="fas fa-user-check"></i> "Good Bachelor" Profile</h3>
+                <article class="bangalore-card" tabindex="0">
+                    <h3><i class="fas fa-user-check" aria-hidden="true"></i> "Good Bachelor" Profile</h3>
                     <p>Build a verified tenant profile with payment history to overcome landlord hesitation.</p>
-                </div>
+                </article>
                 
-                <div class="bangalore-card">
-                    <h3><i class="fas fa-rupee-sign"></i> UPI Mandates</h3>
+                <article class="bangalore-card" tabindex="0">
+                    <h3><i class="fas fa-rupee-sign" aria-hidden="true"></i> UPI Mandates</h3>
                     <p>Recurring UPI payments so you never miss rent. Works with GPay, PhonePe, Paytm.</p>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
     <!-- How It Works -->
-    <section class="how-it-works">
+    <section class="how-it-works" aria-labelledby="howitworks-heading">
         <div class="container">
             <div class="section-header">
-                <h2>How It Works</h2>
+                <h2 id="howitworks-heading">How It Works</h2>
                 <p>From rent collection to repair tracking - all in 3 simple steps.</p>
             </div>
             
             <div class="steps-container">
                 <div class="step">
-                    <div class="step-number">1</div>
+                    <div class="step-number" aria-hidden="true">1</div>
                     <h3>Invite</h3>
                     <p>Landlord invites tenant via email or WhatsApp. Setup takes 2 minutes with Aadhaar eSign.</p>
                 </div>
                 
                 <div class="step">
-                    <div class="step-number">2</div>
+                    <div class="step-number" aria-hidden="true">2</div>
                     <h3>Automate</h3>
                     <p>Lease details uploaded, UPI autopay activated, HRA receipts auto-generated monthly.</p>
                 </div>
                 
                 <div class="step">
-                    <div class="step-number">3</div>
+                    <div class="step-number" aria-hidden="true">3</div>
                     <h3>Relax</h3>
                     <p>We handle communication, payments, police verification, and tax docs. You get notified only when it matters.</p>
                 </div>
@@ -274,131 +387,148 @@
     </section>
 
     <!-- Pricing -->
-    <section id="pricing" class="pricing-section">
+    <section id="pricing" class="pricing-section" aria-labelledby="pricing-heading">
         <div class="container">
             <div class="section-header">
-                <h2>Professional Features. Practical Pricing.</h2>
+                <h2 id="pricing-heading">Professional Features. Practical Pricing.</h2>
                 <p>Free for landlords up to 3 units. Renters pay only for premium features.</p>
             </div>
             
             <div class="pricing-grid">
-                <div class="pricing-card">
+                <article class="pricing-card" tabindex="0">
                     <h3>For Landlords</h3>
                     <div class="price">Free</div>
                     <p class="price-subtitle">Forever for up to 3 units</p>
                     <ul class="feature-list">
-                        <li><i class="fas fa-check"></i> UPI rent collection</li>
-                        <li><i class="fas fa-check"></i> Maintenance ticketing</li>
-                        <li><i class="fas fa-check"></i> Document vault</li>
-                        <li><i class="fas fa-check"></i> Police verification support</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> UPI rent collection</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Maintenance ticketing</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Document vault</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Police verification support</li>
                     </ul>
-                    <button class="secondary-button" onclick="showWaitlist('landlord')">Get Started Free</button>
-                </div>
+                    <button class="secondary-button" onclick="showWaitlist('landlord')" tabindex="0">Get Started Free</button>
+                </article>
                 
-                <div class="pricing-card featured">
+                <article class="pricing-card featured" tabindex="0">
                     <div class="featured-badge">POPULAR</div>
                     <h3>For Renters</h3>
                     <div class="price">₹99<span>/mo</span></div>
                     <p class="price-subtitle">Premium Tenant Plan</p>
                     <ul class="feature-list">
-                        <li><i class="fas fa-check"></i> CIBIL score building</li>
-                        <li><i class="fas fa-check"></i> Automatic HRA receipts</li>
-                        <li><i class="fas fa-check"></i> Deposit protection vault</li>
-                        <li><i class="fas fa-check"></i> Roommate expense splitting</li>
-                        <li><i class="fas fa-check"></i> Priority support</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> CIBIL score building</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Automatic HRA receipts</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Deposit protection vault</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Roommate expense splitting</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Priority support</li>
                     </ul>
-                    <button class="primary-button" onclick="showWaitlist('renter')">Start Free Trial</button>
-                </div>
+                    <button class="primary-button" onclick="showWaitlist('renter')" tabindex="0">Start Free Trial</button>
+                </article>
                 
-                <div class="pricing-card">
+                <article class="pricing-card" tabindex="0">
                     <h3>Digital Agreement</h3>
                     <div class="price">₹499</div>
                     <p class="price-subtitle">Per agreement (annual)</p>
                     <ul class="feature-list">
-                        <li><i class="fas fa-check"></i> E-stamping & eSign</li>
-                        <li><i class="fas fa-check"></i> Aadhaar verification</li>
-                        <li><i class="fas fa-check"></i> LegalDesk integration</li>
-                        <li><i class="fas fa-check"></i> Police verification form</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> E-stamping & eSign</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Aadhaar verification</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> LegalDesk integration</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Police verification form</li>
                     </ul>
-                    <button class="secondary-button" onclick="showWaitlist('agreement')">Create Agreement</button>
-                </div>
+                    <button class="secondary-button" onclick="showWaitlist('agreement')" tabindex="0">Create Agreement</button>
+                </article>
             </div>
         </div>
     </section>
 
     <!-- Waitlist Form -->
-    <section id="waitlist" class="waitlist-section">
+    <section id="waitlist" class="waitlist-section" aria-labelledby="waitlist-heading">
         <div class="container">
             <div class="waitlist-form-container">
-                <h2>Ready to Upgrade Your Rental Relationship?</h2>
+                <h2 id="waitlist-heading">Ready to Upgrade Your Rental Relationship?</h2>
                 <p>Launching first in HSR Layout, Koramangala, and Whitefield. Secure your beta spot.</p>
                 
-                <form id="waitlistForm" class="waitlist-form" novalidate>
+                <!-- Formspree Form -->
+                <form id="waitlistForm" class="waitlist-form" action="https://formspree.io/f/xnqewvjq" method="POST" novalidate aria-label="Waitlist signup form">
+                    <input type="hidden" name="_subject" value="New Manay Waitlist Signup">
+                    <input type="hidden" name="_next" value="https://simoncatbot.github.io/manay-website/?form=success">
+                    
                     <div class="form-group">
-                        <label for="name" class="visually-hidden">Your Name</label>
-                        <input type="text" id="name" name="name" placeholder="Your Name" required aria-required="true" autocomplete="name">
-                        <span class="error-message" id="name-error"></span>
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required aria-required="true" autocomplete="name" aria-describedby="name-error">
+                        <span class="error-message" id="name-error" role="alert" aria-live="polite"></span>
                     </div>
+                    
                     <div class="form-group">
-                        <label for="email" class="visually-hidden">Email Address</label>
-                        <input type="email" id="email" name="email" placeholder="Email Address" required aria-required="true" autocomplete="email">
-                        <span class="error-message" id="email-error"></span>
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Email Address" required aria-required="true" autocomplete="email" aria-describedby="email-error">
+                        <span class="error-message" id="email-error" role="alert" aria-live="polite"></span>
                     </div>
+                    
                     <div class="form-group">
-                        <label for="phone" class="visually-hidden">Phone Number (WhatsApp)</label>
-                        <input type="tel" id="phone" name="phone" placeholder="Phone Number (WhatsApp)" required aria-required="true" autocomplete="tel" pattern="[6-9][0-9]{9}">
-                        <span class="error-message" id="phone-error"></span>
+                        <label for="phone">Phone Number (WhatsApp)</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Phone Number (WhatsApp)" required aria-required="true" autocomplete="tel" pattern="[6-9][0-9]{9}" aria-describedby="phone-error">
+                        <span class="error-message" id="phone-error" role="alert" aria-live="polite"></span>
                     </div>
+                    
                     <div class="form-group">
-                        <label for="userType" class="visually-hidden">I am a...</label>
-                        <select id="userType" name="userType" required aria-required="true">
+                        <label for="userType">I am a...</label>
+                        <select id="userType" name="userType" required aria-required="true" aria-describedby="userType-error">
                             <option value="" disabled selected>I am a...</option>
                             <option value="landlord">Landlord</option>
                             <option value="renter">Renter</option>
                             <option value="both">Both</option>
                         </select>
-                        <span class="error-message" id="userType-error"></span>
+                        <span class="error-message" id="userType-error" role="alert" aria-live="polite"></span>
                     </div>
+                    
                     <div class="form-group">
-                        <label for="area" class="visually-hidden">Area (e.g., HSR Layout)</label>
+                        <label for="area">Area (e.g., HSR Layout)</label>
                         <input type="text" id="area" name="area" placeholder="Area (e.g., HSR Layout)" autocomplete="off">
                     </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message (Optional)</label>
+                        <textarea id="message" name="message" rows="3" placeholder="Tell us more about your needs..."></textarea>
+                    </div>
+                    
                     <button type="submit" class="primary-button" id="submitBtn">
                         <span class="btn-text">Get Early Access</span>
-                        <span class="btn-loading" style="display: none;">
+                        <span class="btn-loading" style="display: none;" aria-hidden="true">
                             <i class="fas fa-spinner fa-spin"></i> Submitting...
                         </span>
                     </button>
                 </form>
                 
-                <div class="form-success" id="formSuccess">
-                    <i class="fas fa-check-circle"></i>
+                <div class="form-success" id="formSuccess" role="status" aria-live="polite">
+                    <i class="fas fa-check-circle" aria-hidden="true"></i>
                     <h3>You're on the list!</h3>
                     <p>We'll WhatsApp you when we're ready for beta testing in your area.</p>
                 </div>
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <span class="logo">ಮನೆ</span>
+                    <span class="logo" aria-hidden="true">ಮನೆ</span>
                     <span class="brand-name">Manay</span>
                     <p>Your Home. Your Rules.</p>
+                    <p class="contact-email"><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:hello@manay.in">hello@manay.in</a></p>
                 </div>
                 <div class="footer-links">
+                    <h4>Product</h4>
                     <a href="#landlords">For Landlords</a>
                     <a href="#renters">For Renters</a>
                     <a href="#pricing">Pricing</a>
                     <a href="#waitlist">Waitlist</a>
                 </div>
-                <div class="footer-social">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-service.html">Terms of Service</a>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -406,8 +536,7 @@
             </div>
         </div>
     </footer>
-    </main>
 
-    <script src="script.js"></script>
+    <script src="script.min.js"></script>
 </body>
 </html>

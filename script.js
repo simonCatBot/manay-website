@@ -10,12 +10,77 @@ class ManayApp {
         // Initialize all functionality when DOM is ready
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => {
+                this.hidePageLoader();
                 this.setupEventListeners();
                 this.initializeAnimations();
+                this.initializeCookieConsent();
             });
         } else {
+            this.hidePageLoader();
             this.setupEventListeners();
             this.initializeAnimations();
+            this.initializeCookieConsent();
+        }
+    }
+
+    // Page Loader
+    hidePageLoader() {
+        const loader = document.getElementById('pageLoader');
+        if (loader) {
+            // Add a small delay for visual effect
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 300);
+            }, 500);
+        }
+    }
+
+    // Cookie Consent
+    initializeCookieConsent() {
+        const cookieBanner = document.getElementById('cookieBanner');
+        const acceptBtn = document.getElementById('cookieAccept');
+        const declineBtn = document.getElementById('cookieDecline');
+        
+        // Check if user has already made a choice
+        const cookieChoice = localStorage.getItem('cookieConsent');
+        
+        if (!cookieChoice && cookieBanner) {
+            // Show banner after a short delay
+            setTimeout(() => {
+                cookieBanner.classList.add('show');
+            }, 2000);
+        }
+        
+        if (acceptBtn) {
+            acceptBtn.addEventListener('click', () => {
+                localStorage.setItem('cookieConsent', 'accepted');
+                this.hideCookieBanner(cookieBanner);
+                // Enable analytics if accepted
+                if (typeof gtag !== 'undefined') {
+                    gtag('consent', 'update', {
+                        'ad_storage': 'granted',
+                        'analytics_storage': 'granted'
+                    });
+                }
+            });
+        }
+        
+        if (declineBtn) {
+            declineBtn.addEventListener('click', () => {
+                localStorage.setItem('cookieConsent', 'declined');
+                this.hideCookieBanner(cookieBanner);
+            });
+        }
+    }
+
+    hideCookieBanner(banner) {
+        if (banner) {
+            banner.classList.remove('show');
+            setTimeout(() => {
+                banner.style.display = 'none';
+            }, 300);
         }
     }
 
@@ -229,17 +294,35 @@ class ManayApp {
     }
 
     submitFormData(data) {
-        // Simulate API call - replace with actual endpoint
+        // Formspree form submission
         return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                // Simulate success (90% of the time)
-                if (Math.random() > 0.1) {
-                    console.log('Form submitted successfully:', data);
+            const form = document.getElementById('waitlistForm');
+            if (!form) {
+                reject(new Error('Form not found'));
+                return;
+            }
+            
+            // Use Formspree's endpoint
+            const formAction = form.getAttribute('action');
+            
+            fetch(formAction, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
                     resolve({ success: true, data });
                 } else {
-                    reject(new Error('Network error. Please try again.'));
+                    reject(new Error('Failed to submit form. Please try again.'));
                 }
-            }, 1500);
+            })
+            .catch(error => {
+                console.error('Form submission error:', error);
+                reject(new Error('Network error. Please check your connection and try again.'));
+            });
         });
     }
 
@@ -247,6 +330,7 @@ class ManayApp {
     showSuccessMessage() {
         const form = document.getElementById('waitlistForm');
         const successMessage = document.getElementById('formSuccess');
+        const ariaLiveRegion = document.getElementById('aria-live-region');
         
         if (form && successMessage) {
             // Hide form with animation
@@ -264,11 +348,18 @@ class ManayApp {
                     successMessage.style.opacity = '1';
                     successMessage.style.transform = 'translateY(0)';
                 }, 50);
+                
+                // Update ARIA live region for screen readers
+                if (ariaLiveRegion) {
+                    ariaLiveRegion.textContent = "You're on the list! We'll WhatsApp you when we're ready for beta testing in your area.";
+                }
             }, 300);
         }
     }
 
     showErrorMessage(message, fieldId = null) {
+        const ariaLiveRegion = document.getElementById('aria-live-region');
+        
         if (fieldId) {
             // Field-specific error
             const errorEl = document.getElementById(`${fieldId}-error`);
@@ -279,6 +370,10 @@ class ManayApp {
             }
             if (inputEl) {
                 inputEl.setAttribute('aria-invalid', 'true');
+            }
+            // Also announce to screen readers
+            if (ariaLiveRegion) {
+                ariaLiveRegion.textContent = `Error: ${message}`;
             }
         } else {
             // General error toast
@@ -306,6 +401,11 @@ class ManayApp {
             
             toast.textContent = message;
             toast.style.opacity = '1';
+            
+            // Announce to screen readers
+            if (ariaLiveRegion) {
+                ariaLiveRegion.textContent = `Error: ${message}`;
+            }
             
             setTimeout(() => {
                 toast.style.opacity = '0';
