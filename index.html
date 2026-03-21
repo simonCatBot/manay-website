@@ -5,6 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manay - Your Home, Simplified | Bangalore Rental Management</title>
     <meta name="description" content="Manay (ಮನೆ) - Bangalore's smartest rental management platform. Automated rent collection via UPI, instant HRA receipts, digital agreements, and seamless landlord-tenant communication.">
+    <meta name="keywords" content="Manay, ಮನೆ, Bangalore rentals, rent management, UPI rent, HRA receipts, tenant verification, landlord tools, rental agreement">
+    <meta name="author" content="Manay Technologies Pvt Ltd">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://simoncatbot.github.io/manay-website/">
+    <meta property="og:title" content="Manay - Your Home, Simplified | Bangalore Rental Management">
+    <meta property="og:description" content="Bangalore's smartest rental management platform. Automated rent collection, instant HRA receipts, and seamless communication.">
+    <meta property="og:image" content="https://simoncatbot.github.io/manay-website/og-image.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://simoncatbot.github.io/manay-website/">
+    <meta property="twitter:title" content="Manay - Your Home, Simplified">
+    <meta property="twitter:description" content="Bangalore's smartest rental management platform. Automated rent collection, instant HRA receipts.">
+    <meta property="twitter:image" content="https://simoncatbot.github.io/manay-website/og-image.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://simoncatbot.github.io/manay-website/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +35,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Skip to main content -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
@@ -34,6 +60,7 @@
     </nav>
 
     <!-- Hero Section -->
+    <main id="main-content">
     <section class="hero">
         <div class="container">
             <div class="hero-content">
@@ -306,28 +333,42 @@
                 <h2>Ready to Upgrade Your Rental Relationship?</h2>
                 <p>Launching first in HSR Layout, Koramangala, and Whitefield. Secure your beta spot.</p>
                 
-                <form id="waitlistForm" class="waitlist-form">
+                <form id="waitlistForm" class="waitlist-form" novalidate>
                     <div class="form-group">
-                        <input type="text" id="name" placeholder="Your Name" required>
+                        <label for="name" class="visually-hidden">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required aria-required="true" autocomplete="name">
+                        <span class="error-message" id="name-error"></span>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" placeholder="Email Address" required>
+                        <label for="email" class="visually-hidden">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Email Address" required aria-required="true" autocomplete="email">
+                        <span class="error-message" id="email-error"></span>
                     </div>
                     <div class="form-group">
-                        <input type="tel" id="phone" placeholder="Phone Number (WhatsApp)" required>
+                        <label for="phone" class="visually-hidden">Phone Number (WhatsApp)</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Phone Number (WhatsApp)" required aria-required="true" autocomplete="tel" pattern="[6-9][0-9]{9}">
+                        <span class="error-message" id="phone-error"></span>
                     </div>
                     <div class="form-group">
-                        <select id="userType" required>
-                            <option value="">I am a...</option>
+                        <label for="userType" class="visually-hidden">I am a...</label>
+                        <select id="userType" name="userType" required aria-required="true">
+                            <option value="" disabled selected>I am a...</option>
                             <option value="landlord">Landlord</option>
                             <option value="renter">Renter</option>
                             <option value="both">Both</option>
                         </select>
+                        <span class="error-message" id="userType-error"></span>
                     </div>
                     <div class="form-group">
-                        <input type="text" id="area" placeholder="Area (e.g., HSR Layout)">
+                        <label for="area" class="visually-hidden">Area (e.g., HSR Layout)</label>
+                        <input type="text" id="area" name="area" placeholder="Area (e.g., HSR Layout)" autocomplete="off">
                     </div>
-                    <button type="submit" class="primary-button">Get Early Access</button>
+                    <button type="submit" class="primary-button" id="submitBtn">
+                        <span class="btn-text">Get Early Access</span>
+                        <span class="btn-loading" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i> Submitting...
+                        </span>
+                    </button>
                 </form>
                 
                 <div class="form-success" id="formSuccess">
@@ -365,6 +406,7 @@
             </div>
         </div>
     </footer>
+    </main>
 
     <script src="script.js"></script>
 </body>

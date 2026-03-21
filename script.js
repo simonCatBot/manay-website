@@ -133,6 +133,9 @@ class ManayApp {
             const formData = new FormData(form);
             const data = Object.fromEntries(formData);
 
+            // Clear previous errors
+            this.clearFormErrors();
+
             // Validate form data
             if (!this.validateForm(data)) {
                 return;
@@ -140,22 +143,26 @@ class ManayApp {
 
             // Show loading state
             const submitButton = form.querySelector('button[type="submit"]');
-            const originalButtonText = submitButton.textContent;
-            submitButton.textContent = 'Submitting...';
+            const btnText = submitButton.querySelector('.btn-text');
+            const btnLoading = submitButton.querySelector('.btn-loading');
+            
             submitButton.disabled = true;
+            if (btnText) btnText.style.display = 'none';
+            if (btnLoading) btnLoading.style.display = 'inline';
 
-            // Simulate API call (replace with actual API endpoint)
+            // Simulate API call
             this.submitFormData(data)
                 .then(() => {
                     this.showSuccessMessage();
                     form.reset();
                 })
                 .catch((error) => {
-                    this.showErrorMessage(error);
+                    this.showErrorMessage(error.message);
                 })
                 .finally(() => {
-                    submitButton.textContent = originalButtonText;
                     submitButton.disabled = false;
+                    if (btnText) btnText.style.display = 'inline';
+                    if (btnLoading) btnLoading.style.display = 'none';
                 });
 
         } catch (error) {
@@ -164,37 +171,61 @@ class ManayApp {
         }
     }
 
+    clearFormErrors() {
+        document.querySelectorAll('.error-message').forEach(el => {
+            el.textContent = '';
+            el.style.display = 'none';
+        });
+        document.querySelectorAll('.form-group input, .form-group select').forEach(el => {
+            el.setAttribute('aria-invalid', 'false');
+        });
+    }
+
     validateForm(data) {
-        const errors = [];
+        const errors = {};
+        let isValid = true;
 
         // Name validation
         if (!data.name || data.name.trim().length < 2) {
-            errors.push('Please enter a valid name');
+            errors.name = 'Please enter a valid name (at least 2 characters)';
+            isValid = false;
         }
 
         // Email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!data.email || !emailRegex.test(data.email)) {
-            errors.push('Please enter a valid email address');
+            errors.email = 'Please enter a valid email address';
+            isValid = false;
         }
 
         // Phone validation (Indian format)
         const phoneRegex = /^[6-9]\d{9}$/;
-        if (!data.phone || !phoneRegex.test(data.phone.replace(/[\s\-\+]/g, ''))) {
-            errors.push('Please enter a valid Indian phone number');
+        const cleanPhone = data.phone ? data.phone.replace(/[\s\-\+]/g, '') : '';
+        if (!data.phone || !phoneRegex.test(cleanPhone)) {
+            errors.phone = 'Please enter a valid 10-digit Indian phone number';
+            isValid = false;
         }
 
         // User type validation
         if (!data.userType) {
-            errors.push('Please select whether you are a landlord or renter');
+            errors.userType = 'Please select your user type';
+            isValid = false;
         }
 
-        if (errors.length > 0) {
-            this.showErrorMessage(errors.join('\n'));
-            return false;
-        }
+        // Display errors
+        Object.keys(errors).forEach(field => {
+            const errorEl = document.getElementById(`${field}-error`);
+            const inputEl = document.getElementById(field);
+            if (errorEl) {
+                errorEl.textContent = errors[field];
+                errorEl.style.display = 'block';
+            }
+            if (inputEl) {
+                inputEl.setAttribute('aria-invalid', 'true');
+            }
+        });
 
-        return true;
+        return isValid;
     }
 
     submitFormData(data) {
@@ -237,36 +268,54 @@ class ManayApp {
         }
     }
 
-    showErrorMessage(message) {
-        // Create or update error message
-        let errorElement = document.querySelector('.form-error');
-        
-        if (!errorElement) {
-            errorElement = document.createElement('div');
-            errorElement.className = 'form-error';
-            errorElement.style.cssText = `
-                background: #fee;
-                color: #c33;
-                padding: 12px;
-                border-radius: 8px;
-                margin-bottom: 16px;
-                border-left: 4px solid #c33;
-                white-space: pre-line;
-            `;
-            
-            const form = document.getElementById('waitlistForm');
-            form.insertBefore(errorElement, form.firstChild);
-        }
-        
-        errorElement.textContent = message;
-        
-        // Auto-remove after 5 seconds
-        setTimeout(() => {
-            if (errorElement) {
-                errorElement.style.opacity = '0';
-                setTimeout(() => errorElement.remove(), 300);
+    showErrorMessage(message, fieldId = null) {
+        if (fieldId) {
+            // Field-specific error
+            const errorEl = document.getElementById(`${fieldId}-error`);
+            const inputEl = document.getElementById(fieldId);
+            if (errorEl) {
+                errorEl.textContent = message;
+                errorEl.style.display = 'block';
             }
-        }, 5000);
+            if (inputEl) {
+                inputEl.setAttribute('aria-invalid', 'true');
+            }
+        } else {
+            // General error toast
+            let toast = document.querySelector('.error-toast');
+            
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.className = 'error-toast';
+                toast.style.cssText = `
+                    position: fixed;
+                    bottom: 20px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: #ef4444;
+                    color: white;
+                    padding: 16px 24px;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                    z-index: 10000;
+                    max-width: 90%;
+                    text-align: center;
+                `;
+                document.body.appendChild(toast);
+            }
+            
+            toast.textContent = message;
+            toast.style.opacity = '1';
+            
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => {
+                    if (toast.parentNode) {
+                        toast.remove();
+                    }
+                }, 300);
+            }, 5000);
+        }
     }
 
     // 3. Smooth scrolling for navigation links

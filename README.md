@@ -17,11 +17,12 @@ This is a static website built with HTML, CSS, and JavaScript. It's designed to 
 
 ```
 manay-website/
-├── index.html          # Main HTML file
-├── styles.css          # Styling and responsive design
-├── script.js           # JavaScript functionality (to be added)
+├── index.html          # Main HTML file with semantic structure
+├── styles.css          # Styling, animations, and responsive design
+├── script.js           # Interactive functionality and form handling
 ├── README.md           # This file
 ├── TESTING.md          # Testing instructions
+├── VALIDATION_REPORT.md # Accessibility and performance validation
 └── .github/
     └── workflows/
         └── deploy.yml  # GitHub Actions deployment workflow
