@@ -1526,6 +1526,162 @@ body.menu-open {
     opacity: 0.9;
 }
 
+/* ============================================
+   VALUE PROPOSITION SECTION
+   ============================================ */
+
+.value-section {
+    padding: 6rem 0;
+    background: var(--bg-secondary);
+}
+
+.value-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.value-card {
+    background: var(--bg-primary);
+    padding: 2.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: var(--transition-slow);
+    text-align: center;
+}
+
+.value-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-color);
+}
+
+.value-card.featured-value {
+    border-color: var(--primary-color);
+    background: linear-gradient(135deg, var(--bg-primary) 0%, rgba(99, 102, 241, 0.05) 100%);
+}
+
+.value-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    box-shadow: var(--shadow-lg);
+}
+
+.value-icon i {
+    font-size: 2rem;
+    color: white;
+}
+
+.value-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.value-list {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.value-list li {
+    padding: 0.75rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.value-list li:last-child {
+    border-bottom: none;
+}
+
+.value-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+/* Value Prop Box for Landlord Section */
+.value-prop-box {
+    max-width: 800px;
+    margin: 3rem auto 0;
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.value-prop-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: var(--radius);
+    border: 1px solid var(--glass-border);
+}
+
+.value-prop-item i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+}
+
+.value-prop-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.value-prop-content strong {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.value-prop-content span {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+    .value-grid {
+        gap: 1.5rem;
+    }
+    
+    .value-card {
+        padding: 2rem;
+    }
+    
+    .value-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .value-icon i {
+        font-size: 1.5rem;
+    }
+    
+    .value-prop-box {
+        margin: 2rem auto 0;
+        padding: 1.5rem;
+    }
+}
+
 /* Waitlist Form */
 .waitlist-section {
     padding: 6rem 0;
