@@ -1504,6 +1504,87 @@ body.menu-open {
     flex-shrink: 0;
 }
 
+/* Pricing CTA Section (for index.html) */
+.pricing-cta-section {
+    padding: 6rem 0;
+    background: var(--bg-primary);
+}
+
+.pricing-cta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto 3rem;
+}
+
+.pricing-cta-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    text-align: center;
+    transition: var(--transition-slow);
+}
+
+.pricing-cta-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+
+.pricing-cta-card.featured {
+    border-color: var(--primary-color);
+    background: linear-gradient(135deg, var(--bg-primary) 0%, #eef2ff 100%);
+}
+
+.pricing-cta-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1rem;
+    background: var(--primary-light);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pricing-cta-icon i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.pricing-cta-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.pricing-cta-price {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+}
+
+.pricing-cta-desc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.pricing-cta-footer {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.pricing-cta-footer p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
 /* Stats Section */
 .stats-section {
     padding: 4rem 0;
