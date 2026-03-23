@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - Manay | Simple Plans for Everyone</title>
+    <meta name="description" content="Manay pricing plans - Free for landlords, affordable for renters. No hidden fees.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --bg-dark: #111827;
+            --text-primary: #111827;
+            --text-secondary: #6b7280;
+            --border-color: #e5e7eb;
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --success: #10b981;
+            --accent: #f59e0b;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-primary: #0f172a;
+                --bg-secondary: #1e293b;
+                --text-primary: #f9fafb;
+                --text-secondary: #9ca3af;
+                --border-color: #374151;
+            }
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            font-size: 1.25rem;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo-icon {
+            font-size: 1.5rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+        }
+
+        /* Toggle */
+        .toggle-container {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 3rem;
+            padding: 0 2rem;
+        }
+
+        .toggle-btn {
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--border-color);
+            background: var(--bg-primary);
+            color: var(--text-secondary);
+            border-radius: 9999px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .toggle-btn.active {
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            border-color: var(--text-primary);
+        }
+
+        .toggle-btn:hover:not(.active) {
+            border-color: var(--text-secondary);
+            color: var(--text-primary);
+        }
+
+        /* Pricing Grid */
+        .pricing-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .pricing-card {
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.2s;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--text-secondary);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, var(--bg-primary) 0%, #eef2ff 100%);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .pricing-card.featured {
+                background: linear-gradient(135deg, var(--bg-primary) 0%, #1e1b4b 100%);
+            }
+        }
+
+        .card-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .card-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .card-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        .card-price .unit {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .cta-button {
+            width: 100%;
+            padding: 0.875rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button.primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+        }
+
+        .cta-button.primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .cta-button.secondary {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .cta-button.secondary:hover {
+            border-color: var(--text-secondary);
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: auto;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+        }
+
+        .feature-list li i {
+            color: var(--success);
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+
+        .feature-list li strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .faq-section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .faq-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            background: var(--bg-primary);
+            border: none;
+            width: 100%;
+            text-align: left;
+            color: var(--text-primary);
+        }
+
+        .faq-question:hover {
+            background: var(--bg-secondary);
+        }
+
+        .faq-question i {
+            transition: transform 0.2s;
+        }
+
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.25rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+            color: var(--text-secondary);
+        }
+
+        .faq-answer.open {
+            padding: 0 1.25rem 1.25rem;
+            max-height: 500px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .toggle-container {
+                flex-wrap: wrap;
+            }
+
+            .hero {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🏠</span>
+            <span>Manay</span>
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Simple plans for everyone</h1>
+        <p>Free for landlords. Affordable for renters. No hidden fees, no surprises.</p>
+    </section>
+
+    <div class="toggle-container">
+        <button class="toggle-btn active" data-target="landlords">For Landlords</button>
+        <button class="toggle-btn" data-target="renters">For Renters</button>
+    </div>
+
+    <div class="pricing-container">
+        <!-- Landlord Plans -->
+        <div id="landlord-plans" class="pricing-grid">
+            <article class="pricing-card">
+                <div class="card-header">
+                    <div class="card-title">Free</div>
+                    <div class="card-subtitle">For individual landlords</div>
+                    <div class="card-price">₹0 <span>/ forever</span></div>
+                </div>
+                <a href="#waitlist" class="cta-button secondary" onclick="selectPlan('landlord-free')">Download</a>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> 1 property</li>
+                    <li><i class="fas fa-check"></i> UPI rent collection</li>
+                    <li><i class="fas fa-check"></i> Maintenance ticketing</li>
+                    <li><i class="fas fa-check"></i> Document vault</li>
+                    <li><i class="fas fa-check"></i> Police verification support</li>
+                    <li><i class="fas fa-check"></i> Email support</li>
+                </ul>
+            </article>
+
+            <article class="pricing-card featured">
+                <div class="card-header">
+                    <div class="card-title">Pro</div>
+                    <div class="card-subtitle">For professional landlords</div>
+                    <div class="card-price">₹299 <span>/ mo</span></div>
+                </div>
+                <a href="#waitlist" class="cta-button primary" onclick="selectPlan('landlord-pro')">Get Pro</a>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> <strong>Everything in Free</strong></li>
+                    <li><i class="fas fa-check"></i> Unlimited properties</li>
+                    <li><i class="fas fa-check"></i> Vendor dispatch service</li>
+                    <li><i class="fas fa-check"></i> Tenant screening + background check</li>
+                    <li><i class="fas fa-check"></i> GST & ITR-ready reports</li>
+                    <li><i class="fas fa-check"></i> Legal templates & documents</li>
+                    <li><i class="fas fa-check"></i> WhatsApp support (4hr)</li>
+                </ul>
+            </article>
+
+            <article class="pricing-card">
+                <div class="card-header">
+                    <div class="card-title">Pro Max</div>
+                    <div class="card-subtitle">Full-service management</div>
+                    <div class="card-price">₹799 <span>/ mo</span></div>
+                </div>
+                <a href="#waitlist" class="cta-button secondary" onclick="selectPlan('landlord-promax')">Get Max</a>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> <strong>Everything in Pro</strong></li>
+                    <li><i class="fas fa-check"></i> <strong>Full property management</strong></li>
+                    <li><i class="fas fa-check"></i> Rent guarantee insurance (3 months)</li>
+                    <li><i class="fas fa-check"></i> Free tenant replacement</li>
+                    <li><i class="fas fa-check"></i> Dedicated account manager</li>
+                    <li><i class="fas fa-check"></i> CA review & tax optimization</li>
+                    <li><i class="fas fa-check"></i> Priority phone support</li>
+                </ul>
+            </article>
+        </div>
+
+        <!-- Renter Plans -->
+        <div id="renter-plans" class="pricing-grid hidden">
+            <article class="pricing-card">
+                <div class="card-header">
+                    <div class="card-title">Basic</div>
+                    <div class="card-subtitle">Essential tenant tools</div>
+                    <div class="card-price">₹99 <span>/ mo</span></div>
+                </div>
+                <a href="#waitlist" class="cta-button secondary" onclick="selectPlan('renter-basic')">Get Basic</a>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> CIBIL score building</li>
+                    <li><i class="fas fa-check"></i> Automatic HRA receipts</li>
+                    <li><i class="fas fa-check"></i> Deposit photo vault</li>
+                    <li><i class="fas fa-check"></i> Basic roommate split</li>
+                    <li><i class="fas fa-check"></i> Move-in/out checklist</li>
+                    <li><i class="fas fa-check"></i> Email support (24hr)</li>
+                </ul>
+            </article>
+
+            <article class="pricing-card featured">
+                <div class="card-header">
+                    <div class="card-title">Pro</div>
+                    <div class="card-subtitle">Advanced protection</div>
+                    <div class="card-price">₹199 <span>/ mo</span></div>
+                </div>
+                <a href="#waitlist" class="cta-button primary" onclick="selectPlan('renter-pro')">Get Pro</a>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> <strong>Everything in Basic</strong></li>
+                    <li><i class="fas fa-check"></i> Annual HRA summary</li>
+                    <li><i class="fas fa-check"></i> Legal assistance</li>
+                    <li><i class="fas fa-check"></i> Auto-split + reminders</li>
+                    <li><i class="fas fa-check"></i> Condition report docs</li>
+                    <li><i class="fas fa-check"></i> Escalation service</li>
+                    <li><i class="fas fa-check"></i> WhatsApp support (2hr)</li>
+                </ul>
+            </article>
+
+            <article class="pricing-card">
+                <div class="card-header">
+                    <div class="card-title">Pro Max</div>
+                    <div class="card-subtitle">White-glove service</div>
+                    <div class="card-price">₹399 <span>/ mo</span></div>
+                </div>
+                <a href="#waitlist" class="cta-button secondary" onclick="selectPlan('renter-promax')">Get Max</a>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> <strong>Everything in Pro</strong></li>
+                    <li><i class="fas fa-check"></i> <strong>Deposit insurance</strong></li>
+                    <li><i class="fas fa-check"></i> 24hr maintenance SLA</li>
+                    <li><i class="fas fa-check"></i> Lawyer representation</li>
+                    <li><i class="fas fa-check"></i> Rental concierge service</li>
+                    <li><i class="fas fa-check"></i> Packers & movers discount</li>
+                    <li><i class="fas fa-check"></i> Emergency support line</li>
+                </ul>
+            </article>
+        </div>
+
+        <!-- Digital Agreement Add-on -->
+        <div style="margin-top: 3rem; text-align: center;">
+            <article class="pricing-card" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;">
+                <div style="text-align: left; flex: 1;">
+                    <div class="card-title" style="margin-bottom: 0.25rem;"><i class="fas fa-file-contract" style="margin-right: 0.5rem;"></i>Digital Agreement</div>
+                    <div class="card-subtitle">One-time purchase • Valid 1 year</div>
+                </div>
+                <div class="card-price" style="margin-bottom: 0;">₹499</div>
+                <a href="#waitlist" class="cta-button secondary" style="width: auto; margin-bottom: 0;" onclick="selectPlan('agreement')">Create Agreement</a>
+            </article>
+        </div>
+    </div>
+
+    <section class="faq-section">
+        <h2>Frequently asked questions</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <button class="faq-question">
+                    What is included in Pro Max full property management?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    We handle everything: rent collection, tenant communication, maintenance coordination, vendor payments, and compliance tracking. You just receive your rent each month.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    How does rent guarantee insurance work?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    If your tenant defaults on rent, we cover up to 3 months of rent while we help you find a replacement. Available on Landlord Pro Max plan.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    What is deposit insurance for renters?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    If your landlord unfairly deducts from your deposit, we cover the disputed amount and handle the recovery process. Available on Renter Pro Max.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Can I switch plans?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    Yes, upgrade or downgrade anytime. When upgrading, you get immediate access to new features. When downgrading, changes apply at the next billing cycle.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Is there a free trial?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    Yes, all paid plans come with a 14-day free trial. No credit card required to start. Landlord Free is free forever.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    What payment methods are accepted?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    We accept UPI, credit/debit cards, net banking, and auto-debit mandates. All transactions are secure and encrypted.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Manay Technologies Pvt Ltd • <a href="privacy-policy.html">Privacy</a> • <a href="terms-of-service.html">Terms</a></p>
+    </footer>
+
+    <script>
+        // Toggle between landlord and renter plans
+        const toggleBtns = document.querySelectorAll('.toggle-btn');
+        const landlordPlans = document.getElementById('landlord-plans');
+        const renterPlans = document.getElementById('renter-plans');
+
+        toggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                toggleBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                if (btn.dataset.target === 'landlords') {
+                    landlordPlans.classList.remove('hidden');
+                    renterPlans.classList.add('hidden');
+                } else {
+                    landlordPlans.classList.add('hidden');
+                    renterPlans.classList.remove('hidden');
+                }
+            });
+        });
+
+        // FAQ accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isOpen = answer.classList.contains('open');
+
+                // Close all
+                document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+                document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('active'));
+
+                // Open clicked if wasn't open
+                if (!isOpen) {
+                    answer.classList.add('open');
+                    question.classList.add('active');
+                }
+            });
+        });
+
+        // Plan selection
+        function selectPlan(plan) {
+            localStorage.setItem('selectedPlan', plan);
+            window.location.href = 'index.html#waitlist';
+        }
+    </script>
+</body>
+</html>
