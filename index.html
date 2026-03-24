@@ -313,7 +313,26 @@
         </div>
     </section>
 
-    <!-- Landlord Section -->
+    <!-- Toggle Section -->
+    <section class="section-toggle-section" aria-label="User type selection">
+        <div class="container">
+            <div class="section-toggle" role="tablist">
+                <button class="section-toggle-btn active" data-target="landlord-sections" role="tab" aria-selected="true" id="section-landlord-toggle">
+                    <i class="fas fa-building" aria-hidden="true"></i>
+                    For Landlords
+                </button>
+                <button class="section-toggle-btn" data-target="renter-sections" role="tab" aria-selected="false" id="section-renter-toggle">
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                    For Renters
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Landlord Sections -->
+    <div id="landlord-sections" class="user-sections">
+    
+    <!-- Landlord Features Section -->
     <section id="landlords" class="landlord-section lazy-section" aria-labelledby="landlords-heading">
         <div class="container">
             <div class="section-header">
@@ -375,7 +394,12 @@
         </div>
     </section>
 
-    <!-- Renter Section -->
+    </div><!-- End Landlord Sections -->
+
+    <!-- Renter Sections -->
+    <div id="renter-sections" class="user-sections hidden">
+
+    <!-- Renter Features Section -->
     <section id="renters" class="renter-section lazy-section" aria-labelledby="renters-heading">
         <div class="container">
             <div class="section-header">
@@ -434,6 +458,10 @@
             </div>
         </div>
     </section>
+
+    </div><!-- End Renter Sections -->
+
+    <!-- Shared Sections (Both) -->
 
     <!-- Bangalore Features -->
     <section class="bangalore-section lazy-section" aria-labelledby="bangalore-heading">
@@ -719,5 +747,34 @@
     </button>
 
     <script src="script.js"></script>
+    <script>
+        // Section Toggle Logic
+        const sectionToggleBtns = document.querySelectorAll('.section-toggle-btn');
+        const landlordSections = document.getElementById('landlord-sections');
+        const renterSections = document.getElementById('renter-sections');
+        
+        if (sectionToggleBtns.length > 0) {
+            sectionToggleBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active state
+                    sectionToggleBtns.forEach(b => {
+                        b.classList.remove('active');
+                        b.setAttribute('aria-selected', 'false');
+                    });
+                    btn.classList.add('active');
+                    btn.setAttribute('aria-selected', 'true');
+                    
+                    // Toggle sections
+                    if (btn.dataset.target === 'landlord-sections') {
+                        landlordSections.classList.remove('hidden');
+                        renterSections.classList.add('hidden');
+                    } else {
+                        landlordSections.classList.add('hidden');
+                        renterSections.classList.remove('hidden');
+                    }
+                });
+            });
+        }
+    </script>
 </body>
 </html>
