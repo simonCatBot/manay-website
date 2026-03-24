@@ -2,605 +2,788 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Pricing - Manay | Simple Plans for Everyone</title>
-    <meta name="description" content="Manay pricing plans - Free for landlords, affordable for renters. No hidden fees.">
+    <meta name="description" content="Manay pricing plans - Free for landlords, affordable for renters. No hidden fees. Choose from Free, Pro, and Max plans.">
+    <meta name="keywords" content="Manay pricing, Bangalore rental plans, landlord pricing, renter pricing, property management cost">
+    <meta name="author" content="Manay Technologies Pvt Ltd">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://manay.in/pricing.html">
+    <meta property="og:title" content="Pricing - Manay | Simple Plans for Everyone">
+    <meta property="og:description" content="Free for landlords, affordable for renters. No hidden fees. Choose from Free, Pro, and Max plans.">
+    <meta property="og:image" content="https://manay.in/og-image.svg">
+    <meta property="og:image:alt" content="Manay pricing plans">
+    <meta property="og:locale" content="en_IN">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://manay.in/pricing.html">
+    <meta name="twitter:title" content="Pricing - Manay | Simple Plans for Everyone">
+    <meta name="twitter:description" content="Free for landlords, affordable for renters. No hidden fees.">
+    <meta name="twitter:image" content="https://manay.in/og-image.svg">
+    <meta name="twitter:image:alt" content="Manay pricing plans">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://manay.in/pricing.html">
+    
+    <!-- Preconnect Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="https://formspree.io">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f9fafb;
-            --bg-dark: #111827;
-            --text-primary: #111827;
-            --text-secondary: #6b7280;
-            --border-color: #e5e7eb;
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --success: #10b981;
-            --accent: #f59e0b;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-primary: #0f172a;
-                --bg-secondary: #1e293b;
-                --text-primary: #f9fafb;
-                --text-secondary: #9ca3af;
-                --border-color: #374151;
-            }
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
-
-        /* Header */
-        header {
-            padding: 1.5rem 2rem;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 600;
-            font-size: 1.25rem;
-            text-decoration: none;
-            color: var(--text-primary);
-        }
-
-        .logo-icon {
-            font-size: 1.5rem;
-        }
-
-        nav a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        nav a:hover {
-            color: var(--text-primary);
-        }
-
-        /* Hero */
-        .hero {
+        /* Pricing Page Specific Styles */
+        .pricing-hero {
+            padding: 8rem 0 4rem;
             text-align: center;
-            padding: 4rem 2rem;
-            max-width: 800px;
-            margin: 0 auto;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
         }
-
-        .hero h1 {
-            font-size: clamp(2rem, 5vw, 3rem);
+        
+        .pricing-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 700;
             margin-bottom: 1rem;
-            line-height: 1.2;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-
-        .hero p {
-            font-size: 1.125rem;
+        
+        .pricing-hero p {
+            font-size: 1.25rem;
             color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
         }
-
-        /* Toggle */
-        .toggle-container {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-bottom: 3rem;
-            padding: 0 2rem;
+        
+        /* Toggle Section */
+        .pricing-toggle-section {
+            padding: 2rem 0;
+            text-align: center;
+            background: var(--bg-secondary);
         }
-
-        .toggle-btn {
-            padding: 0.75rem 1.5rem;
-            border: 1px solid var(--border-color);
+        
+        .pricing-toggle {
+            display: inline-flex;
             background: var(--bg-primary);
+            border-radius: var(--radius-full);
+            padding: 0.5rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .pricing-toggle-btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            background: transparent;
             color: var(--text-secondary);
-            border-radius: 9999px;
-            font-weight: 500;
+            font-weight: 600;
+            border-radius: var(--radius-full);
             cursor: pointer;
-            transition: all 0.2s;
+            transition: var(--transition);
         }
-
-        .toggle-btn.active {
-            background: var(--text-primary);
-            color: var(--bg-primary);
-            border-color: var(--text-primary);
+        
+        .pricing-toggle-btn.active {
+            background: var(--primary-color);
+            color: white;
         }
-
-        .toggle-btn:hover:not(.active) {
-            border-color: var(--text-secondary);
+        
+        .pricing-toggle-btn:hover:not(.active) {
             color: var(--text-primary);
         }
-
+        
         /* Pricing Grid */
-        .pricing-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem 4rem;
+        .pricing-detail-section {
+            padding: 4rem 0;
+            background: var(--bg-secondary);
         }
-
-        .pricing-grid {
+        
+        .pricing-detail-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 4rem;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
-
-        .pricing-card {
-            border: 1px solid var(--border-color);
-            border-radius: 1rem;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            transition: all 0.2s;
+        
+        .pricing-detail-card {
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: 2.5rem;
+            position: relative;
+            transition: var(--transition-slow);
         }
-
-        .pricing-card:hover {
-            border-color: var(--text-secondary);
+        
+        .pricing-detail-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
         }
-
-        .pricing-card.featured {
-            border-color: var(--primary);
-            background: linear-gradient(135deg, var(--bg-primary) 0%, #eef2ff 100%);
+        
+        .pricing-detail-card.featured {
+            border-color: var(--primary-color);
+            transform: scale(1.02);
         }
-
-        @media (prefers-color-scheme: dark) {
-            .pricing-card.featured {
-                background: linear-gradient(135deg, var(--bg-primary) 0%, #1e1b4b 100%);
-            }
+        
+        .pricing-detail-card.featured:hover {
+            transform: scale(1.02) translateY(-8px);
         }
-
-        .card-header {
-            margin-bottom: 1.5rem;
+        
+        .pricing-detail-card.premium {
+            border-color: var(--accent-color);
+            background: linear-gradient(135deg, var(--bg-primary) 0%, #fff7ed 100%);
         }
-
-        .card-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .card-subtitle {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-        }
-
-        .card-price {
-            font-size: 2.5rem;
+        
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.5rem 1.5rem;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
-
-        .card-price span {
+        
+        .pricing-badge.popular {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .pricing-badge.premium {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+        }
+        
+        .pricing-detail-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .pricing-detail-card .subtitle {
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .pricing-detail-card .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+        
+        .pricing-detail-card .price span {
             font-size: 1rem;
             font-weight: 400;
             color: var(--text-secondary);
         }
-
-        .card-price .unit {
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-        }
-
-        .cta-button {
-            width: 100%;
-            padding: 0.875rem 1.5rem;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            margin-bottom: 1.5rem;
+        
+        .pricing-detail-card .price-note {
             text-align: center;
-            text-decoration: none;
-            display: inline-block;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 2rem;
         }
-
-        .cta-button.primary {
-            background: var(--primary);
-            color: white;
-            border: none;
-        }
-
-        .cta-button.primary:hover {
-            background: var(--primary-dark);
-        }
-
-        .cta-button.secondary {
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            border: 1px solid var(--border-color);
-        }
-
-        .cta-button.secondary:hover {
-            border-color: var(--text-secondary);
-        }
-
-        .feature-list {
+        
+        .pricing-detail-card .features {
             list-style: none;
-            margin-top: auto;
+            margin-bottom: 2rem;
         }
-
-        .feature-list li {
-            padding: 0.5rem 0;
+        
+        .pricing-detail-card .features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
             display: flex;
             align-items: flex-start;
             gap: 0.75rem;
-            color: var(--text-secondary);
-            font-size: 0.9375rem;
+            line-height: 1.4;
         }
-
-        .feature-list li i {
-            color: var(--success);
+        
+        .pricing-detail-card .features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-detail-card .features li i {
+            color: var(--secondary-color);
             margin-top: 0.2rem;
             flex-shrink: 0;
         }
-
-        .feature-list li strong {
+        
+        .pricing-detail-card .features li strong {
             color: var(--text-primary);
-            font-weight: 600;
         }
-
-        /* FAQ Section */
-        .faq-section {
+        
+        .pricing-detail-card .cta-button {
+            width: 100%;
+            padding: 1rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .pricing-detail-card .cta-button.primary {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .pricing-detail-card .cta-button.primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .pricing-detail-card .cta-button.secondary {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+        }
+        
+        .pricing-detail-card .cta-button.secondary:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .pricing-detail-card .cta-button.premium-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+        }
+        
+        .pricing-detail-card .cta-button.premium-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+        }
+        
+        /* Add-on Card */
+        .pricing-addon-section {
+            padding: 2rem 0 4rem;
+            background: var(--bg-secondary);
+        }
+        
+        .pricing-addon-card {
             max-width: 800px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
         }
-
-        .faq-section h2 {
-            font-size: 1.5rem;
+        
+        .pricing-addon-card .addon-info {
+            flex: 1;
+        }
+        
+        .pricing-addon-card h3 {
+            font-size: 1.25rem;
             font-weight: 600;
-            margin-bottom: 2rem;
-            text-align: center;
+            margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-
-        .faq-grid {
+        
+        .pricing-addon-card h3 i {
+            color: var(--primary-color);
+        }
+        
+        .pricing-addon-card .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .pricing-addon-card .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .pricing-addon-card .cta-button {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid var(--border-color);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+        
+        .pricing-addon-card .cta-button:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        /* FAQ Section */
+        .pricing-faq-section {
+            padding: 4rem 0;
+            background: var(--bg-primary);
+        }
+        
+        .pricing-faq-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
+        }
+        
+        .pricing-faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
             display: grid;
             gap: 1rem;
+            padding: 0 2rem;
         }
-
-        .faq-item {
+        
+        .pricing-faq-item {
             border: 1px solid var(--border-color);
-            border-radius: 0.75rem;
+            border-radius: var(--radius);
             overflow: hidden;
         }
-
-        .faq-question {
-            padding: 1rem 1.25rem;
+        
+        .pricing-faq-question {
+            width: 100%;
+            padding: 1.25rem;
+            background: var(--bg-primary);
+            border: none;
+            text-align: left;
+            font-weight: 500;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-weight: 500;
-            background: var(--bg-primary);
-            border: none;
-            width: 100%;
-            text-align: left;
             color: var(--text-primary);
+            font-size: 1rem;
         }
-
-        .faq-question:hover {
+        
+        .pricing-faq-question:hover {
             background: var(--bg-secondary);
         }
-
-        .faq-question i {
-            transition: transform 0.2s;
+        
+        .pricing-faq-question i {
+            transition: transform 0.3s;
+            color: var(--text-secondary);
         }
-
-        .faq-question.active i {
+        
+        .pricing-faq-question.active i {
             transform: rotate(180deg);
         }
-
-        .faq-answer {
-            padding: 0 1.25rem;
+        
+        .pricing-faq-answer {
             max-height: 0;
             overflow: hidden;
-            transition: all 0.3s;
-            color: var(--text-secondary);
+            transition: max-height 0.3s ease;
+            background: var(--bg-secondary);
         }
-
-        .faq-answer.open {
-            padding: 0 1.25rem 1.25rem;
+        
+        .pricing-faq-answer.open {
             max-height: 500px;
         }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            border-top: 1px solid var(--border-color);
+        
+        .pricing-faq-answer-content {
+            padding: 0 1.25rem 1.25rem;
             color: var(--text-secondary);
-            font-size: 0.875rem;
+            line-height: 1.6;
         }
-
-        footer a {
-            color: var(--text-secondary);
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            color: var(--text-primary);
-        }
-
+        
         /* Responsive */
         @media (max-width: 768px) {
-            .pricing-grid {
+            .pricing-hero {
+                padding: 6rem 1.5rem 3rem;
+            }
+            
+            .pricing-detail-grid {
                 grid-template-columns: 1fr;
+                padding: 0 1rem;
             }
-
-            .toggle-container {
+            
+            .pricing-detail-card.featured {
+                transform: scale(1);
+            }
+            
+            .pricing-detail-card.featured:hover {
+                transform: translateY(-8px);
+            }
+            
+            .pricing-addon-card {
+                flex-direction: column;
+                text-align: center;
+                margin: 0 1rem;
+            }
+            
+            .pricing-toggle {
                 flex-wrap: wrap;
-            }
-
-            .hero {
-                padding: 2rem 1.5rem;
+                justify-content: center;
             }
         }
-
-        .hidden {
-            display: none;
+        
+        /* Hidden class for toggle */
+        .pricing-hidden {
+            display: none !important;
         }
     </style>
 </head>
 <body>
-    <header>
-        <a href="index.html" class="logo">
-            <span class="logo-icon">🏠</span>
-            <span>Manay</span>
-        </a>
-        <nav>
-            <a href="index.html">Home</a>
-        </nav>
-    </header>
+    <!-- Skip to main content -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <section class="hero">
-        <h1>Simple plans for everyone</h1>
-        <p>Free for landlords. Affordable for renters. No hidden fees, no surprises.</p>
-    </section>
-
-    <div class="toggle-container">
-        <button class="toggle-btn active" data-target="landlords">For Landlords</button>
-        <button class="toggle-btn" data-target="renters">For Renters</button>
-    </div>
-
-    <div class="pricing-container">
-        <!-- Landlord Plans -->
-        <div id="landlord-plans" class="pricing-grid">
-            <article class="pricing-card">
-                <div class="card-header">
-                    <div class="card-title">Free</div>
-                    <div class="card-subtitle">For individual landlords</div>
-                    <div class="card-price">₹0 <span>/ forever</span></div>
-                </div>
-                <a href="#waitlist" class="cta-button secondary" onclick="selectPlan('landlord-free')">Download</a>
-                <ul class="feature-list">
-                    <li><i class="fas fa-check"></i> 1 property</li>
-                    <li><i class="fas fa-check"></i> UPI rent collection</li>
-                    <li><i class="fas fa-check"></i> Maintenance ticketing</li>
-                    <li><i class="fas fa-check"></i> Document vault</li>
-                    <li><i class="fas fa-check"></i> Police verification support</li>
-                    <li><i class="fas fa-check"></i> Email support</li>
-                </ul>
-            </article>
-
-            <article class="pricing-card featured">
-                <div class="card-header">
-                    <div class="card-title">Pro</div>
-                    <div class="card-subtitle">For professional landlords</div>
-                    <div class="card-price">₹299 <span>/ mo</span></div>
-                </div>
-                <a href="#waitlist" class="cta-button primary" onclick="selectPlan('landlord-pro')">Get Pro</a>
-                <ul class="feature-list">
-                    <li><i class="fas fa-check"></i> <strong>Everything in Free</strong></li>
-                    <li><i class="fas fa-check"></i> Unlimited properties</li>
-                    <li><i class="fas fa-check"></i> Vendor dispatch service</li>
-                    <li><i class="fas fa-check"></i> Tenant screening + background check</li>
-                    <li><i class="fas fa-check"></i> GST & ITR-ready reports</li>
-                    <li><i class="fas fa-check"></i> Legal templates & documents</li>
-                    <li><i class="fas fa-check"></i> WhatsApp support (4hr)</li>
-                </ul>
-            </article>
-
-            <article class="pricing-card">
-                <div class="card-header">
-                    <div class="card-title">Pro Max</div>
-                    <div class="card-subtitle">Full-service management</div>
-                    <div class="card-price">₹799 <span>/ mo</span></div>
-                </div>
-                <a href="#waitlist" class="cta-button secondary" onclick="selectPlan('landlord-promax')">Get Max</a>
-                <ul class="feature-list">
-                    <li><i class="fas fa-check"></i> <strong>Everything in Pro</strong></li>
-                    <li><i class="fas fa-check"></i> <strong>Full property management</strong></li>
-                    <li><i class="fas fa-check"></i> Rent guarantee insurance (3 months)</li>
-                    <li><i class="fas fa-check"></i> Free tenant replacement</li>
-                    <li><i class="fas fa-check"></i> Dedicated account manager</li>
-                    <li><i class="fas fa-check"></i> CA review & tax optimization</li>
-                    <li><i class="fas fa-check"></i> Priority phone support</li>
-                </ul>
-            </article>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar" aria-label="Main navigation">
+        <div class="nav-glass-effect"></div>
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo-link" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem; color: var(--text-primary);">
+                    <span class="logo" aria-hidden="true">ಮನೆ</span>
+                    <span class="brand-name">Manay</span>
+                </a>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html#landlords" class="nav-link">For Landlords</a>
+                <a href="index.html#renters" class="nav-link">For Renters</a>
+                <a href="pricing.html" class="nav-link active" style="color: var(--primary-color);">Pricing</a>
+                <a href="index.html#waitlist" class="nav-link cta-button">Join Waitlist</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
+    </nav>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="pricing-hero" aria-labelledby="pricing-hero-heading">
+            <div class="container">
+                <h1 id="pricing-hero-heading">Simple plans for everyone</h1>
+                <p>Free for landlords. Affordable for renters. No hidden fees, no surprises.</p>
+            </div>
+        </section>
+
+        <!-- Toggle Section -->
+        <section class="pricing-toggle-section" aria-label="Plan type selection">
+            <div class="pricing-toggle" role="tablist">
+                <button class="pricing-toggle-btn active" data-target="landlord-plans" role="tab" aria-selected="true" id="landlord-toggle">For Landlords</button>
+                <button class="pricing-toggle-btn" data-target="renter-plans" role="tab" aria-selected="false" id="renter-toggle">For Renters</button>
+            </div>
+        </section>
+
+        <!-- Landlord Plans -->
+        <section id="landlord-plans" class="pricing-detail-section" aria-labelledby="landlord-pricing-heading">
+            <div class="container">
+                <div class="pricing-detail-grid">
+                    <!-- Free Plan -->
+                    <article class="pricing-detail-card">
+                        <h3>Free</h3>
+                        <p class="subtitle">For individual landlords</p>
+                        <div class="price">₹0 <span>/ forever</span></div>
+                        <p class="price-note">1 property included</p>
+                        <ul class="features">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> UPI rent collection</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Maintenance ticketing</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Document vault</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Police verification support</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Email support (48hr)</li>
+                        </ul>
+                        <button class="cta-button secondary" onclick="selectPlan('landlord-free')">Get Started Free</button>
+                    </article>
+
+                    <!-- Pro Plan -->
+                    <article class="pricing-detail-card featured">
+                        <span class="pricing-badge popular">Popular</span>
+                        <h3>Pro</h3>
+                        <p class="subtitle">For professional landlords</p>
+                        <div class="price">₹299 <span>/ mo</span></div>
+                        <p class="price-note">Unlimited properties</p>
+                        <ul class="features">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <strong>Everything in Free</strong></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Vendor dispatch service</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Tenant screening + BG check</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> GST & ITR-ready reports</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Legal templates & documents</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> WhatsApp support (4hr)</li>
+                        </ul>
+                        <button class="cta-button primary" onclick="selectPlan('landlord-pro')">Start Pro Trial</button>
+                    </article>
+
+                    <!-- Max Plan -->
+                    <article class="pricing-detail-card premium">
+                        <span class="pricing-badge premium">Max</span>
+                        <h3>Max</h3>
+                        <p class="subtitle">Full-service management</p>
+                        <div class="price">₹799 <span>/ mo</span></div>
+                        <p class="price-note">Everything included</p>
+                        <ul class="features">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <strong>Everything in Pro</strong></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <strong>Full property management</strong></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <strong>Rent guarantee insurance</strong> (3 months)</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <strong>Free tenant replacement</strong></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Dedicated account manager</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> CA review & tax optimization</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Priority phone support</li>
+                        </ul>
+                        <button class="cta-button premium-btn" onclick="selectPlan('landlord-promax')">Get Max</button>
+                    </article>
+                </div>
+            </div>
+        </section>
 
         <!-- Renter Plans -->
-        <div id="renter-plans" class="pricing-grid hidden">
-            <article class="pricing-card">
-                <div class="card-header">
-                    <div class="card-title">Basic</div>
-                    <div class="card-subtitle">Essential tenant tools</div>
-                    <div class="card-price">₹99 <span>/ mo</span></div>
-                </div>
-                <a href="#waitlist" class="cta-button secondary" onclick="selectPlan('renter-basic')">Get Basic</a>
-                <ul class="feature-list">
-                    <li><i class="fas fa-check"></i> CIBIL score building</li>
-                    <li><i class="fas fa-check"></i> Automatic HRA receipts</li>
-                    <li><i class="fas fa-check"></i> Deposit photo vault</li>
-                    <li><i class="fas fa-check"></i> Basic roommate split</li>
-                    <li><i class="fas fa-check"></i> Move-in/out checklist</li>
-                    <li><i class="fas fa-check"></i> Email support (24hr)</li>
-                </ul>
-            </article>
+        <section id="renter-plans" class="pricing-detail-section pricing-hidden" aria-labelledby="renter-pricing-heading">
+            <div class="container">
+                <div class="pricing-detail-grid">
+                    <!-- Basic Plan -->
+                    <article class="pricing-detail-card">
+                        <h3>Basic</h3>
+                        <p class="subtitle">Essential tenant tools</p>
+                        <div class="price">₹99 <span>/ mo</span></div>
+                        <p class="price-note">Per tenant</p>
+                        <ul class="features">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> CIBIL score building</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Automatic HRA receipts</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Deposit photo vault</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Basic roommate split</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Move-in/out checklist</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Email support (24hr)</li>
+                        </ul>
+                        <button class="cta-button secondary" onclick="selectPlan('renter-basic')">Start Basic</button>
+                    </article>
 
-            <article class="pricing-card featured">
-                <div class="card-header">
-                    <div class="card-title">Pro</div>
-                    <div class="card-subtitle">Advanced protection</div>
-                    <div class="card-price">₹199 <span>/ mo</span></div>
-                </div>
-                <a href="#waitlist" class="cta-button primary" onclick="selectPlan('renter-pro')">Get Pro</a>
-                <ul class="feature-list">
-                    <li><i class="fas fa-check"></i> <strong>Everything in Basic</strong></li>
-                    <li><i class="fas fa-check"></i> Annual HRA summary</li>
-                    <li><i class="fas fa-check"></i> Legal assistance</li>
-                    <li><i class="fas fa-check"></i> Auto-split + reminders</li>
-                    <li><i class="fas fa-check"></i> Condition report docs</li>
-                    <li><i class="fas fa-check"></i> Escalation service</li>
-                    <li><i class="fas fa-check"></i> WhatsApp support (2hr)</li>
-                </ul>
-            </article>
+                    <!-- Pro Plan -->
+                    <article class="pricing-detail-card featured">
+                        <span class="pricing-badge popular">Popular</span>
+                        <h3>Pro</h3>
+                        <p class="subtitle">Advanced protection</p>
+                        <div class="price">₹199 <span>/ mo</span></div>
+                        <p class="price-note">Per tenant</p>
+                        <ul class="features">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <strong>Everything in Basic</strong></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Annual HRA summary</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Legal assistance</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Auto-split + reminders</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Condition report docs</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Escalation service</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> WhatsApp support (2hr)</li>
+                        </ul>
+                        <button class="cta-button primary" onclick="selectPlan('renter-pro')">Upgrade to Pro</button>
+                    </article>
 
-            <article class="pricing-card">
-                <div class="card-header">
-                    <div class="card-title">Pro Max</div>
-                    <div class="card-subtitle">White-glove service</div>
-                    <div class="card-price">₹399 <span>/ mo</span></div>
+                    <!-- Max Plan -->
+                    <article class="pricing-detail-card premium">
+                        <span class="pricing-badge premium">Max</span>
+                        <h3>Max</h3>
+                        <p class="subtitle">White-glove service</p>
+                        <div class="price">₹399 <span>/ mo</span></div>
+                        <p class="price-note">Per tenant</p>
+                        <ul class="features">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <strong>Everything in Pro</strong></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <strong>Deposit insurance</strong></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <strong>24hr maintenance SLA</strong></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> <strong>Lawyer representation</strong></li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Rental concierge service</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Packers & movers discount</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Emergency support line</li>
+                        </ul>
+                        <button class="cta-button premium-btn" onclick="selectPlan('renter-promax')">Get Max</button>
+                    </article>
                 </div>
-                <a href="#waitlist" class="cta-button secondary" onclick="selectPlan('renter-promax')">Get Max</a>
-                <ul class="feature-list">
-                    <li><i class="fas fa-check"></i> <strong>Everything in Pro</strong></li>
-                    <li><i class="fas fa-check"></i> <strong>Deposit insurance</strong></li>
-                    <li><i class="fas fa-check"></i> 24hr maintenance SLA</li>
-                    <li><i class="fas fa-check"></i> Lawyer representation</li>
-                    <li><i class="fas fa-check"></i> Rental concierge service</li>
-                    <li><i class="fas fa-check"></i> Packers & movers discount</li>
-                    <li><i class="fas fa-check"></i> Emergency support line</li>
-                </ul>
-            </article>
-        </div>
+            </div>
+        </section>
 
         <!-- Digital Agreement Add-on -->
-        <div style="margin-top: 3rem; text-align: center;">
-            <article class="pricing-card" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;">
-                <div style="text-align: left; flex: 1;">
-                    <div class="card-title" style="margin-bottom: 0.25rem;"><i class="fas fa-file-contract" style="margin-right: 0.5rem;"></i>Digital Agreement</div>
-                    <div class="card-subtitle">One-time purchase • Valid 1 year</div>
+        <section class="pricing-addon-section">
+            <div class="container">
+                <article class="pricing-addon-card">
+                    <div class="addon-info">
+                        <h3><i class="fas fa-file-contract" aria-hidden="true"></i> Digital Agreement</h3>
+                        <p class="subtitle">One-time purchase • Valid 1 year</p>
+                    </div>
+                    <div class="price">₹499</div>
+                    <button class="cta-button" onclick="selectPlan('agreement')">Create Agreement</button>
+                </article>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="pricing-faq-section" aria-labelledby="faq-heading">
+            <div class="container">
+                <h2 id="faq-heading">Frequently asked questions</h2>
+                <div class="pricing-faq-grid">
+                    <div class="pricing-faq-item">
+                        <button class="pricing-faq-question" aria-expanded="false">
+                            What is included in Max full property management?
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="pricing-faq-answer">
+                            <div class="pricing-faq-answer-content">
+                                We handle everything: rent collection, tenant communication, maintenance coordination, vendor payments, and compliance tracking. You just receive your rent each month.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pricing-faq-item">
+                        <button class="pricing-faq-question" aria-expanded="false">
+                            How does rent guarantee insurance work?
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="pricing-faq-answer">
+                            <div class="pricing-faq-answer-content">
+                                If your tenant defaults on rent, we cover up to 3 months of rent while we help you find a replacement. Available on Landlord Max plan.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pricing-faq-item">
+                        <button class="pricing-faq-question" aria-expanded="false">
+                            What is deposit insurance for renters?
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="pricing-faq-answer">
+                            <div class="pricing-faq-answer-content">
+                                If your landlord unfairly deducts from your deposit, we cover the disputed amount and handle the recovery process. Available on Renter Max.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pricing-faq-item">
+                        <button class="pricing-faq-question" aria-expanded="false">
+                            Can I switch plans?
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="pricing-faq-answer">
+                            <div class="pricing-faq-answer-content">
+                                Yes, upgrade or downgrade anytime. When upgrading, you get immediate access to new features. When downgrading, changes apply at the next billing cycle.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pricing-faq-item">
+                        <button class="pricing-faq-question" aria-expanded="false">
+                            Is there a free trial?
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="pricing-faq-answer">
+                            <div class="pricing-faq-answer-content">
+                                Yes, all paid plans come with a 14-day free trial. No credit card required to start. Landlord Free is free forever.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pricing-faq-item">
+                        <button class="pricing-faq-question" aria-expanded="false">
+                            What payment methods are accepted?
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <div class="pricing-faq-answer">
+                            <div class="pricing-faq-answer-content">
+                                We accept UPI, credit/debit cards, net banking, and auto-debit mandates. All transactions are secure and encrypted.
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-price" style="margin-bottom: 0;">₹499</div>
-                <a href="#waitlist" class="cta-button secondary" style="width: auto; margin-bottom: 0;" onclick="selectPlan('agreement')">Create Agreement</a>
-            </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                        <span class="logo" aria-hidden="true">ಮನೆ</span>
+                        <span class="brand-name">Manay</span>
+                    </a>
+                    <p>Your Home. Your Rules.</p>
+                    <p class="contact-email"><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:hello@manay.in">hello@manay.in</a></p>
+                </div>
+                <div class="footer-links">
+                    <h4>Product</h4>
+                    <a href="index.html#landlords">For Landlords</a>
+                    <a href="index.html#renters">For Renters</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="index.html#waitlist">Join Waitlist</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-service.html">Terms of Service</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Manay Technologies Pvt Ltd. Built with ❤️ in Bangalore.</p>
+            </div>
         </div>
-    </div>
-
-    <section class="faq-section">
-        <h2>Frequently asked questions</h2>
-        <div class="faq-grid">
-            <div class="faq-item">
-                <button class="faq-question">
-                    What is included in Pro Max full property management?
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-                <div class="faq-answer">
-                    We handle everything: rent collection, tenant communication, maintenance coordination, vendor payments, and compliance tracking. You just receive your rent each month.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question">
-                    How does rent guarantee insurance work?
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-                <div class="faq-answer">
-                    If your tenant defaults on rent, we cover up to 3 months of rent while we help you find a replacement. Available on Landlord Pro Max plan.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question">
-                    What is deposit insurance for renters?
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-                <div class="faq-answer">
-                    If your landlord unfairly deducts from your deposit, we cover the disputed amount and handle the recovery process. Available on Renter Pro Max.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question">
-                    Can I switch plans?
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-                <div class="faq-answer">
-                    Yes, upgrade or downgrade anytime. When upgrading, you get immediate access to new features. When downgrading, changes apply at the next billing cycle.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question">
-                    Is there a free trial?
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-                <div class="faq-answer">
-                    Yes, all paid plans come with a 14-day free trial. No credit card required to start. Landlord Free is free forever.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question">
-                    What payment methods are accepted?
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-                <div class="faq-answer">
-                    We accept UPI, credit/debit cards, net banking, and auto-debit mandates. All transactions are secure and encrypted.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>© 2026 Manay Technologies Pvt Ltd • <a href="privacy-policy.html">Privacy</a> • <a href="terms-of-service.html">Terms</a></p>
     </footer>
 
     <script>
+        // Mobile menu toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+                navToggle.setAttribute('aria-expanded', !isExpanded);
+            });
+        }
+
         // Toggle between landlord and renter plans
-        const toggleBtns = document.querySelectorAll('.toggle-btn');
+        const toggleBtns = document.querySelectorAll('.pricing-toggle-btn');
         const landlordPlans = document.getElementById('landlord-plans');
         const renterPlans = document.getElementById('renter-plans');
 
         toggleBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                toggleBtns.forEach(b => b.classList.remove('active'));
+                toggleBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-selected', 'false');
+                });
                 btn.classList.add('active');
+                btn.setAttribute('aria-selected', 'true');
 
-                if (btn.dataset.target === 'landlords') {
-                    landlordPlans.classList.remove('hidden');
-                    renterPlans.classList.add('hidden');
+                if (btn.dataset.target === 'landlord-plans') {
+                    landlordPlans.classList.remove('pricing-hidden');
+                    renterPlans.classList.add('pricing-hidden');
                 } else {
-                    landlordPlans.classList.add('hidden');
-                    renterPlans.classList.remove('hidden');
+                    landlordPlans.classList.add('pricing-hidden');
+                    renterPlans.classList.remove('pricing-hidden');
                 }
             });
         });
 
         // FAQ accordion
-        const faqQuestions = document.querySelectorAll('.faq-question');
+        const faqQuestions = document.querySelectorAll('.pricing-faq-question');
 
         faqQuestions.forEach(question => {
             question.addEventListener('click', () => {
@@ -608,13 +791,17 @@
                 const isOpen = answer.classList.contains('open');
 
                 // Close all
-                document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
-                document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('active'));
+                document.querySelectorAll('.pricing-faq-answer').forEach(a => a.classList.remove('open'));
+                document.querySelectorAll('.pricing-faq-question').forEach(q => {
+                    q.classList.remove('active');
+                    q.setAttribute('aria-expanded', 'false');
+                });
 
                 // Open clicked if wasn't open
                 if (!isOpen) {
                     answer.classList.add('open');
                     question.classList.add('active');
+                    question.setAttribute('aria-expanded', 'true');
                 }
             });
         });
