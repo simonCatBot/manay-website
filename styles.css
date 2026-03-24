@@ -1507,7 +1507,7 @@ body.menu-open {
 /* Pricing CTA Section (for index.html) */
 .pricing-cta-section {
     padding: 6rem 0;
-    background: var(--bg-primary);
+    background: var(--bg-secondary);
 }
 
 .pricing-cta-grid {
