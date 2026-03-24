@@ -2501,7 +2501,7 @@ textarea:focus-visible {
     border-radius: var(--radius-full);
     box-shadow: var(--shadow);
     max-width: fit-content;
-    margin: 0 auto 3rem;
+    margin: 0 auto;
 }
 
 .section-toggle-btn {
@@ -2530,11 +2530,6 @@ textarea:focus-visible {
 
 .user-sections.hidden {
     display: none;
-}
-
-/* How It Works Section Toggle */
-.how-it-works .section-toggle {
-    margin-bottom: 4rem;
 }
 
 /* High Contrast Mode Enhancement */
