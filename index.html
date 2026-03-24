@@ -510,26 +510,64 @@
         <div class="container">
             <div class="section-header">
                 <h2 id="howitworks-heading">How It Works</h2>
-                <p>From rent collection to repair tracking - all in 3 simple steps.</p>
+                <p>Different flows for different needs. Choose your path.</p>
             </div>
-            
-            <div class="steps-container">
-                <div class="step" data-step="1">
-                    <div class="step-number" aria-hidden="true">1</div>
-                    <h3>Invite</h3>
-                    <p>Landlord invites tenant via email or WhatsApp. Setup takes 2 minutes with Aadhaar eSign.</p>
+
+            <!-- How It Works Toggle -->
+            <div class="section-toggle" role="tablist" aria-label="Flow type selection">
+                <button class="section-toggle-btn active" data-target="landlord-flow" role="tab" aria-selected="true" id="flow-landlord-toggle">
+                    <i class="fas fa-building" aria-hidden="true"></i>
+                    Landlord Initiated
+                </button>
+                <button class="section-toggle-btn" data-target="renter-flow" role="tab" aria-selected="false" id="flow-renter-toggle">
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                    Renter Initiated
+                </button>
+            </div>
+
+            <!-- Landlord Flow -->
+            <div id="landlord-flow" class="flow-container">
+                <div class="steps-container">
+                    <div class="step" data-step="1">
+                        <div class="step-number" aria-hidden="true">1</div>
+                        <h3>List Your Property</h3>
+                        <p>Add your property details, upload documents, and set rent terms. Takes 5 minutes.</p>
+                    </div>
+                    
+                    <div class="step" data-step="2">
+                        <div class="step-number" aria-hidden="true">2</div>
+                        <h3>Invite Tenant</h3>
+                        <p>Send invite via WhatsApp or email. Tenant completes verification and eSigns agreement.</p>
+                    </div>
+                    
+                    <div class="step" data-step="3">
+                        <div class="step-number" aria-hidden="true">3</div>
+                        <h3>Collect Rent Automatically</h3>
+                        <p>UPI autopay activates. Rent deposited directly to your account. We handle reminders.</p>
+                    </div>
                 </div>
-                
-                <div class="step" data-step="2">
-                    <div class="step-number" aria-hidden="true">2</div>
-                    <h3>Automate</h3>
-                    <p>Lease details uploaded, UPI autopay activated, HRA receipts auto-generated monthly.</p>
-                </div>
-                
-                <div class="step" data-step="3">
-                    <div class="step-number" aria-hidden="true">3</div>
-                    <h3>Relax</h3>
-                    <p>We handle communication, payments, police verification, and tax docs. You get notified only when it matters.</p>
+            </div>
+
+            <!-- Renter Flow -->
+            <div id="renter-flow" class="flow-container hidden">
+                <div class="steps-container">
+                    <div class="step" data-step="1">
+                        <div class="step-number" aria-hidden="true">1</div>
+                        <h3>Find Your Home</h3>
+                        <p>Browse verified listings or request your landlord to join Manay for a seamless experience.</p>
+                    </div>
+                    
+                    <div class="step" data-step="2">
+                        <div class="step-number" aria-hidden="true">2</div>
+                        <h3>Complete Setup</h3>
+                        <p>Verify identity with Aadhaar, sign digital agreement, and set up UPI autopay for rent.</p>
+                    </div>
+                    
+                    <div class="step" data-step="3">
+                        <div class="step-number" aria-hidden="true">3</div>
+                        <h3>Enjoy Protection</h3>
+                        <p>Get HRA receipts instantly, deposit protection, and 24/7 support. Build your CIBIL score.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -771,6 +809,34 @@
                     } else {
                         landlordSections.classList.add('hidden');
                         renterSections.classList.remove('hidden');
+                    }
+                });
+            });
+        }
+
+        // How It Works Flow Toggle
+        const flowToggleBtns = document.querySelectorAll('.how-it-works .section-toggle-btn');
+        const landlordFlow = document.getElementById('landlord-flow');
+        const renterFlow = document.getElementById('renter-flow');
+        
+        if (flowToggleBtns.length > 0) {
+            flowToggleBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active state
+                    flowToggleBtns.forEach(b => {
+                        b.classList.remove('active');
+                        b.setAttribute('aria-selected', 'false');
+                    });
+                    btn.classList.add('active');
+                    btn.setAttribute('aria-selected', 'true');
+                    
+                    // Toggle flows
+                    if (btn.dataset.target === 'landlord-flow') {
+                        landlordFlow.classList.remove('hidden');
+                        renterFlow.classList.add('hidden');
+                    } else {
+                        landlordFlow.classList.add('hidden');
+                        renterFlow.classList.remove('hidden');
                     }
                 });
             });
