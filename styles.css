@@ -864,35 +864,48 @@ body.menu-open {
 }
 
 .hero-toggle {
-    display: inline-flex;
+    display: flex;
+    gap: 0.75rem;
     margin-bottom: 2rem;
-    background: var(--bg-primary);
+    background: rgba(255, 255, 255, 0.15);
     padding: 0.5rem;
-    border-radius: var(--radius-full);
-    box-shadow: var(--shadow);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .toggle-btn {
-    padding: 0.75rem 2rem;
-    border: none;
+    flex: 1;
+    padding: 0.875rem 1.5rem;
+    border: 2px solid transparent;
     background: transparent;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.8);
     font-weight: 600;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius);
     cursor: pointer;
     transition: var(--transition);
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
+    min-height: var(--min-touch-target);
+    font-size: 0.9375rem;
 }
 
-.toggle-btn.active {
-    background: var(--primary-color);
+.toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
     color: white;
 }
 
-.toggle-btn:hover:not(.active) {
-    color: var(--text-primary);
+.toggle-btn.active {
+    background: white;
+    color: var(--primary-color);
+    box-shadow: var(--shadow);
+}
+
+.toggle-btn:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 2px;
 }
 
 .hero-cta {
