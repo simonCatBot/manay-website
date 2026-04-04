@@ -916,19 +916,3 @@ function showWaitlist(userType) {
 
 const manayApp = new ManayApp();
 window.manayApp = manayApp;
-
-// Log initialization
-console.log('%c🏠 Manay Website Initialized', 'color: #2563eb; font-size: 16px; font-weight: bold;');
-console.log('%cFeatures loaded:', 'color: #10b981; font-weight: 600;');
-console.log('  • Scroll progress bar');
-console.log('  • Hide/show navbar on scroll');
-console.log('  • Back to top button');
-console.log('  • Toast notifications');
-console.log('  • Keyboard shortcuts (press ?)');
-console.log('  • Mobile swipe gestures');
-console.log('  • Parallax effects');
-console.log('  • Animated counters');
-console.log('  • Intersection Observer animations');
-console.log('  • Glassmorphism effects');
-console.log('  • Magnetic buttons');
-console.log('  • Cookie consent');

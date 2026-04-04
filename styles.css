@@ -1204,6 +1204,8 @@ body.menu-open {
     transition: var(--transition-slow);
     border: 1px solid var(--border-color);
     cursor: pointer;
+    /* Performance: Isolate layout/paint for complex cards */
+    contain: layout style paint;
 }
 
 .lift-card {
@@ -1420,6 +1422,8 @@ body.menu-open {
     text-align: center;
     position: relative;
     transition: var(--transition-slow);
+    /* Performance: Isolate layout/paint for complex cards */
+    contain: layout style paint;
 }
 
 .pricing-card:hover {
@@ -1811,6 +1815,14 @@ body.menu-open {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+}
+
+/* Form Honeypot - Hidden spam protection field */
+.form-honeypot {
+    position: absolute;
+    left: -5000px;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .form-group {

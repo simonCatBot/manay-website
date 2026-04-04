@@ -9,8 +9,8 @@
     <meta name="author" content="Manay Technologies Pvt Ltd">
     <meta name="robots" content="index, follow">
     
-    <!-- CSP Meta Tag (Content Security Policy) -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdnjs.cloudflare.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io; frame-src 'none'; object-src 'none';">
+    <!-- CSP Meta Tag (Content Security Policy) - Hardened -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://cdnjs.cloudflare.com 'nonce-{random}'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://manay.in https://*.githubusercontent.com; connect-src 'self' https://formspree.io; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://formspree.io; upgrade-insecure-requests;">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -131,10 +131,18 @@
     }
     </script>
     
+    <!-- Resource Hints for Performance -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 </head>
 <body>
     <!-- Scroll Progress Bar -->
@@ -683,6 +691,11 @@
                 
                 <!-- Formspree Form -->
                 <form id="waitlistForm" class="waitlist-form" action="https://formspree.io/f/mnjgyvkz" method="POST" novalidate aria-label="Waitlist signup form">
+                    <!-- Spam Prevention (Honeypot) - Hidden from real users -->
+                    <div class="form-honeypot" aria-hidden="true">
+                        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+                    </div>
+                    
                     <input type="hidden" name="_subject" value="New Manay Waitlist Signup">
                     <input type="hidden" name="_next" value="https://manay.in/?form=success">
                     
