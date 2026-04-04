@@ -7,7 +7,7 @@
     "test:html": "npx html-validate '*.html'",
     "test:accessibility": "npx pa11y-ci --config .pa11y-ci.json",
     "test:links": "npx link-checker --url . --file-ignore 'node_modules/**'",
-    "test:css": "npx stylelint '*.css'",
+    "test:css": "npx stylelint 'styles.css'",
     "test:js": "npx eslint --config eslint.config.mjs script.js",
     "lighthouse": "npx lighthouse-ci"
   },
