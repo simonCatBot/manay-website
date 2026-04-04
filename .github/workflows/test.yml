@@ -1,0 +1,154 @@
+name: Test Suite
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  html-validation:
+    name: HTML Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Install Dependencies
+        run: npm install
+        
+      - name: Validate HTML
+        run: npm run test:html
+
+  css-linting:
+    name: CSS Linting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Install Dependencies
+        run: npm install
+        
+      - name: Lint CSS
+        run: npm run test:css
+
+  js-linting:
+    name: JavaScript Linting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Install Dependencies
+        run: npm install
+        
+      - name: Lint JavaScript
+        run: npm run test:js
+
+  accessibility:
+    name: Accessibility Testing
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Install Dependencies
+        run: npm install
+        
+      - name: Run Pa11y
+        run: npm run test:accessibility || true
+        
+      - name: Upload Accessibility Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: accessibility-report
+          path: pa11y-report.html
+        if: always()
+
+  lighthouse-ci:
+    name: Lighthouse CI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        
+      - name: Install Lighthouse CI
+        run: npm install -g @lhci/cli
+        
+      - name: Run Lighthouse CI
+        run: |
+          lhci autorun --config=lighthouserc.json || true
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+        
+      - name: Upload Lighthouse Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-results
+          path: '.lighthouseci/'
+        if: always()
+
+  security-headers:
+    name: Security Headers Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Check CSP Header
+        run: |
+          echo "Checking Content Security Policy..."
+          if grep -q "Content-Security-Policy" index.html; then
+            echo "✅ CSP header found"
+            # Check for unsafe-inline
+            if grep -E "script-src[^>]*'unsafe-inline'" index.html; then
+              echo "⚠️ WARNING: 'unsafe-inline' found in script-src"
+            else
+              echo "✅ No 'unsafe-inline' in script-src"
+            fi
+            # Check for base-uri
+            if grep -q "base-uri" index.html; then
+              echo "✅ base-uri directive found"
+            else
+              echo "❌ ERROR: base-uri directive missing"
+              exit 1
+            fi
+          else
+            echo "❌ ERROR: CSP header missing"
+            exit 1
+          fi
+          
+      - name: Check Form Honeypot
+        run: |
+          echo "Checking form honeypot..."
+          if grep -q "_gotcha" index.html; then
+            echo "✅ Honeypot field found"
+          else
+            echo "❌ ERROR: Honeypot field missing"
+            exit 1
+          fi
+          
+      - name: Check Resource Preloading
+        run: |
+          echo "Checking resource preloading..."
+          if grep -q 'rel="preload"' index.html; then
+            echo "✅ Resource preloading found"
+          else
+            echo "❌ ERROR: No resource preloading"
+            exit 1
+          fi

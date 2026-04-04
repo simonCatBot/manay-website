@@ -1,0 +1,26 @@
+{
+  "defaults": {
+    "concurrency": 2,
+    "standard": "WCAG2AA",
+    "timeout": 30000,
+    "chromeLaunchConfig": {
+      "args": ["--no-sandbox", "--disable-setuid-sandbox"]
+    },
+    "viewport": {
+      "width": 1280,
+      "height": 1024
+    }
+  },
+  "urls": [
+    {
+      "url": "file://$(pwd)/index.html",
+      "actions": [
+        "click element #landlord-tab",
+        "wait for element #landlords-cta to be visible"
+      ]
+    },
+    {
+      "url": "file://$(pwd)/pricing.html"
+    }
+  ]
+}

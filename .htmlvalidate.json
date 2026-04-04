@@ -1,0 +1,16 @@
+{
+  "extends": ["html-validate:recommended"],
+  "rules": {
+    "void-content": "error",
+    "no-trailing-whitespace": "error",
+    "attr-quotes": ["error", "double"],
+    "require-lang": "error",
+    "require-meta-charset": "error",
+    "require-meta-viewport": "error",
+    "require-title": "error",
+    "void": ["error", { "style": "selfclose" }],
+    "attribute-allowed-values": "warn",
+    "no-inline-style": "off",
+    "prefer-native-element": "warn"
+  }
+}
