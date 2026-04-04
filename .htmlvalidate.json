@@ -3,7 +3,7 @@
   "rules": {
     "void-content": "error",
     "no-trailing-whitespace": "error",
-    "attr-quotes": ["error", "double"],
+    "attr-quotes": "error",
     "require-lang": "error",
     "require-meta-charset": "error",
     "require-meta-viewport": "error",

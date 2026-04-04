@@ -8,7 +8,7 @@
     "test:accessibility": "npx pa11y-ci --config .pa11y-ci.json",
     "test:links": "npx link-checker --url . --file-ignore 'node_modules/**'",
     "test:css": "npx stylelint '*.css'",
-    "test:js": "npx eslint script.js",
+    "test:js": "npx eslint --config eslint.config.mjs script.js",
     "lighthouse": "npx lighthouse-ci"
   },
   "devDependencies": {
