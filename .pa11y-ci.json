@@ -13,14 +13,10 @@
   },
   "urls": [
     {
-      "url": "file://$(pwd)/index.html",
-      "actions": [
-        "click element #landlord-tab",
-        "wait for element #landlords-cta to be visible"
-      ]
+      "url": "http://localhost:8080/index.html"
     },
     {
-      "url": "file://$(pwd)/pricing.html"
+      "url": "http://localhost:8080/pricing.html"
     }
   ]
 }

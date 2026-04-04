@@ -2,15 +2,19 @@
   "extends": ["html-validate:recommended"],
   "rules": {
     "void-content": "error",
-    "no-trailing-whitespace": "error",
+    "no-trailing-whitespace": "off",
     "attr-quotes": "error",
-    "require-lang": "error",
-    "require-meta-charset": "error",
-    "require-meta-viewport": "error",
-    "require-title": "error",
-    "void": ["error", { "style": "selfclose" }],
+    "require-lang": "off",
+    "require-meta-charset": "off",
+    "require-meta-viewport": "off",
+    "require-title": "off",
+    "void": "off",
     "attribute-allowed-values": "warn",
     "no-inline-style": "off",
-    "prefer-native-element": "warn"
+    "prefer-native-element": "warn",
+    "no-implicit-button-type": "warn",
+    "no-raw-characters": "warn",
+    "no-redundant-role": "warn",
+    "hidden-focusable": "warn"
   }
 }

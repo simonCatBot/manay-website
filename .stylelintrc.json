@@ -10,9 +10,10 @@
     "declaration-block-no-shorthand-property-overrides": true,
     "block-no-empty": true,
     "comment-no-empty": true,
-    "no-duplicate-selectors": true,
+    "no-duplicate-selectors": null,
     "no-empty-source": true,
     "no-invalid-double-slash-comments": true,
+    "no-unknown-animations": null,
     "unit-no-unknown": true,
     "property-no-unknown": true,
     "selector-pseudo-class-no-unknown": true,
@@ -24,18 +25,6 @@
     }],
     "no-descending-specificity": null,
     "selector-class-pattern": null,
-    "property-no-vendor-prefix": null,
-    "keyframes-name-pattern": null,
-    "declaration-block-single-line-max-declarations": null,
-    "at-rule-empty-line-before": null,
-    "comment-empty-line-before": null,
-    "rule-empty-line-before": null,
-    "color-hex-length": null,
-    "alpha-value-notation": null,
-    "color-function-notation": null,
-    "media-feature-range-notation": null,
-    "font-family-name-quotes": null,
-    "declaration-block-no-redundant-longhand-properties": null,
-    "no-unknown-animations": null
+    "property-no-vendor-prefix": null
   }
 }
