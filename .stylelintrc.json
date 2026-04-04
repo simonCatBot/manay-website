@@ -36,7 +36,6 @@
     "media-feature-range-notation": null,
     "font-family-name-quotes": null,
     "declaration-block-no-redundant-longhand-properties": null,
-    "selector-no-empty": null,
     "no-unknown-animations": null
   }
 }
