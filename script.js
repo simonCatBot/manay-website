@@ -372,9 +372,6 @@ class ManayApp {
     // SWIPE GESTURES FOR MOBILE
     // ============================================
     setupSwipeGestures() {
-        const navMenu = document.getElementById('navMenu');
-        const navToggle = document.getElementById('navToggle');
-
         // Touch start
         document.addEventListener('touchstart', (e) => {
             this.touchStartX = e.touches[0].clientX;
@@ -877,6 +874,7 @@ class ManayApp {
 // GLOBAL FUNCTIONS
 // ============================================
 
+// eslint-disable-next-line no-unused-vars
 function showWaitlist(userType) {
     const app = window.manayApp;
     const waitlistSection = document.getElementById('waitlist');
