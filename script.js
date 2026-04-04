@@ -654,7 +654,7 @@ class ManayApp {
 
         // Phone validation (Indian format)
         const phoneRegex = /^[6-9]\d{9}$/;
-        const cleanPhone = data.phone ? data.phone.replace(/[\s\-\+]/g, '') : '';
+        const cleanPhone = data.phone ? data.phone.replace(/[\s\-+]/g, '') : '';
         if (!data.phone || !phoneRegex.test(cleanPhone)) {
             errors.phone = 'Please enter a valid 10-digit Indian phone number';
             isValid = false;

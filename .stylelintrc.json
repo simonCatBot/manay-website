@@ -10,10 +10,9 @@
     "declaration-block-no-shorthand-property-overrides": true,
     "block-no-empty": true,
     "comment-no-empty": true,
-    "no-duplicate-selectors": null,
+    "no-duplicate-selectors": true,
     "no-empty-source": true,
     "no-invalid-double-slash-comments": true,
-    "no-unknown-animations": null,
     "unit-no-unknown": true,
     "property-no-unknown": true,
     "selector-pseudo-class-no-unknown": true,
@@ -37,6 +36,7 @@
     "media-feature-range-notation": null,
     "font-family-name-quotes": null,
     "declaration-block-no-redundant-longhand-properties": null,
-    "selector-no-empty": null
+    "selector-no-empty": null,
+    "no-unknown-animations": null
   }
 }

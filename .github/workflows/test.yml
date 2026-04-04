@@ -10,7 +10,6 @@ jobs:
   html-validation:
     name: HTML Validation
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
       
@@ -23,12 +22,11 @@ jobs:
         run: npm install
         
       - name: Validate HTML
-        run: npm run test:html || true
+        run: npm run test:html
 
   css-linting:
     name: CSS Linting
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
       
@@ -41,12 +39,11 @@ jobs:
         run: npm install
         
       - name: Lint CSS
-        run: npm run test:css || true
+        run: npm run test:css
 
   js-linting:
     name: JavaScript Linting
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
       
@@ -59,12 +56,11 @@ jobs:
         run: npm install
         
       - name: Lint JavaScript
-        run: npm run test:js || true
+        run: npm run test:js
 
   accessibility:
     name: Accessibility Testing
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
       
@@ -77,7 +73,7 @@ jobs:
         run: npm install
         
       - name: Run Pa11y
-        run: npm run test:accessibility || true
+        run: npm run test:accessibility
         
       - name: Upload Accessibility Report
         uses: actions/upload-artifact@v4
@@ -89,7 +85,6 @@ jobs:
   lighthouse-ci:
     name: Lighthouse CI
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
         
@@ -98,7 +93,7 @@ jobs:
         
       - name: Run Lighthouse CI
         run: |
-          lhci autorun --config=lighthouserc.json || true
+          lhci autorun --config=lighthouserc.json
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
         
@@ -123,6 +118,7 @@ jobs:
             # Check for unsafe-inline
             if grep -E "script-src[^>]*'unsafe-inline'" index.html; then
               echo "⚠️ WARNING: 'unsafe-inline' found in script-src"
+              exit 1
             else
               echo "✅ No 'unsafe-inline' in script-src"
             fi
@@ -172,7 +168,8 @@ jobs:
         run: |
           echo "Checking for removed console logs..."
           if grep -q "console.log" script.js; then
-            echo "⚠️ WARNING: console.log found in script.js"
+            echo "❌ ERROR: console.log found in script.js"
+            exit 1
           else
             echo "✅ No console.log in script.js"
           fi
