@@ -259,14 +259,15 @@
         }
         
         .pricing-detail-card .cta-button.secondary {
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            border: 2px solid var(--border-color);
+            background: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
         }
         
         .pricing-detail-card .cta-button.secondary:hover {
-            border-color: var(--primary-color);
-            color: var(--primary-color);
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
         }
         
         .pricing-detail-card .cta-button.premium-btn {
@@ -333,14 +334,15 @@
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
-            border: 2px solid var(--border-color);
-            background: var(--bg-primary);
-            color: var(--text-primary);
+            border: 2px solid var(--primary-color);
+            background: var(--primary-color);
+            color: white;
         }
         
         .pricing-addon-card .cta-button:hover {
-            border-color: var(--primary-color);
-            color: var(--primary-color);
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
         }
         
         /* FAQ Section */
@@ -514,7 +516,7 @@
                             <li><i class="fas fa-check" aria-hidden="true"></i> Police verification support</li>
                             <li><i class="fas fa-check" aria-hidden="true"></i> Email support (48hr)</li>
                         </ul>
-                        <button class="cta-button secondary" onclick="selectPlan('landlord-free')">Get Started Free</button>
+                        <button class="cta-button secondary" onclick="selectPlan('landlord-free')">Get Free</button>
                     </article>
 
                     <!-- Pro Plan -->
@@ -531,7 +533,7 @@
                             <li><i class="fas fa-check" aria-hidden="true"></i> Legal templates & documents</li>
                             <li><i class="fas fa-check" aria-hidden="true"></i> WhatsApp support (4hr)</li>
                         </ul>
-                        <button class="cta-button secondary" onclick="selectPlan('landlord-pro')">Start Pro Trial</button>
+                        <button class="cta-button secondary" onclick="selectPlan('landlord-pro')">Get Pro</button>
                     </article>
 
                     <!-- Max Plan -->
@@ -574,7 +576,7 @@
                             <li><i class="fas fa-check" aria-hidden="true"></i> Move-in/out checklist</li>
                             <li><i class="fas fa-check" aria-hidden="true"></i> Email support (24hr)</li>
                         </ul>
-                        <button class="cta-button secondary" onclick="selectPlan('renter-basic')">Start Basic</button>
+                        <button class="cta-button secondary" onclick="selectPlan('renter-basic')">Get Basic</button>
                     </article>
 
                     <!-- Pro Plan -->
@@ -592,7 +594,7 @@
                             <li><i class="fas fa-check" aria-hidden="true"></i> Escalation service</li>
                             <li><i class="fas fa-check" aria-hidden="true"></i> WhatsApp support (2hr)</li>
                         </ul>
-                        <button class="cta-button secondary" onclick="selectPlan('renter-pro')">Upgrade to Pro</button>
+                        <button class="cta-button secondary" onclick="selectPlan('renter-pro')">Get Pro</button>
                     </article>
 
                     <!-- Max Plan -->
