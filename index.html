@@ -220,8 +220,8 @@
                 <span class="brand-name">Manay</span>
             </div>
             <div class="nav-menu" id="navMenu">
-                <a href="#landlords" class="nav-link">For Landlords</a>
-                <a href="#renters" class="nav-link">For Renters</a>
+                <a href="#landlords" class="nav-link" onclick="showLandlordView(); return true;">For Landlords</a>
+                <a href="#renters" class="nav-link" onclick="showRenterView(); return true;">For Renters</a>
                 <a href="pricing.html" class="nav-link">Pricing</a>
                 <a href="#waitlist" class="nav-link cta-button">Join Waitlist</a>
             </div>
@@ -245,11 +245,11 @@
                 <div class="hero-toggle" role="tablist" aria-label="User type selection">
                     <button class="toggle-btn active" data-target="landlords" role="tab" aria-selected="true" aria-controls="landlords-cta" id="landlord-tab">
                         <i class="fas fa-building" aria-hidden="true"></i>
-                        I own property
+                        I'm a landlord
                     </button>
                     <button class="toggle-btn" data-target="renters" role="tab" aria-selected="false" aria-controls="renters-cta" id="renter-tab">
                         <i class="fas fa-home" aria-hidden="true"></i>
-                        I rent property
+                        I'm a tenant
                     </button>
                 </div>
 
@@ -262,7 +262,7 @@
                         </button>
                     </div>
                     <div id="renters-cta" class="cta-content" role="tabpanel" aria-labelledby="renter-tab" hidden>
-                        <p class="cta-text">Build credit, get instant HRA receipts, and protect your deposit. Starting at ₹99/month.</p>
+                        <p class="cta-text">Build credit, get instant HRA receipts, and protect your deposit. Affordable monthly plans.</p>
                         <button class="primary-button magnetic-btn" onclick="showWaitlist('renter')" type="button">
                             <span>Join Renter Waitlist</span>
                             <i class="fas fa-arrow-right" aria-hidden="true"></i>
@@ -323,7 +323,7 @@
                 </button>
                 <button class="section-toggle-btn" data-target="renter-sections" role="tab" aria-selected="false" id="section-renter-toggle">
                     <i class="fas fa-home" aria-hidden="true"></i>
-                    For Renters
+                    For Tenants
                 </button>
             </div>
         </div>
@@ -337,7 +337,7 @@
         <div class="container">
             <div class="section-header">
                 <h2 id="landlords-heading">Stop "Dealing" With Your Rental. Start Managing It.</h2>
-                <p>You don't need a property manager taking 10% of your income. You just need the right tools.</p>
+                <p>You don't need a property manager taking a cut of your income. You just need the right tools.</p>
             </div>
             
             <div class="features-grid">
@@ -412,8 +412,8 @@
                     <div class="feature-icon">
                         <i class="fas fa-chart-line" aria-hidden="true"></i>
                     </div>
-                    <h3>Build Your CIBIL Score</h3>
-                    <p>We report your on-time rent payments to CIBIL. Watch your credit score go up just by paying rent. Crucial for home loans.</p>
+                    <h3>Build Your Credit Score</h3>
+                    <p>We report your on-time rent payments to credit bureaus. Watch your credit score go up just by paying rent. Crucial for home loans.</p>
                 </article>
                 
                 <article class="feature-card lift-card">
@@ -566,7 +566,7 @@
                     <div class="step" data-step="3">
                         <div class="step-number" aria-hidden="true">3</div>
                         <h3>Enjoy Protection</h3>
-                        <p>Get HRA receipts instantly, deposit protection, and 24/7 support. Build your CIBIL score.</p>
+                        <p>Get HRA receipts instantly, deposit protection, and 24/7 support. Build your credit score.</p>
                     </div>
                 </div>
             </div>
@@ -596,9 +596,9 @@
                     <div class="pricing-cta-icon">
                         <i class="fas fa-home" aria-hidden="true"></i>
                     </div>
-                    <h3>For Renters</h3>
-                    <p class="pricing-cta-price">Starting at ₹99/mo</p>
-                    <p class="pricing-cta-desc">CIBIL building, HRA receipts, deposit protection. Upgrade for legal support and concierge.</p>
+                    <h3>For Tenants</h3>
+                    <p class="pricing-cta-price">Affordable monthly plans</p>
+                    <p class="pricing-cta-desc">Credit score building, HRA receipts, deposit protection. Upgrade for legal support and concierge.</p>
                     <a href="pricing.html" class="secondary-button">View Plans</a>
                 </article>
 
@@ -607,7 +607,7 @@
                         <i class="fas fa-file-contract" aria-hidden="true"></i>
                     </div>
                     <h3>Digital Agreement</h3>
-                    <p class="pricing-cta-price">₹499 one-time</p>
+                    <p class="pricing-cta-price">One-time purchase</p>
                     <p class="pricing-cta-desc">E-stamping, eSign, Aadhaar verification. Valid for 1 year. LegalDesk integration included.</p>
                     <a href="pricing.html" class="secondary-button">View Details</a>
                 </article>
@@ -651,7 +651,7 @@
                     </div>
                     <h3>₹12,000+ Saved Yearly</h3>
                     <ul class="value-list">
-                        <li>No 10% property manager fees</li>
+                        <li>No property manager fees</li>
                         <li>Zero late payment penalties</li>
                         <li>Maximized HRA tax benefits</li>
                         <li>No bounced cheque charges</li>
@@ -801,29 +801,90 @@
 
     <script src="script.js"></script>
     <script>
-        // Section Toggle Logic
+        // Section Toggle Logic - Hero and Main sections are synced
         const sectionToggleBtns = document.querySelectorAll('.section-toggle-btn');
         const landlordSections = document.getElementById('landlord-sections');
         const renterSections = document.getElementById('renter-sections');
+        const heroToggleBtns = document.querySelectorAll('.hero-toggle .toggle-btn');
+        const landlordsCta = document.getElementById('landlords-cta');
+        const rentersCta = document.getElementById('renters-cta');
+        
+        function showLandlordView() {
+            // Update main section toggle
+            sectionToggleBtns.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-selected', 'false');
+            });
+            document.querySelector('[data-target="landlord-sections"]').classList.add('active');
+            document.querySelector('[data-target="landlord-sections"]').setAttribute('aria-selected', 'true');
+            
+            // Show landlord sections
+            landlordSections.classList.remove('hidden');
+            renterSections.classList.add('hidden');
+            
+            // Update hero toggle
+            heroToggleBtns.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-selected', 'false');
+            });
+            document.getElementById('landlord-tab').classList.add('active');
+            document.getElementById('landlord-tab').setAttribute('aria-selected', 'true');
+            
+            // Update hero CTA
+            landlordsCta.classList.add('active');
+            landlordsCta.hidden = false;
+            rentersCta.classList.remove('active');
+            rentersCta.hidden = true;
+        }
+        
+        function showRenterView() {
+            // Update main section toggle
+            sectionToggleBtns.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-selected', 'false');
+            });
+            document.querySelector('[data-target="renter-sections"]').classList.add('active');
+            document.querySelector('[data-target="renter-sections"]').setAttribute('aria-selected', 'true');
+            
+            // Show renter sections
+            landlordSections.classList.add('hidden');
+            renterSections.classList.remove('hidden');
+            
+            // Update hero toggle
+            heroToggleBtns.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-selected', 'false');
+            });
+            document.getElementById('renter-tab').classList.add('active');
+            document.getElementById('renter-tab').setAttribute('aria-selected', 'true');
+            
+            // Update hero CTA
+            rentersCta.classList.add('active');
+            rentersCta.hidden = false;
+            landlordsCta.classList.remove('active');
+            landlordsCta.hidden = true;
+        }
         
         if (sectionToggleBtns.length > 0) {
             sectionToggleBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
-                    // Update active state
-                    sectionToggleBtns.forEach(b => {
-                        b.classList.remove('active');
-                        b.setAttribute('aria-selected', 'false');
-                    });
-                    btn.classList.add('active');
-                    btn.setAttribute('aria-selected', 'true');
-                    
-                    // Toggle sections
                     if (btn.dataset.target === 'landlord-sections') {
-                        landlordSections.classList.remove('hidden');
-                        renterSections.classList.add('hidden');
+                        showLandlordView();
                     } else {
-                        landlordSections.classList.add('hidden');
-                        renterSections.classList.remove('hidden');
+                        showRenterView();
+                    }
+                });
+            });
+        }
+        
+        // Hero toggle also syncs with sections
+        if (heroToggleBtns.length > 0) {
+            heroToggleBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (btn.dataset.target === 'landlords') {
+                        showLandlordView();
+                    } else {
+                        showRenterView();
                     }
                 });
             });
