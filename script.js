@@ -372,9 +372,6 @@ class ManayApp {
     // SWIPE GESTURES FOR MOBILE
     // ============================================
     setupSwipeGestures() {
-        const navMenu = document.getElementById('navMenu');
-        const navToggle = document.getElementById('navToggle');
-
         // Touch start
         document.addEventListener('touchstart', (e) => {
             this.touchStartX = e.touches[0].clientX;
@@ -654,7 +651,7 @@ class ManayApp {
 
         // Phone validation (Indian format)
         const phoneRegex = /^[6-9]\d{9}$/;
-        const cleanPhone = data.phone ? data.phone.replace(/[\s\-\+]/g, '') : '';
+        const cleanPhone = data.phone ? data.phone.replace(/[\s\-+]/g, '') : '';
         if (!data.phone || !phoneRegex.test(cleanPhone)) {
             errors.phone = 'Please enter a valid 10-digit Indian phone number';
             isValid = false;
@@ -877,6 +874,7 @@ class ManayApp {
 // GLOBAL FUNCTIONS
 // ============================================
 
+// eslint-disable-next-line no-unused-vars
 function showWaitlist(userType) {
     const app = window.manayApp;
     const waitlistSection = document.getElementById('waitlist');
@@ -916,19 +914,3 @@ function showWaitlist(userType) {
 
 const manayApp = new ManayApp();
 window.manayApp = manayApp;
-
-// Log initialization
-console.log('%c🏠 Manay Website Initialized', 'color: #2563eb; font-size: 16px; font-weight: bold;');
-console.log('%cFeatures loaded:', 'color: #10b981; font-weight: 600;');
-console.log('  • Scroll progress bar');
-console.log('  • Hide/show navbar on scroll');
-console.log('  • Back to top button');
-console.log('  • Toast notifications');
-console.log('  • Keyboard shortcuts (press ?)');
-console.log('  • Mobile swipe gestures');
-console.log('  • Parallax effects');
-console.log('  • Animated counters');
-console.log('  • Intersection Observer animations');
-console.log('  • Glassmorphism effects');
-console.log('  • Magnetic buttons');
-console.log('  • Cookie consent');

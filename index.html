@@ -9,8 +9,8 @@
     <meta name="author" content="Manay Technologies Pvt Ltd">
     <meta name="robots" content="index, follow">
     
-    <!-- CSP Meta Tag (Content Security Policy) -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdnjs.cloudflare.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io; frame-src 'none'; object-src 'none';">
+    <!-- CSP Meta Tag (Content Security Policy) - Hardened -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://manay.in https://*.githubusercontent.com; connect-src 'self' https://formspree.io; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://formspree.io; upgrade-insecure-requests;">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -131,10 +131,18 @@
     }
     </script>
     
+    <!-- Resource Hints for Performance -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 </head>
 <body>
     <!-- Scroll Progress Bar -->
@@ -159,16 +167,17 @@
         <div class="cookie-content">
             <p>We use cookies to enhance your experience. By continuing to visit this site, you agree to our use of cookies. <a href="privacy-policy.html" class="cookie-link">Learn more</a></p>
             <div class="cookie-buttons">
-                <button class="cookie-btn cookie-accept" id="cookieAccept" aria-label="Accept all cookies">Accept All</button>
-                <button class="cookie-btn cookie-decline" id="cookieDecline" aria-label="Decline cookies">Decline</button>
+                <button type="button" class="cookie-btn cookie-accept" id="cookieAccept" aria-label="Accept all cookies">Accept All</button>
+                <button type="button" class="cookie-btn cookie-decline" id="cookieDecline" aria-label="Decline cookies">Decline</button>
             </div>
         </div>
     </div>
 
     <!-- Keyboard Shortcuts Help Modal -->
-    <div class="keyboard-help-modal" id="keyboardHelpModal" role="dialog" aria-labelledby="keyboard-help-title" aria-hidden="true">
+    <div class="keyboard-help-modal" id="keyboardHelpModal" role="dialog" aria-labelledby="keyboard-help-title">
         <div class="keyboard-help-content">
-            <button class="keyboard-help-close" id="closeKeyboardHelp" aria-label="Close keyboard shortcuts help">
+            <button type="button" class="keyboard-help-close" id="closeKeyboardHelp">
+                <span class="sr-only">Close keyboard shortcuts help</span>
                 <i class="fas fa-times"></i>
             </button>
             <h3 id="keyboard-help-title">Keyboard Shortcuts</h3>
@@ -225,7 +234,7 @@
                 <a href="pricing.html" class="nav-link">Pricing</a>
                 <a href="#waitlist" class="nav-link cta-button">Join Waitlist</a>
             </div>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu" tabindex="0">
+            <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu" tabindex="0">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -243,11 +252,11 @@
                 <p class="hero-subtitle">Built for Bangalore. Designed for trust. Automate rent, HRA receipts, and maintenance - all via WhatsApp.</p>
                 
                 <div class="hero-toggle" role="tablist" aria-label="User type selection">
-                    <button class="toggle-btn active" data-target="landlords" role="tab" aria-selected="true" aria-controls="landlords-cta" id="landlord-tab">
+                    <button type="button" class="toggle-btn active" data-target="landlords" role="tab" aria-selected="true" aria-controls="landlords-cta" id="landlord-tab">
                         <i class="fas fa-building" aria-hidden="true"></i>
                         I'm a landlord
                     </button>
-                    <button class="toggle-btn" data-target="renters" role="tab" aria-selected="false" aria-controls="renters-cta" id="renter-tab">
+                    <button type="button" class="toggle-btn" data-target="renters" role="tab" aria-selected="false" aria-controls="renters-cta" id="renter-tab">
                         <i class="fas fa-home" aria-hidden="true"></i>
                         I'm a tenant
                     </button>
@@ -317,11 +326,11 @@
     <section class="section-toggle-section" aria-label="User type selection">
         <div class="container">
             <div class="section-toggle" role="tablist">
-                <button class="section-toggle-btn active" data-target="landlord-sections" role="tab" aria-selected="true" id="section-landlord-toggle">
+                <button type="button" class="section-toggle-btn active" data-target="landlord-sections" role="tab" aria-selected="true" id="section-landlord-toggle">
                     <i class="fas fa-building" aria-hidden="true"></i>
                     For Landlords
                 </button>
-                <button class="section-toggle-btn" data-target="renter-sections" role="tab" aria-selected="false" id="section-renter-toggle">
+                <button type="button" class="section-toggle-btn" data-target="renter-sections" role="tab" aria-selected="false" id="section-renter-toggle">
                     <i class="fas fa-home" aria-hidden="true"></i>
                     For Tenants
                 </button>
@@ -515,11 +524,11 @@
 
             <!-- How It Works Toggle -->
             <div class="section-toggle" role="tablist" aria-label="Flow type selection">
-                <button class="section-toggle-btn active" data-target="landlord-flow" role="tab" aria-selected="true" id="flow-landlord-toggle">
+                <button type="button" class="section-toggle-btn active" data-target="landlord-flow" role="tab" aria-selected="true" id="flow-landlord-toggle">
                     <i class="fas fa-building" aria-hidden="true"></i>
                     Landlord Initiated
                 </button>
-                <button class="section-toggle-btn" data-target="renter-flow" role="tab" aria-selected="false" id="flow-renter-toggle">
+                <button type="button" class="section-toggle-btn" data-target="renter-flow" role="tab" aria-selected="false" id="flow-renter-toggle">
                     <i class="fas fa-home" aria-hidden="true"></i>
                     Renter Initiated
                 </button>
@@ -627,7 +636,7 @@
     <section class="value-section lazy-section" aria-labelledby="value-heading">
         <div class="container">
             <div class="section-header">
-                <h2 id="value-heading">Time & Money Saved</h2>
+                <h2 id="value-heading">Time &amp; Money Saved</h2>
                 <p>Focus on what matters. Let Manay handle the rest.</p>
             </div>
             
@@ -683,6 +692,11 @@
                 
                 <!-- Formspree Form -->
                 <form id="waitlistForm" class="waitlist-form" action="https://formspree.io/f/mnjgyvkz" method="POST" novalidate aria-label="Waitlist signup form">
+                    <!-- Spam Prevention (Honeypot) - Hidden from real users -->
+                    <div class="form-honeypot" aria-hidden="true">
+                        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+                    </div>
+                    
                     <input type="hidden" name="_subject" value="New Manay Waitlist Signup">
                     <input type="hidden" name="_next" value="https://manay.in/?form=success">
                     
@@ -759,7 +773,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer" role="contentinfo">
+    <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
@@ -788,13 +802,13 @@
     </footer>
 
     <!-- Floating Action Button -->
-    <button class="fab-button" id="fabButton" aria-label="Join waitlist">
+    <button type="button" class="fab-button" id="fabButton" aria-label="Join waitlist">
         <i class="fas fa-rocket" aria-hidden="true"></i>
         <span class="fab-tooltip">Join Waitlist</span>
     </button>
 
     <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <button type="button" class="back-to-top" id="backToTop" aria-label="Back to top">
         <i class="fas fa-chevron-up" aria-hidden="true"></i>
         <span class="back-to-top-tooltip">Back to top</span>
     </button>

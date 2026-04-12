@@ -20,10 +20,10 @@
     /* Text - Soft Charcoal */
     --text-primary: #374151;
     --text-secondary: #6b7280;
-    --text-light: #ffffff;
+    --text-light: #fff;
     
     /* Backgrounds - Clean Whites & Very Light Grays */
-    --bg-primary: #ffffff;
+    --bg-primary: #fff;
     --bg-secondary: #f9fafb;
     --bg-dark: #1e293b;
     
@@ -38,16 +38,16 @@
     --focus-color: #6366f1;
     
     /* Glassmorphism Variables */
-    --glass-bg: rgba(255, 255, 255, 0.7);
-    --glass-border: rgba(255, 255, 255, 0.3);
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    --glass-bg: rgb(255 255 255 / 70%);
+    --glass-border: rgb(255 255 255 / 30%);
+    --glass-shadow: 0 8px 32px rgb(0 0 0 / 10%);
     
     /* Shadows */
-    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 10%), 0 1px 2px 0 rgb(0 0 0 / 6%);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -1px rgb(0 0 0 / 6%);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 10%), 0 10px 10px -5px rgb(0 0 0 / 4%);
+    --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 25%);
     
     /* Border Radius */
     --radius: 0.5rem;
@@ -79,20 +79,20 @@
         --bg-secondary: #1f2937;
         --bg-dark: #030712;
         --border-color: #374151;
-        --glass-bg: rgba(31, 41, 55, 0.7);
-        --glass-border: rgba(255, 255, 255, 0.1);
-        --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+        --glass-bg: rgb(31 41 55 / 70%);
+        --glass-border: rgb(255 255 255 / 10%);
+        --shadow: 0 1px 3px 0 rgb(0 0 0 / 30%), 0 1px 2px 0 rgb(0 0 0 / 20%);
+        --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 30%), 0 4px 6px -2px rgb(0 0 0 / 10%);
     }
 }
 
 /* High Contrast Mode */
 @media (prefers-contrast: high) {
     :root {
-        --primary-color: #0000ff;
-        --text-primary: #000000;
-        --bg-primary: #ffffff;
-        --border-color: #000000;
+        --primary-color: #00f;
+        --text-primary: #000;
+        --bg-primary: #fff;
+        --border-color: #000;
     }
 }
 
@@ -121,7 +121,7 @@ html {
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: var(--line-height-base);
     color: var(--text-primary);
     background-color: var(--bg-primary);
@@ -135,7 +135,7 @@ body {
     padding: 0 1.5rem;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .container {
         padding: 0 1rem;
     }
@@ -265,13 +265,13 @@ body {
     display: flex;
     align-items: flex-start;
     gap: 0.75rem;
-    animation: toastSlideIn 0.3s ease-out;
+    animation: toast-slide-in 0.3s ease-out;
     pointer-events: auto;
     min-height: var(--min-touch-target);
 }
 
 .toast.hiding {
-    animation: toastSlideOut 0.3s ease-in forwards;
+    animation: toast-slide-out 0.3s ease-in forwards;
 }
 
 .toast-icon {
@@ -329,29 +329,31 @@ body {
     outline-offset: 2px;
 }
 
-@keyframes toastSlideIn {
+@keyframes toast-slide-in {
     from {
         opacity: 0;
         transform: translateX(100%);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
     }
 }
 
-@keyframes toastSlideOut {
+@keyframes toast-slide-out {
     from {
         opacity: 1;
         transform: translateX(0);
     }
+
     to {
         opacity: 0;
         transform: translateX(100%);
     }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
     .toast-container {
         left: 1rem;
         right: 1rem;
@@ -435,15 +437,15 @@ body {
 .cookie-decline {
     background: transparent;
     color: white;
-    border: 1px solid rgba(255,255,255,0.3);
+    border: 1px solid rgb(255 255 255 / 30%);
 }
 
 .cookie-decline:hover,
 .cookie-decline:active {
-    background: rgba(255,255,255,0.1);
+    background: rgb(255 255 255 / 10%);
 }
 
-@media (max-width: 640px) {
+@media (width <= 640px) {
     .cookie-content {
         flex-direction: column;
         text-align: center;
@@ -465,11 +467,8 @@ body {
 
 .keyboard-help-modal {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
+    inset: 0;
+    background: rgb(0 0 0 / 70%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -565,7 +564,7 @@ body {
     font-size: 0.9375rem;
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
     .keyboard-help-content {
         padding: 1.5rem;
     }
@@ -624,7 +623,7 @@ body {
     font-size: 1.5rem;
     color: var(--primary-color);
     font-weight: 700;
-    text-shadow: 0 2px 4px rgba(99, 102, 241, 0.3);
+    text-shadow: 0 2px 4px rgb(99 102 241 / 30%);
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -747,7 +746,7 @@ body {
 }
 
 /* Mobile Menu */
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .navbar {
         padding: 0.75rem 0;
     }
@@ -828,8 +827,8 @@ body.menu-open {
     position: absolute;
     inset: -50%;
     background: 
-        radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+        radial-gradient(circle at 20% 80%, rgb(255 255 255 / 10%) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgb(255 255 255 / 10%) 0%, transparent 50%);
     z-index: 1;
 }
 
@@ -850,7 +849,7 @@ body.menu-open {
 }
 
 .gradient-text {
-    background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+    background: linear-gradient(135deg, #fff 0%, #e0e7ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -867,11 +866,11 @@ body.menu-open {
     display: flex;
     gap: 0.75rem;
     margin-bottom: 2rem;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgb(255 255 255 / 15%);
     padding: 0.5rem;
     border-radius: var(--radius-lg);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgb(255 255 255 / 20%);
 }
 
 .toggle-btn {
@@ -879,7 +878,7 @@ body.menu-open {
     padding: 0.875rem 1.5rem;
     border: 2px solid transparent;
     background: transparent;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgb(255 255 255 / 80%);
     font-weight: 600;
     border-radius: var(--radius);
     cursor: pointer;
@@ -893,7 +892,7 @@ body.menu-open {
 }
 
 .toggle-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgb(255 255 255 / 10%);
     color: white;
 }
 
@@ -914,7 +913,7 @@ body.menu-open {
 
 .cta-content {
     display: none;
-    animation: fadeIn 0.4s ease-out;
+    animation: fade-in 0.4s ease-out;
 }
 
 .cta-content.active {
@@ -994,10 +993,11 @@ body.menu-open {
     margin: 0 auto;
     box-shadow: 
         var(--shadow-2xl),
-        0 0 0 1px rgba(255,255,255,0.1),
-        inset 0 0 20px rgba(0,0,0,0.5);
+        0 0 0 1px rgb(255 255 255 / 10%),
+        inset 0 0 20px rgb(0 0 0 / 50%);
     position: relative;
     overflow: hidden;
+
     /* Critical for mobile scrolling */
     touch-action: pan-y pan-x;
     -webkit-overflow-scrolling: touch;
@@ -1023,6 +1023,7 @@ body.menu-open {
     border-radius: var(--radius-xl);
     overflow: hidden;
     position: relative;
+
     /* Enable scrolling inside phone */
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -1046,7 +1047,7 @@ body.menu-open {
     align-items: center;
     gap: 0.75rem;
     font-size: 0.9rem;
-    animation: slideInLeft 0.5s ease-out;
+    animation: slide-in-left 0.5s ease-out;
     transition: var(--transition);
     cursor: pointer;
     min-height: var(--min-touch-target);
@@ -1119,7 +1120,7 @@ body.menu-open {
 }
 
 /* Hero Responsive */
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .hero {
         padding: 8rem 0 4rem;
         min-height: auto;
@@ -1140,7 +1141,7 @@ body.menu-open {
     }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
     .phone-mockup {
         max-width: 220px;
     }
@@ -1204,6 +1205,9 @@ body.menu-open {
     transition: var(--transition-slow);
     border: 1px solid var(--border-color);
     cursor: pointer;
+
+    /* Performance: Isolate layout/paint for complex cards */
+    contain: layout style paint;
 }
 
 .lift-card {
@@ -1310,17 +1314,17 @@ body.menu-open {
 }
 
 .bangalore-card {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgb(255 255 255 / 10%);
     padding: 2rem;
     border-radius: var(--radius-lg);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgb(255 255 255 / 20%);
     transition: var(--transition);
 }
 
 .bangalore-card:hover,
 .bangalore-card:focus-within {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgb(255 255 255 / 20%);
     transform: translateY(-4px);
 }
 
@@ -1420,6 +1424,9 @@ body.menu-open {
     text-align: center;
     position: relative;
     transition: var(--transition-slow);
+
+    /* Performance: Isolate layout/paint for complex cards */
+    contain: layout style paint;
 }
 
 .pricing-card:hover {
@@ -1656,7 +1663,7 @@ body.menu-open {
 
 .value-card.featured-value {
     border-color: var(--primary-color);
-    background: linear-gradient(135deg, var(--bg-primary) 0%, rgba(99, 102, 241, 0.05) 100%);
+    background: linear-gradient(135deg, var(--bg-primary) 0%, rgb(99 102 241 / 5%) 100%);
 }
 
 .value-icon {
@@ -1756,7 +1763,7 @@ body.menu-open {
     color: var(--text-secondary);
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .value-grid {
         gap: 1.5rem;
     }
@@ -1813,6 +1820,14 @@ body.menu-open {
     gap: 1.5rem;
 }
 
+/* Form Honeypot - Hidden spam protection field */
+.form-honeypot {
+    position: absolute;
+    left: -5000px;
+    opacity: 0;
+    pointer-events: none;
+}
+
 .form-group {
     position: relative;
     text-align: left;
@@ -1823,7 +1838,7 @@ body.menu-open {
     margin-bottom: 0.5rem;
     font-weight: 500;
     font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgb(255 255 255 / 90%);
 }
 
 .form-group input,
@@ -1831,10 +1846,10 @@ body.menu-open {
 .form-group textarea {
     width: 100%;
     padding: 1rem;
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    border: 2px solid rgb(255 255 255 / 20%);
     border-radius: var(--radius);
     font-size: 1rem;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgb(255 255 255 / 10%);
     color: white;
     backdrop-filter: blur(10px);
     transition: var(--transition);
@@ -1847,13 +1862,13 @@ body.menu-open {
 .form-group textarea:focus {
     outline: none;
     border-color: white;
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+    background: rgb(255 255 255 / 15%);
+    box-shadow: 0 0 0 3px rgb(255 255 255 / 10%);
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgb(255 255 255 / 70%);
 }
 
 .form-group select option {
@@ -1873,10 +1888,10 @@ body.menu-open {
     min-width: 100px;
     flex-shrink: 0;
     padding: 1rem;
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    border: 2px solid rgb(255 255 255 / 20%);
     border-radius: var(--radius);
     font-size: 1rem;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgb(255 255 255 / 10%);
     color: white;
     backdrop-filter: blur(10px);
     cursor: pointer;
@@ -1885,7 +1900,7 @@ body.menu-open {
 .phone-input-group .country-code-select:focus {
     outline: none;
     border-color: white;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgb(255 255 255 / 15%);
 }
 
 .phone-input-group .phone-number-input {
@@ -1914,7 +1929,7 @@ body.menu-open {
 
 .form-success {
     display: none;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgb(255 255 255 / 10%);
     padding: 3rem;
     border-radius: var(--radius-lg);
     backdrop-filter: blur(10px);
@@ -1984,7 +1999,7 @@ body.menu-open {
 }
 
 .footer-links a {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgb(255 255 255 / 70%);
     text-decoration: none;
     transition: var(--transition-fast);
     line-height: 1.4;
@@ -2013,7 +2028,7 @@ body.menu-open {
 .footer-bottom {
     text-align: center;
     padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgb(255 255 255 / 10%);
     opacity: 0.7;
     font-size: 0.875rem;
     line-height: 1.6;
@@ -2089,7 +2104,7 @@ body.menu-open {
     visibility: visible;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .fab-button {
         bottom: 1.5rem;
         right: 1.5rem;
@@ -2183,7 +2198,7 @@ body.menu-open {
     visibility: visible;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .back-to-top {
         bottom: 1.5rem;
         right: calc(1.5rem + 56px);
@@ -2196,7 +2211,7 @@ body.menu-open {
     }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
     .back-to-top {
         right: 1.5rem;
         bottom: calc(1.5rem + 56px);
@@ -2207,27 +2222,29 @@ body.menu-open {
    ANIMATIONS
    ============================================ */
 
-@keyframes fadeIn {
+@keyframes fade-in {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
-@keyframes fadeInUp {
+@keyframes fade-in-up {
     from {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-@keyframes slideInLeft {
+@keyframes slide-in-left {
     from {
         opacity: 0;
         transform: translateX(-30px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -2251,15 +2268,15 @@ body.menu-open {
 
 /* Animation Classes */
 .animate-fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
+    animation: fade-in 0.6s ease-out forwards;
 }
 
 .animate-fade-in-up {
-    animation: fadeInUp 0.6s ease-out forwards;
+    animation: fade-in-up 0.6s ease-out forwards;
 }
 
 .animate-slide-in-left {
-    animation: slideInLeft 0.5s ease-out forwards;
+    animation: slide-in-left 0.5s ease-out forwards;
 }
 
 .animate-pulse {
@@ -2338,7 +2355,7 @@ body.menu-open {
    RESPONSIVE DESIGN
    ============================================ */
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .section-header {
         margin-bottom: 2.5rem;
     }
@@ -2384,7 +2401,7 @@ body.menu-open {
     }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
     .landlord-section,
     .renter-section,
     .bangalore-section,
@@ -2580,37 +2597,4 @@ textarea:focus-visible {
     .form-group textarea:focus {
         outline-width: 4px;
     }
-}
-
-/* Screen Reader Only Text */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-}
-
-/* Skip Navigation Container */
-.skip-nav {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 10001;
-}
-
-.skip-nav .skip-link {
-    position: absolute;
-    left: -9999px;
-}
-
-.skip-nav .skip-link:focus {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
 }

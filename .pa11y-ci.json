@@ -1,0 +1,22 @@
+{
+  "defaults": {
+    "concurrency": 2,
+    "standard": "WCAG2AA",
+    "timeout": 30000,
+    "chromeLaunchConfig": {
+      "args": ["--no-sandbox", "--disable-setuid-sandbox"]
+    },
+    "viewport": {
+      "width": 1280,
+      "height": 1024
+    }
+  },
+  "urls": [
+    {
+      "url": "http://localhost:8080/index.html"
+    },
+    {
+      "url": "http://localhost:8080/pricing.html"
+    }
+  ]
+}
