@@ -198,6 +198,96 @@ for (const page of ['for-landlords.html', 'for-tenants.html']) {
     assert(!html.includes('₹99'), `${page}: No ₹99 price`);
 }
 
+// 14. GUIDE PAGES — Print button
+console.log('\n🖨️  Print / PDF Button');
+for (const page of ['for-landlords.html', 'for-tenants.html']) {
+    if (!fs.existsSync(path.join(ROOT, page))) continue;
+    const html = readFile(page);
+    assert(html.includes('printChecklist'), `${page}: Has printChecklist function`);
+    assert(html.includes('checklist-print-btn'), `${page}: Has print button`);
+    assert(html.includes('fa-print'), `${page}: Has print icon`);
+}
+
+// 15. NAVIGATION — Home link consistency
+console.log('\n🏠 Home Navigation');
+for (const page of ALL_PAGES) {
+    if (!fs.existsSync(path.join(ROOT, page))) continue;
+    const html = readFile(page);
+    if (page === 'index.html') {
+        // Homepage: logo links to itself
+        assert(html.includes('index.html') || html.includes('href="#"'), `${page}: Has home link`);
+    } else {
+        // All other pages: must have a Home nav link
+        assert(html.includes('>Home<'), `${page}: Has Home nav link`);
+        // All pages: logo must link to index.html
+        assert(html.includes('href="index.html"'), `${page}: Logo links to home`);
+    }
+}
+
+// 16. GUIDE PAGES — Content structure depth
+console.log('\n📋 Guide Page Structure');
+for (const page of ['for-landlords.html', 'for-tenants.html']) {
+    if (!fs.existsSync(path.join(ROOT, page))) continue;
+    const html = readFile(page);
+    // Warning cards
+    assert(html.includes('warning-card-grid'), `${page}: Has warning card grid`);
+    assert(html.includes('warning-card__title'), `${page}: Has warning card titles`);
+    // Legal tip
+    assert(html.includes('legal-tip'), `${page}: Has legal tip section`);
+    // Steps
+    const stepCount = (html.match(/step-item__number/g) || []).length;
+    assert(stepCount === 5, `${page}: Has 5 step items (found ${stepCount})`);
+    // Checklist items
+    const checklistCount = (html.match(/checklist-item/g) || []).length;
+    // Each checklist-item appears in both __icon and __text spans
+    const uniqueChecklistItems = (html.match(/checklist-item__text/g) || []).length;
+    // Subtract 1 for the print button container text if present
+    // Each checklist section has one extra match from the checklist grid wrapper
+    const expectedLandlord = 10;
+    const expectedTenant = 12;
+    if (page === 'for-landlords.html') {
+        assert(uniqueChecklistItems >= expectedLandlord, `${page}: Has at least ${expectedLandlord} checklist items (found ${uniqueChecklistItems})`);
+    } else {
+        assert(uniqueChecklistItems >= expectedTenant, `${page}: Has at least ${expectedTenant} checklist items (found ${uniqueChecklistItems})`);
+    }
+    // Icon cards
+    assert(html.includes('icon-card-grid'), `${page}: Has icon card grid`);
+    const iconCardCount = (html.match(/icon-card__title/g) || []).length;
+    assert(iconCardCount >= 4, `${page}: Has at least 4 icon cards (found ${iconCardCount})`);
+}
+
+// 17. OG / META tags on guide pages
+console.log('\n🏷️  SEO Meta Tags');
+for (const page of ['for-landlords.html', 'for-tenants.html']) {
+    if (!fs.existsSync(path.join(ROOT, page))) continue;
+    const html = readFile(page);
+    assert(html.includes('og:title'), `${page}: Has og:title`);
+    assert(html.includes('og:description'), `${page}: Has og:description`);
+    assert(html.includes('og:image'), `${page}: Has og:image`);
+    assert(html.includes('rel="canonical"'), `${page}: Has canonical URL`);
+    assert(html.includes('meta name="description"'), `${page}: Has meta description`);
+}
+
+// 18. Pricing — Digital Agreement shows "Per agreement"
+console.log('\n💳 Digital Agreement Pricing');
+if (fs.existsSync(path.join(ROOT, 'pricing.html'))) {
+    const pricingHtml = readFile('pricing.html');
+    assert(pricingHtml.includes('Per agreement'), 'pricing.html: Digital Agreement shows "Per agreement"');
+    assert(!pricingHtml.includes('₹499'), 'pricing.html: No ₹499 on Digital Agreement');
+}
+
+// 19. GUIDE PAGES — Color scheme uses CSS variables
+console.log('\n🎨 Color Scheme Consistency');
+const stylesContent = readFile('styles.css');
+// Guide hero should use the main site's gradient (indigo->purple->pink)
+assert(stylesContent.includes('#6366f1'), 'styles.css: Uses primary indigo color');
+assert(stylesContent.includes('#8b5cf6'), 'styles.css: Uses purple accent');
+assert(stylesContent.includes('#ec4899'), 'styles.css: Uses pink accent');
+// Guide sections should NOT use Avinya's gold (#f59e0b) as primary
+assert(!stylesContent.includes('background: #f59e0b'), 'styles.css: No gold backgrounds (amber used only as accent)');
+// Warning cards should use red
+assert(stylesContent.includes('#ef4444'), 'styles.css: Uses red for warning cards');
+
 // RESULTS
 console.log('\n' + '='.repeat(50));
 console.log(`\n📊 RESULTS: ${passed} passed, ${failed} failed\n`);
