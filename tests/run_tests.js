@@ -35,9 +35,11 @@ function readHTML(name) {
 console.log('\n🔍 MANAY WEBSITE VERIFICATION TESTS\n');
 console.log('='.repeat(50));
 
+const ALL_PAGES = ['index.html', 'pricing.html', 'privacy-policy.html', 'terms-of-service.html', 'for-landlords.html', 'for-tenants.html'];
+
 // 1. GOOGLE ANALYTICS — Should be commented out on ALL pages
 console.log('\n📡 Google Analytics');
-const gaPages = ['index.html', 'privacy-policy.html', 'terms-of-service.html', 'pricing.html'];
+const gaPages = ALL_PAGES;
 for (const page of gaPages) {
     if (!fs.existsSync(path.join(ROOT, page))) continue;
     const html = readHTML(page);
@@ -47,8 +49,7 @@ for (const page of gaPages) {
 
 // 2. TERMINOLOGY — "Tenant" not "Renter" in user-visible text
 console.log('\n📝 Terminology (Tenant vs Renter)');
-const allPages = ['index.html', 'pricing.html', 'privacy-policy.html', 'terms-of-service.html'];
-for (const page of allPages) {
+for (const page of ALL_PAGES) {
     if (!fs.existsSync(path.join(ROOT, page))) continue;
     const html = readHTML(page);
     const bodyContent = html.raw.replace(/<script[\s\S]*?<\/script>/gi, '');
@@ -58,7 +59,7 @@ for (const page of allPages) {
 
 // CIBIL check
 console.log('\n🏦 Credit Terminology (no CIBIL in visible text)');
-for (const page of allPages) {
+for (const page of ALL_PAGES) {
     if (!fs.existsSync(path.join(ROOT, page))) continue;
     const html = readHTML(page);
     const bodyNoScript = html.raw.replace(/<script[\s\S]*?<\/script>/gi, '');
@@ -67,7 +68,7 @@ for (const page of allPages) {
 
 // 3. FAVICON — All pages reference proper favicon files
 console.log('\n🖼️  Favicon');
-for (const page of allPages) {
+for (const page of ALL_PAGES) {
     if (!fs.existsSync(path.join(ROOT, page))) continue;
     const html = readFile(page);
     assert(html.includes('favicon.svg'), `${page}: References favicon.svg`);
@@ -97,6 +98,12 @@ assert(!indexHtml.includes('"priceRange": "₹99 - ₹499"'), 'JSON-LD priceRang
 assert(indexHtml.includes('LocalBusiness'), 'JSON-LD LocalBusiness schema present');
 assert(indexHtml.includes('Organization'), 'JSON-LD Organization schema present');
 
+// Guide pages JSON-LD
+const landlordHtml = readFile('for-landlords.html');
+const tenantHtml = readFile('for-tenants.html');
+assert(landlordHtml.includes('"@type": "WebPage"'), 'for-landlords.html: Has WebPage schema');
+assert(tenantHtml.includes('"@type": "WebPage"'), 'for-tenants.html: Has WebPage schema');
+
 // 6. JARGON — No "Zero-Chase Payments"
 console.log('\n🔤 Plain Language');
 const indexClean = readHTML('index.html').raw;
@@ -110,7 +117,7 @@ assert(!indexClean.includes('stat-value">₹<'), 'No bare rupee symbol stat valu
 
 // 8. LINK CONSISTENCY — All internal links resolve
 console.log('\n🔗 Internal Links');
-const htmlFiles = allPages.filter(f => fs.existsSync(path.join(ROOT, f)));
+const htmlFiles = ALL_PAGES.filter(f => fs.existsSync(path.join(ROOT, f)));
 const linkedPages = new Set();
 for (const page of htmlFiles) {
     const html = readFile(page);
@@ -141,12 +148,54 @@ for (const page of htmlFiles) {
 
 // 10. CSP + Security
 console.log('\n🔒 Security');
-assert(indexHtml.includes('Content-Security-Policy'), 'index.html: Has CSP meta tag');
+for (const page of ALL_PAGES) {
+    if (!fs.existsSync(path.join(ROOT, page))) continue;
+    const html = readFile(page);
+    assert(html.includes('Content-Security-Policy'), `${page}: Has CSP meta tag`);
+}
 for (const page of ['privacy-policy.html', 'terms-of-service.html']) {
     if (!fs.existsSync(path.join(ROOT, page))) continue;
     const html = readHTML(page);
     assert(html.clean.includes('Cookie Consent') || html.clean.includes('cookie-banner') || html.raw.includes('cookieBanner'),
         `${page}: Has cookie consent or privacy notice`);
+}
+
+// 11. NAVIGATION — All pages have consistent nav links
+console.log('\n🧭 Navigation');
+for (const page of htmlFiles) {
+    const html = readFile(page);
+    // Should have links to guide pages and pricing
+    assert(html.includes('for-landlords.html') || html.includes('#landlords'), `${page}: Links to landlord section/page`);
+    assert(html.includes('for-tenants.html') || html.includes('#renters') || html.includes('#tenants'), `${page}: Links to tenant section/page`);
+    assert(html.includes('pricing.html') || html.includes('#pricing'), `${page}: Links to pricing`);
+}
+
+// 12. GUIDE PAGES — Content quality checks
+console.log('\n📖 Guide Page Content');
+for (const page of ['for-landlords.html', 'for-tenants.html']) {
+    if (!fs.existsSync(path.join(ROOT, page))) continue;
+    const html = readFile(page);
+    // Should have guide-specific sections
+    assert(html.includes('guide-hero'), `${page}: Has guide hero section`);
+    assert(html.includes('icon-card-grid'), `${page}: Has icon card grid`);
+    assert(html.includes('step-flow'), `${page}: Has step-by-step flow`);
+    assert(html.includes('checklist-grid'), `${page}: Has checklist grid`);
+    assert(html.includes('guide-cta'), `${page}: Has CTA section`);
+    assert(html.includes('for-landlords.html'), `${page}: Links to landlord guide`);
+    assert(html.includes('for-tenants.html'), `${page}: Links to tenant guide`);
+    // Should reference Karnataka law specifics
+    assert(html.includes('2-month') || html.includes('2 month') || html.includes('2 months'), `${page}: References 2-month deposit cap`);
+    assert(html.includes('Kaveri 2.0') || html.includes('Kaveri'), `${page}: References Kaveri 2.0`);
+}
+
+// 13. GUIDE PAGES — No premium pricing shown
+console.log('\n💰 No Hard Prices in Guides');
+for (const page of ['for-landlords.html', 'for-tenants.html']) {
+    if (!fs.existsSync(path.join(ROOT, page))) continue;
+    const html = readFile(page);
+    // Should not contain specific plan prices
+    assert(!html.includes('₹499'), `${page}: No ₹499 price`);
+    assert(!html.includes('₹99'), `${page}: No ₹99 price`);
 }
 
 // RESULTS
