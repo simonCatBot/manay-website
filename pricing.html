@@ -54,22 +54,37 @@
         .pricing-hero {
             padding: 8rem 0 4rem;
             text-align: center;
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-hero::before {
+            content: '';
+            position: absolute;
+            inset: -50%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        .pricing-hero .container {
+            position: relative;
+            z-index: 2;
         }
         
         .pricing-hero h1 {
             font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 700;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #ffffff;
         }
         
         .pricing-hero p {
             font-size: 1.25rem;
-            color: var(--text-secondary);
+            color: rgba(255, 255, 255, 0.9);
             max-width: 600px;
             margin: 0 auto;
         }
@@ -466,7 +481,7 @@
     <nav class="navbar" id="navbar" aria-label="Main navigation">
         <div class="nav-glass-effect"></div>
         <div class="container">
-                        <div class="nav-brand">
+            <div class="nav-brand">
                 <a href="index.html" aria-label="Manay Home">
                     <span class="logo" aria-hidden="true">ಮನೆ</span>
                     <span class="brand-name">Manay</span>
@@ -476,7 +491,7 @@
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="for-landlords.html" class="nav-link">For Landlords</a>
                 <a href="for-tenants.html" class="nav-link">For Tenants</a>
-                <a href="pricing.html" class="nav-link active" style="color: var(--primary-color);">Pricing</a>
+                <a href="pricing.html" class="nav-link" aria-current="page">Pricing</a>
                 <a href="index.html#waitlist" class="nav-link cta-button">Join Waitlist</a>
             </div>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu" tabindex="0">
@@ -722,10 +737,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-                        <span class="logo" aria-hidden="true">ಮನೆ</span>
-                        <span class="brand-name">Manay</span>
-                    </a>
+                    <span class="logo" aria-hidden="true">ಮನೆ</span>
+                    <span class="brand-name">Manay</span>
                     <p>Your Home. Your Rules.</p>
                     <p class="contact-email"><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:hello@manay.in">hello@manay.in</a></p>
                 </div>
@@ -747,6 +760,12 @@
             </div>
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-chevron-up" aria-hidden="true"></i>
+        <span class="back-to-top-tooltip">Back to top</span>
+    </button>
 
     <script>
         // Mobile menu toggle
