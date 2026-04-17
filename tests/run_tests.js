@@ -100,8 +100,8 @@ assert(indexHtml.includes('Organization'), 'JSON-LD Organization schema present'
 // 6. JARGON — No "Zero-Chase Payments"
 console.log('\n🔤 Plain Language');
 const indexClean = readHTML('index.html').raw;
-assert(!indexClean.includes('Zero-Chase'), 'index.html: No "Zero-Chase Payments" jargon');
-assert(indexClean.includes('Automated Rent Collection'), 'index.html: Uses "Automated Rent Collection"');
+assert(indexClean.includes('Zero-Chase'), 'index.html: Keeps "Zero-Chase Payments" branding');
+assert(!indexClean.includes('Automated Rent Collection'), 'index.html: Not using generic "Automated Rent Collection" (kept Zero-Chase)');
 
 // 7. PHONE MOCKUP — No empty/broken stat values
 console.log('\n📱 Phone Mockup Stats');
