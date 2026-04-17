@@ -42,9 +42,12 @@
     <link rel="dns-prefetch" href="https://formspree.io">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     
-    <!-- Google Analytics - Add your GA_MEASUREMENT_ID here -->
+    <!-- Google Analytics - Uncomment and add your GA_MEASUREMENT_ID when ready -->
     <!-- 
     <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
     <script>
@@ -89,7 +92,7 @@
             }
         ],
         "serviceType": ["Rental Property Management", "Rent Collection", "Digital Rental Agreements"],
-        "priceRange": "₹99 - ₹499",
+        "priceRange": "Free - Affordable monthly plans",
         "foundingDate": "2026",
         "sameAs": []
     }
@@ -191,7 +194,7 @@
                 </div>
                 <div class="shortcut-item">
                     <kbd>r</kbd>
-                    <span>Renters view</span>
+                    <span>Tenants view</span>
                 </div>
                 <div class="shortcut-item">
                     <kbd>t</kbd>
@@ -207,7 +210,7 @@
     <!-- Page Skip Navigation for Accessibility -->
     <nav aria-label="Skip links" class="skip-nav">
         <a href="#landlords" class="skip-link">Skip to Landlords section</a>
-        <a href="#renters" class="skip-link">Skip to Renters section</a>
+        <a href="#renters" class="skip-link">Skip to Tenants section</a>
         <a href="pricing.html" class="skip-link">Skip to Pricing</a>
     </nav>
 
@@ -263,8 +266,8 @@
                     </div>
                     <div id="renters-cta" class="cta-content" role="tabpanel" aria-labelledby="renter-tab" hidden>
                         <p class="cta-text">Build credit, get instant HRA receipts, and protect your deposit. Affordable monthly plans.</p>
-                        <button class="primary-button magnetic-btn" onclick="showWaitlist('renter')" type="button">
-                            <span>Join Renter Waitlist</span>
+                        <button class="primary-button magnetic-btn" onclick="showWaitlist('tenant')" type="button">
+                            <span>Join Tenant Waitlist</span>
                             <i class="fas fa-arrow-right" aria-hidden="true"></i>
                         </button>
                     </div>
@@ -298,12 +301,12 @@
                             </div>
                             <div class="phone-stats">
                                 <div class="stat-item">
-                                    <span class="stat-value">-</span>
-                                    <span class="stat-label">Hours Saved</span>
+                                    <span class="stat-value">✓</span>
+                                    <span class="stat-label">On Time</span>
                                 </div>
                                 <div class="stat-item">
-                                    <span class="stat-value">₹</span>
-                                    <span class="stat-label">Yearly Savings</span>
+                                    <span class="stat-value">✓</span>
+                                    <span class="stat-label">Protected</span>
                                 </div>
                             </div>
                         </div>
@@ -380,7 +383,7 @@
                     <i class="fas fa-clock" aria-hidden="true"></i>
                     <div class="value-prop-content">
                         <strong>Hours saved monthly</strong>
-                        <span>No more chasing payments, manual receipts, or maintenance calls</span>
+                        <span>No more chasing payments, manual receipts, or maintenance calls — real time savings vary by property</span>
                     </div>
                 </div>
                 <div class="value-prop-item">
@@ -521,7 +524,7 @@
                 </button>
                 <button class="section-toggle-btn" data-target="renter-flow" role="tab" aria-selected="false" id="flow-renter-toggle">
                     <i class="fas fa-home" aria-hidden="true"></i>
-                    Renter Initiated
+                    Tenant Initiated
                 </button>
             </div>
 
@@ -578,7 +581,7 @@
         <div class="container">
             <div class="section-header">
                 <h2 id="pricing-heading">Professional Features. Practical Pricing.</h2>
-                <p>Free for landlords. Affordable for renters. No hidden fees.</p>
+                <p>Free for landlords. Affordable for tenants. No hidden fees.</p>
             </div>
             
             <div class="pricing-cta-grid">
@@ -597,8 +600,8 @@
                         <i class="fas fa-home" aria-hidden="true"></i>
                     </div>
                     <h3>For Tenants</h3>
-                    <p class="pricing-cta-price">Affordable monthly plans</p>
-                    <p class="pricing-cta-desc">Credit score building, HRA receipts, deposit protection. Upgrade for legal support and concierge.</p>
+                    <p class="pricing-cta-price">Starting at ₹99/mo</p>
+                    <p class="pricing-cta-desc">Credit score building, HRA receipts, deposit protection. Early bird pricing available.</p>
                     <a href="pricing.html" class="secondary-button">View Plans</a>
                 </article>
 
@@ -608,7 +611,7 @@
                     </div>
                     <h3>Digital Agreement</h3>
                     <p class="pricing-cta-price">One-time purchase</p>
-                    <p class="pricing-cta-desc">E-stamping, eSign, Aadhaar verification. Valid for 1 year. LegalDesk integration included.</p>
+                    <p class="pricing-cta-desc">E-stamping, eSign, Aadhaar verification. Valid for 1 year. Separate from subscription plans.</p>
                     <a href="pricing.html" class="secondary-button">View Details</a>
                 </article>
             </div>
@@ -674,6 +677,43 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="bangalore-section lazy-section" aria-labelledby="faq-heading">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="faq-heading">Frequently Asked Questions</h2>
+                <p>Everything you need to know about Manay.</p>
+            </div>
+            
+            <div class="bangalore-grid" style="max-width: 800px; margin: 0 auto;">
+                <article class="bangalore-card lift-card glass-effect" style="text-align: left;">
+                    <h3 style="font-size: 1.1rem;">What are Zero-Chase Payments?</h3>
+                    <p>Zero-Chase Payments means you never have to chase tenants for rent again. Rent is automatically deducted via UPI Mandate on the due date. We handle reminders, follow-ups, and late payment notifications. You just receive the deposit — zero chasing required.</p>
+                </article>
+                
+                <article class="bangalore-card lift-card glass-effect" style="text-align: left;">
+                    <h3 style="font-size: 1.1rem;">Is the Digital Agreement included in my subscription?</h3>
+                    <p>No. The Digital Agreement is a separate one-time purchase. It covers e-stamping, Aadhaar e-sign, and registration-ready documentation — valid for 1 year. Your subscription (whether landlord or tenant plan) does not include this.</p>
+                </article>
+                
+                <article class="bangalore-card lift-card glass-effect" style="text-align: left;">
+                    <h3 style="font-size: 1.1rem;">Is Manay compliant with the 2026 Karnataka rental laws?</h3>
+                    <p>Yes. Manay is built around the January 2026 Karnataka Rent (Amendment) Bill. We enforce the 2-month deposit cap, handle Kaveri 2.0 registration within 60 days, and provide documentation for fast-track Rent Tribunals.</p>
+                </article>
+                
+                <article class="bangalore-card lift-card glass-effect" style="text-align: left;">
+                    <h3 style="font-size: 1.1rem;">Where is Manay launching first?</h3>
+                    <p>We're launching first in South and Central Bengaluru. Other areas in Bengaluru and major Karnataka cities will follow. Join the waitlist to be notified when we're in your area.</p>
+                </article>
+
+                <article class="bangalore-card lift-card glass-effect" style="text-align: left;">
+                    <h3 style="font-size: 1.1rem;">How does credit score building work for tenants?</h3>
+                    <p>We report your on-time rent payments to credit bureaus. Paying rent on time each month improves your credit score — making it easier to get home loans, credit cards, and better interest rates in the future.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
     <!-- Waitlist Form -->
     <section id="waitlist" class="waitlist-section" aria-labelledby="waitlist-heading">
         <div class="container">
@@ -724,7 +764,7 @@
                         <select id="userType" name="userType" required aria-required="true" aria-describedby="userType-error">
                             <option value="" disabled selected>I am a...</option>
                             <option value="landlord">Landlord</option>
-                            <option value="renter">Renter</option>
+                            <option value="tenant">Tenant</option>
                             <option value="both">Both</option>
                         </select>
                         <span class="error-message" id="userType-error" role="alert" aria-live="polite"></span>
@@ -808,6 +848,9 @@
         const heroToggleBtns = document.querySelectorAll('.hero-toggle .toggle-btn');
         const landlordsCta = document.getElementById('landlords-cta');
         const rentersCta = document.getElementById('renters-cta');
+        const flowToggleBtns = document.querySelectorAll('.how-it-works .section-toggle-btn');
+        const landlordFlow = document.getElementById('landlord-flow');
+        const renterFlow = document.getElementById('renter-flow');
         
         function showLandlordView() {
             // Update main section toggle
@@ -835,6 +878,16 @@
             landlordsCta.hidden = false;
             rentersCta.classList.remove('active');
             rentersCta.hidden = true;
+
+            // Sync How It Works flow toggle
+            flowToggleBtns.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-selected', 'false');
+            });
+            document.getElementById('flow-landlord-toggle').classList.add('active');
+            document.getElementById('flow-landlord-toggle').setAttribute('aria-selected', 'true');
+            landlordFlow.classList.remove('hidden');
+            renterFlow.classList.add('hidden');
         }
         
         function showRenterView() {
@@ -863,6 +916,16 @@
             rentersCta.hidden = false;
             landlordsCta.classList.remove('active');
             landlordsCta.hidden = true;
+
+            // Sync How It Works flow toggle
+            flowToggleBtns.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-selected', 'false');
+            });
+            document.getElementById('flow-renter-toggle').classList.add('active');
+            document.getElementById('flow-renter-toggle').setAttribute('aria-selected', 'true');
+            renterFlow.classList.remove('hidden');
+            landlordFlow.classList.add('hidden');
         }
         
         if (sectionToggleBtns.length > 0) {
@@ -890,29 +953,16 @@
             });
         }
 
-        // How It Works Flow Toggle
-        const flowToggleBtns = document.querySelectorAll('.how-it-works .section-toggle-btn');
-        const landlordFlow = document.getElementById('landlord-flow');
-        const renterFlow = document.getElementById('renter-flow');
+        // How It Works Flow Toggle (declarations already above)
         
         if (flowToggleBtns.length > 0) {
             flowToggleBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
-                    // Update active state
-                    flowToggleBtns.forEach(b => {
-                        b.classList.remove('active');
-                        b.setAttribute('aria-selected', 'false');
-                    });
-                    btn.classList.add('active');
-                    btn.setAttribute('aria-selected', 'true');
-                    
-                    // Toggle flows
+                    // Sync with main landlord/tenant toggle
                     if (btn.dataset.target === 'landlord-flow') {
-                        landlordFlow.classList.remove('hidden');
-                        renterFlow.classList.add('hidden');
+                        showLandlordView();
                     } else {
-                        landlordFlow.classList.add('hidden');
-                        renterFlow.classList.remove('hidden');
+                        showRenterView();
                     }
                 });
             });
