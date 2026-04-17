@@ -225,6 +225,9 @@
                     <span class="guide-section-header__tag">#Checklist</span>
                     <h2 id="checklist-title" class="guide-section-header__title">Before You List: Property Readiness Checklist</h2>
                     <p class="guide-section-header__desc">Make sure your property is ready before putting it on the market. First impressions matter.</p>
+                    <button class="checklist-print-btn" onclick="printChecklist()" aria-label="Print or save checklist as PDF">
+                        <i class="fas fa-print" aria-hidden="true"></i> Print / Save as PDF
+                    </button>
                 </div>
                 <div class="checklist-grid">
                     <div class="checklist-item">
@@ -413,5 +416,25 @@
     </button>
 
     <script src="script.js"></script>
+    <script>
+        function printChecklist() {
+            // Find the checklist section
+            const checklistSection = document.querySelector('.guide-section--light');
+            if (!checklistSection) return;
+
+            // Set page title for print footer
+            const pageTitle = document.querySelector('.guide-section-header__title');
+            checklistSection.setAttribute('data-page-title', pageTitle ? pageTitle.textContent : '');
+
+            // Mark the section as the print root and trigger print
+            checklistSection.classList.add('print-root');
+            window.print();
+
+            // Clean up after print dialog closes
+            setTimeout(() => {
+                checklistSection.classList.remove('print-root');
+            }, 500);
+        }
+    </script>
 </body>
 </html>

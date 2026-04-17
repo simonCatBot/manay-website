@@ -3032,6 +3032,120 @@ textarea:focus-visible {
     line-height: 1.6;
 }
 
+/* Print / Save as PDF Button */
+.checklist-print-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+    padding: 0.625rem 1.5rem;
+    background: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.checklist-print-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+.checklist-print-btn:active {
+    transform: translateY(0);
+}
+
+/* Print Stylesheet — clean checklist for print/PDF */
+@media print {
+    /* Hide everything except the checklist section */
+    body > *:not(.print-root) {
+        display: none !important;
+    }
+
+    body {
+        background: white !important;
+        color: #1f2937 !important;
+        font-size: 12pt !important;
+        margin: 0 !important;
+        padding: 1cm !important;
+    }
+
+    .print-root {
+        display: block !important;
+    }
+
+    .print-root .guide-section--light {
+        background: white !important;
+        padding: 0 !important;
+    }
+
+    .print-root .container {
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+
+    .print-root .guide-section-header {
+        margin-bottom: 1.5cm !important;
+    }
+
+    .print-root .guide-section-header__tag {
+        color: var(--primary-color) !important;
+        -webkit-text-fill-color: unset !important;
+        font-size: 10pt !important;
+    }
+
+    .print-root .guide-section-header__title {
+        color: #1f2937 !important;
+        -webkit-text-fill-color: unset !important;
+        font-size: 18pt !important;
+    }
+
+    .print-root .guide-section-header__desc {
+        color: #6b7280 !important;
+        font-size: 11pt !important;
+    }
+
+    .print-root .checklist-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0.5cm !important;
+    }
+
+    .print-root .checklist-item {
+        background: white !important;
+        border: 1px solid #d1d5db !important;
+        border-radius: 6px !important;
+        padding: 0.4cm 0.5cm !important;
+        break-inside: avoid !important;
+    }
+
+    .print-root .checklist-item__icon {
+        color: var(--primary-color) !important;
+    }
+
+    .print-root .checklist-item__text {
+        color: #1f2937 !important;
+        font-size: 11pt !important;
+    }
+
+    .print-root .checklist-print-btn {
+        display: none !important;
+    }
+
+    /* Print footer */
+    .print-root::after {
+        content: 'Printed from manay.in — ' attr(data-page-title);
+        display: block;
+        margin-top: 1.5cm;
+        padding-top: 0.5cm;
+        border-top: 1px solid #d1d5db;
+        font-size: 9pt;
+        color: #9ca3af;
+    }
+}
+
 /* Guide Page Responsive */
 @media (max-width: 768px) {
     .guide-hero__title {
