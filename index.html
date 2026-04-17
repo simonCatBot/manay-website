@@ -44,7 +44,7 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
     
-    <!-- Google Analytics - Add your GA_MEASUREMENT_ID here -->
+    <!-- Google Analytics - Uncomment and add your GA_MEASUREMENT_ID when ready -->
     <!-- 
     <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
     <script>
@@ -89,7 +89,7 @@
             }
         ],
         "serviceType": ["Rental Property Management", "Rent Collection", "Digital Rental Agreements"],
-        "priceRange": "₹99 - ₹499",
+        "priceRange": "Free - Affordable monthly plans",
         "foundingDate": "2026",
         "sameAs": []
     }
@@ -191,7 +191,7 @@
                 </div>
                 <div class="shortcut-item">
                     <kbd>r</kbd>
-                    <span>Renters view</span>
+                    <span>Tenants view</span>
                 </div>
                 <div class="shortcut-item">
                     <kbd>t</kbd>
@@ -207,7 +207,7 @@
     <!-- Page Skip Navigation for Accessibility -->
     <nav aria-label="Skip links" class="skip-nav">
         <a href="#landlords" class="skip-link">Skip to Landlords section</a>
-        <a href="#renters" class="skip-link">Skip to Renters section</a>
+        <a href="#renters" class="skip-link">Skip to Tenants section</a>
         <a href="pricing.html" class="skip-link">Skip to Pricing</a>
     </nav>
 
@@ -263,8 +263,8 @@
                     </div>
                     <div id="renters-cta" class="cta-content" role="tabpanel" aria-labelledby="renter-tab" hidden>
                         <p class="cta-text">Build credit, get instant HRA receipts, and protect your deposit. Affordable monthly plans.</p>
-                        <button class="primary-button magnetic-btn" onclick="showWaitlist('renter')" type="button">
-                            <span>Join Renter Waitlist</span>
+                        <button class="primary-button magnetic-btn" onclick="showWaitlist('tenant')" type="button">
+                            <span>Join Tenant Waitlist</span>
                             <i class="fas fa-arrow-right" aria-hidden="true"></i>
                         </button>
                     </div>
@@ -298,12 +298,12 @@
                             </div>
                             <div class="phone-stats">
                                 <div class="stat-item">
-                                    <span class="stat-value">-</span>
-                                    <span class="stat-label">Hours Saved</span>
+                                    <span class="stat-value">✓</span>
+                                    <span class="stat-label">On Time</span>
                                 </div>
                                 <div class="stat-item">
-                                    <span class="stat-value">₹</span>
-                                    <span class="stat-label">Yearly Savings</span>
+                                    <span class="stat-value">✓</span>
+                                    <span class="stat-label">Protected</span>
                                 </div>
                             </div>
                         </div>
@@ -345,7 +345,7 @@
                     <div class="feature-icon">
                         <i class="fas fa-rupee-sign" aria-hidden="true"></i>
                     </div>
-                    <h3>Zero-Chase Payments</h3>
+                    <h3>Automated Rent Collection</h3>
                     <p>Rent automatically deducted via UPI Mandate. We handle reminders; you just get the deposit. No more "Sir, please adjust" messages.</p>
                 </article>
                 
@@ -380,7 +380,7 @@
                     <i class="fas fa-clock" aria-hidden="true"></i>
                     <div class="value-prop-content">
                         <strong>Hours saved monthly</strong>
-                        <span>No more chasing payments, manual receipts, or maintenance calls</span>
+                        <span>No more chasing payments, manual receipts, or maintenance calls — real time savings vary by property</span>
                     </div>
                 </div>
                 <div class="value-prop-item">
@@ -521,7 +521,7 @@
                 </button>
                 <button class="section-toggle-btn" data-target="renter-flow" role="tab" aria-selected="false" id="flow-renter-toggle">
                     <i class="fas fa-home" aria-hidden="true"></i>
-                    Renter Initiated
+                    Tenant Initiated
                 </button>
             </div>
 
@@ -578,7 +578,7 @@
         <div class="container">
             <div class="section-header">
                 <h2 id="pricing-heading">Professional Features. Practical Pricing.</h2>
-                <p>Free for landlords. Affordable for renters. No hidden fees.</p>
+                <p>Free for landlords. Affordable for tenants. No hidden fees.</p>
             </div>
             
             <div class="pricing-cta-grid">
@@ -724,7 +724,7 @@
                         <select id="userType" name="userType" required aria-required="true" aria-describedby="userType-error">
                             <option value="" disabled selected>I am a...</option>
                             <option value="landlord">Landlord</option>
-                            <option value="renter">Renter</option>
+                            <option value="tenant">Tenant</option>
                             <option value="both">Both</option>
                         </select>
                         <span class="error-message" id="userType-error" role="alert" aria-live="polite"></span>
