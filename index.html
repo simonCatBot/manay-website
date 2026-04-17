@@ -848,6 +848,9 @@
         const heroToggleBtns = document.querySelectorAll('.hero-toggle .toggle-btn');
         const landlordsCta = document.getElementById('landlords-cta');
         const rentersCta = document.getElementById('renters-cta');
+        const flowToggleBtns = document.querySelectorAll('.how-it-works .section-toggle-btn');
+        const landlordFlow = document.getElementById('landlord-flow');
+        const renterFlow = document.getElementById('renter-flow');
         
         function showLandlordView() {
             // Update main section toggle
@@ -875,6 +878,16 @@
             landlordsCta.hidden = false;
             rentersCta.classList.remove('active');
             rentersCta.hidden = true;
+
+            // Sync How It Works flow toggle
+            flowToggleBtns.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-selected', 'false');
+            });
+            document.getElementById('flow-landlord-toggle').classList.add('active');
+            document.getElementById('flow-landlord-toggle').setAttribute('aria-selected', 'true');
+            landlordFlow.classList.remove('hidden');
+            renterFlow.classList.add('hidden');
         }
         
         function showRenterView() {
@@ -903,6 +916,16 @@
             rentersCta.hidden = false;
             landlordsCta.classList.remove('active');
             landlordsCta.hidden = true;
+
+            // Sync How It Works flow toggle
+            flowToggleBtns.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-selected', 'false');
+            });
+            document.getElementById('flow-renter-toggle').classList.add('active');
+            document.getElementById('flow-renter-toggle').setAttribute('aria-selected', 'true');
+            renterFlow.classList.remove('hidden');
+            landlordFlow.classList.add('hidden');
         }
         
         if (sectionToggleBtns.length > 0) {
@@ -930,29 +953,16 @@
             });
         }
 
-        // How It Works Flow Toggle
-        const flowToggleBtns = document.querySelectorAll('.how-it-works .section-toggle-btn');
-        const landlordFlow = document.getElementById('landlord-flow');
-        const renterFlow = document.getElementById('renter-flow');
+        // How It Works Flow Toggle (declarations already above)
         
         if (flowToggleBtns.length > 0) {
             flowToggleBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
-                    // Update active state
-                    flowToggleBtns.forEach(b => {
-                        b.classList.remove('active');
-                        b.setAttribute('aria-selected', 'false');
-                    });
-                    btn.classList.add('active');
-                    btn.setAttribute('aria-selected', 'true');
-                    
-                    // Toggle flows
+                    // Sync with main landlord/tenant toggle
                     if (btn.dataset.target === 'landlord-flow') {
-                        landlordFlow.classList.remove('hidden');
-                        renterFlow.classList.add('hidden');
+                        showLandlordView();
                     } else {
-                        landlordFlow.classList.add('hidden');
-                        renterFlow.classList.remove('hidden');
+                        showRenterView();
                     }
                 });
             });
