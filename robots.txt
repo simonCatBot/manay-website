@@ -1,19 +1,14 @@
 # robots.txt for Manay - Rental Management Platform
-# https://simoncatbot.github.io/manay-website/
+# https://manay.in/
 
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://simoncatbot.github.io/manay-website/sitemap.xml
+Sitemap: https://manay.in/sitemap.xml
 
 # Crawl rate
 Crawl-delay: 1
-
-# Disallow specific patterns (if needed in future)
-# Disallow: /admin/
-# Disallow: /private/
-# Disallow: /api/
 
 # Allow specific crawlers (good bots)
 User-agent: Googlebot
