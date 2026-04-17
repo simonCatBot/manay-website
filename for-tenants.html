@@ -225,9 +225,7 @@
                     <span class="guide-section-header__tag">#InspectFirst</span>
                     <h2 id="checklist-title" class="guide-section-header__title">House Inspection Checklist</h2>
                     <p class="guide-section-header__desc">Print this or save it on your phone. Check every item before you sign anything.</p>
-                    <button class="checklist-print-btn" onclick="printChecklist()" aria-label="Print or save checklist as PDF">
-                        <i class="fas fa-print" aria-hidden="true"></i> Print / Save as PDF
-                    </button>
+
                 </div>
                 <div class="checklist-grid">
                     <div class="checklist-item">
@@ -278,6 +276,11 @@
                         <span class="checklist-item__icon"><i class="fas fa-check-circle" aria-hidden="true"></i></span>
                         <span class="checklist-item__text">Ask current tenants about water availability and power cuts</span>
                     </div>
+                </div>
+                <div class="checklist-print-footer">
+                    <button class="checklist-print-btn" onclick="printChecklist()" aria-label="Print or save checklist as PDF">
+                        <i class="fas fa-print" aria-hidden="true"></i>
+                    </button>
                 </div>
             </div>
         </section>
@@ -426,22 +429,82 @@
     <script src="script.js"></script>
     <script>
         function printChecklist() {
-            // Find the checklist section
-            const checklistSection = document.querySelector('.guide-section--light');
-            if (!checklistSection) return;
+            const section = document.querySelector('.guide-section--light');
+            if (!section) return;
 
-            // Set page title for print footer
-            const pageTitle = document.querySelector('.guide-section-header__title');
-            checklistSection.setAttribute('data-page-title', pageTitle ? pageTitle.textContent : '');
+            const title = section.querySelector('.guide-section-header__title');
+            const desc = section.querySelector('.guide-section-header__desc');
+            const items = section.querySelectorAll('.checklist-item');
 
-            // Mark the section as the print root and trigger print
-            checklistSection.classList.add('print-root');
-            window.print();
+            const pageTitle = title ? title.textContent : 'Checklist';
+            const pageDesc = desc ? desc.textContent : '';
 
-            // Clean up after print dialog closes
-            setTimeout(() => {
-                checklistSection.classList.remove('print-root');
-            }, 500);
+            // Build checklist HTML
+            let checklistHTML = '';
+            items.forEach(item => {
+                const text = item.querySelector('.checklist-item__text');
+                if (text) {
+                    checklistHTML += `
+                        <div style="display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border:1px solid #d1d5db;border-radius:8px;margin-bottom:8px;page-break-inside:avoid;">
+                            <div style="width:20px;height:20px;border:2px solid #6366f1;border-radius:4px;flex-shrink:0;margin-top:2px;"></div>
+                            <span style="font-size:12pt;color:#1f2937;line-height:1.5;">${text.textContent}</span>
+                        </div>`;
+                }
+            });
+
+            const printHTML = `<!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <title>${pageTitle} | Manay</title>
+                <style>
+                    @page { margin: 1.5cm; }
+                    * { margin: 0; padding: 0; box-sizing: border-box; }
+                    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: #1f2937; padding: 0; }
+                    .print-header { display: flex; align-items: center; justify-content: space-between; padding-bottom: 16px; margin-bottom: 24px; border-bottom: 2px solid #6366f1; }
+                    .print-logo { display: flex; align-items: center; gap: 10px; }
+                    .print-logo-icon { font-size: 28pt; font-weight: 700; background: linear-gradient(135deg, #6366f1, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+                    .print-logo-name { font-size: 18pt; font-weight: 700; color: #1f2937; }
+                    .print-logo-tagline { font-size: 9pt; color: #6b7280; margin-top: 2px; }
+                    .print-qr { text-align: right; font-size: 8pt; color: #6b7280; }
+                    .print-title { font-size: 20pt; font-weight: 700; color: #1f2937; margin-bottom: 6px; }
+                    .print-desc { font-size: 11pt; color: #6b7280; margin-bottom: 20px; }
+                    .print-checklist { columns: 1; }
+                    .print-footer { margin-top: 32px; padding-top: 12px; border-top: 1px solid #e5e7eb; display: flex; justify-content: space-between; font-size: 8pt; color: #9ca3af; }
+                    @media print { body { padding: 0; } }
+                </style>
+            </head>
+            <body>
+                <div class="print-header">
+                    <div class="print-logo">
+                        <div>
+                            <div class="print-logo-icon">ಮನೆ</div>
+                            <div class="print-logo-name">Manay</div>
+                            <div class="print-logo-tagline">Your Home. Your Rules.</div>
+                        </div>
+                    </div>
+                    <div class="print-qr">manay.in</div>
+                </div>
+
+                <div class="print-title">${pageTitle}</div>
+                <div class="print-desc">${pageDesc}</div>
+
+                <div class="print-checklist">
+                    ${checklistHTML}
+                </div>
+
+                <div class="print-footer">
+                    <span>Printed from manay.in</span>
+                    <span>manay.in — Your Home, Simplified</span>
+                </div>
+            </body>
+            </html>`;
+
+            const printWindow = window.open('', '_blank', 'width=800,height=600');
+            printWindow.document.write(printHTML);
+            printWindow.document.close();
+            printWindow.focus();
+            setTimeout(() => { printWindow.print(); }, 300);
         }
     </script>
 </body>
