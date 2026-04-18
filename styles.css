@@ -87,34 +87,69 @@
 
     /* Light section cards need dark backgrounds in dark mode */
     .guide-section--light .icon-card {
-        background: #1f2937;
-        border: 1px solid #374151;
+        background: #374151;
+        border: 1px solid #4b5563;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     }
     .guide-section--light .icon-card:hover {
         border-color: var(--primary-light);
     }
     .guide-section--light .checklist-item {
-        background: #1f2937;
-        border: 1px solid #374151;
+        background: #374151;
+        border: 1px solid #4b5563;
+    }
+    .guide-section--light .checklist-item__text {
+        color: #e5e7eb;
+    }
+    .guide-section--light .checklist-item__icon {
+        color: var(--primary-light);
     }
     .guide-section--light .legal-tip {
-        background: rgba(99, 102, 241, 0.1);
-        border: 1px solid rgba(99, 102, 241, 0.2);
+        background: rgba(99, 102, 241, 0.15);
+        border: 1px solid rgba(99, 102, 241, 0.25);
+    }
+    .guide-section--light .legal-tip__text {
+        color: #d1d5db;
+    }
+    .guide-section--light .legal-tip__title {
+        color: var(--primary-light);
     }
     .guide-section--light .warning-card {
-        background: rgba(239, 68, 68, 0.1);
-        border: 1px solid rgba(239, 68, 68, 0.2);
+        background: rgba(239, 68, 68, 0.15);
+        border: 1px solid rgba(239, 68, 68, 0.25);
     }
-    .step-item {
-        background: #1f2937;
+    .guide-section--light .warning-card__text {
+        color: #d1d5db;
+    }
+    .guide-section--light .step-item {
+        background: #374151;
+    }
+    .guide-section--light .step-item__title {
+        color: #f9fafb;
+    }
+    .guide-section--light .step-item__text {
+        color: #d1d5db;
+    }
+    .guide-section--light .icon-card__title {
+        color: #f9fafb;
+    }
+    .guide-section--light .icon-card__text {
+        color: #d1d5db;
     }
     .karma-tier {
-        background: #1f2937;
+        background: #374151;
+    }
+    .karma-factor--light {
+        background: #374151;
+        border: 1px solid #4b5563;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    .karma-factor--light .karma-factor__bar {
+        background: #4b5563;
     }
     .karma-alert-note {
-        background: rgba(239, 68, 68, 0.1);
-        border: 1px solid rgba(239, 68, 68, 0.2);
+        background: rgba(239, 68, 68, 0.15);
+        border: 1px solid rgba(239, 68, 68, 0.25);
     }
 }
 
