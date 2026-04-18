@@ -423,6 +423,128 @@ assert(!stylesContent.includes('background: #f59e0b'), 'styles.css: No gold back
 // Warning cards should use red
 assert(stylesContent.includes('#ef4444'), 'styles.css: Uses red for warning cards');
 
+// 27. GOOD KARMA PAGE — Structure and content
+console.log('\n✨ Good Karma Page');
+if (fs.existsSync(path.join(ROOT, 'good-karma.html'))) {
+    const karma = readFile('good-karma.html');
+    // Basic structure
+    assert(karma.includes('<!DOCTYPE html>'), 'good-karma.html: Has DOCTYPE');
+    assert(karma.includes('lang="en"'), 'good-karma.html: Has lang attribute');
+    assert(karma.includes('<main'), 'good-karma.html: Has main landmark');
+    assert(karma.includes('<footer'), 'good-karma.html: Has footer');
+    assert(karma.includes('skip-link'), 'good-karma.html: Has skip link');
+
+    // SEO
+    assert(karma.includes('og:title'), 'good-karma.html: Has og:title');
+    assert(karma.includes('og:description'), 'good-karma.html: Has og:description');
+    assert(karma.includes('og:image'), 'good-karma.html: Has og:image');
+    assert(karma.includes('rel="canonical"'), 'good-karma.html: Has canonical URL');
+    assert(karma.includes('meta name="description"'), 'good-karma.html: Has meta description');
+    assert(karma.includes('Content-Security-Policy'), 'good-karma.html: Has CSP meta tag');
+    assert(karma.includes('WebPage'), 'good-karma.html: Has WebPage schema');
+
+    // Favicon
+    assert(karma.includes('favicon.svg'), 'good-karma.html: References favicon.svg');
+    assert(karma.includes('apple-touch-icon.png'), 'good-karma.html: References apple-touch-icon.png');
+
+    // Nav
+    assert(karma.includes('good-karma.html'), 'good-karma.html: Links to Good Karma page');
+    assert(karma.includes('for-landlords.html'), 'good-karma.html: Links to landlord guide');
+    assert(karma.includes('for-tenants.html'), 'good-karma.html: Links to tenant guide');
+    assert(karma.includes('pricing.html'), 'good-karma.html: Links to pricing');
+    assert(karma.includes('>Home<'), 'good-karma.html: Has Home nav link');
+    assert(karma.includes('aria-current="page"'), 'good-karma.html: Active nav link marked');
+
+    // Hero section
+    assert(karma.includes('karma-hero'), 'good-karma.html: Has karma hero section');
+    assert(karma.includes('Good Karma'), 'good-karma.html: Has Good Karma title');
+
+    // How it works (3 steps)
+    assert(karma.includes('step-flow'), 'good-karma.html: Has step flow');
+    const karmaStepCount = (karma.match(/step-item__number/g) || []).length;
+    assert(karmaStepCount >= 3, `good-karma.html: Has at least 3 steps (found ${karmaStepCount})`);
+
+    // Tenant Karma factors (6 factors)
+    assert(karma.includes('karma-factors-grid'), 'good-karma.html: Has karma factors grid');
+    assert(karma.includes('Payment Punctuality'), 'good-karma.html: Has Payment Punctuality factor');
+    assert(karma.includes('Home Upkeep'), 'good-karma.html: Has Home Upkeep factor');
+    assert(karma.includes('Lease Compliance'), 'good-karma.html: Has Lease Compliance factor');
+    assert(karma.includes('Dispute Record'), 'good-karma.html: Has Dispute Record factor');
+    assert(karma.includes('Duration Bonus'), 'good-karma.html: Has Duration Bonus factor');
+    assert(karma.includes('Community Score'), 'good-karma.html: Has Community Score factor');
+
+    // Landlord Karma factors (5 factors)
+    assert(karma.includes('Legal Compliance'), 'good-karma.html: Has Legal Compliance factor');
+    assert(karma.includes('Maintenance Response'), 'good-karma.html: Has Maintenance Response factor');
+    assert(karma.includes('Fair Practices'), 'good-karma.html: Has Fair Practices factor');
+    assert(karma.includes('Property Condition'), 'good-karma.html: Has Property Condition factor');
+    assert(karma.includes('Tenant Satisfaction'), 'good-karma.html: Has Tenant Satisfaction factor');
+
+    // Karma tiers
+    assert(karma.includes('karma-tier--gold'), 'good-karma.html: Has Gold tier');
+    assert(karma.includes('karma-tier--silver'), 'good-karma.html: Has Silver tier');
+    assert(karma.includes('karma-tier--bronze'), 'good-karma.html: Has Bronze tier');
+    assert(karma.includes('Karma Alert'), 'good-karma.html: Mentions Karma Alert tier');
+
+    // Perks content
+    assert(karma.includes('1-month deposit') || karma.includes('1 month deposit'), 'good-karma.html: Gold tier mentions reduced deposit');
+    assert(karma.includes('5%') || karma.includes('5% annually'), 'good-karma.html: Gold tier mentions rent cap');
+
+    // Quarterly inspection section
+    assert(karma.includes('Quarterly Inspection') || karma.includes('quarterly inspection'), 'good-karma.html: Has inspection section');
+    assert(karma.includes('icon-card-grid'), 'good-karma.html: Has inspection category grid');
+
+    // Karma calculator
+    assert(karma.includes('karma-calculator'), 'good-karma.html: Has karma calculator');
+    assert(karma.includes('karma-slider__input'), 'good-karma.html: Has calculator sliders');
+    assert(karma.includes('karma-calculator__score'), 'good-karma.html: Has score display');
+    assert(karma.includes('karma-calculator__tier'), 'good-karma.html: Has tier display');
+
+    // WhatsApp CTA
+    assert(karma.includes('wa.me') || karma.includes('whatsapp'), 'good-karma.html: Has WhatsApp CTA');
+
+    // Back to top
+    assert(karma.includes('back-to-top'), 'good-karma.html: Has back-to-top button');
+
+    // No CIBIL
+    assert(!karma.includes('CIBIL'), 'good-karma.html: No CIBIL reference');
+
+    // Logo links home
+    assert(karma.includes('href="index.html"'), 'good-karma.html: Logo links to home');
+}
+
+// 28. GOOD KARMA CSS
+console.log('\n🎨 Good Karma Styles');
+const stylesKarma = readFile('styles.css');
+assert(stylesKarma.includes('.karma-hero'), 'styles.css: Has karma hero styles');
+assert(stylesKarma.includes('.karma-tier-badge'), 'styles.css: Has tier badge styles');
+assert(stylesKarma.includes('.karma-factors-grid'), 'styles.css: Has factors grid styles');
+assert(stylesKarma.includes('.karma-factor__bar'), 'styles.css: Has factor progress bar styles');
+assert(stylesKarma.includes('.karma-tiers-grid'), 'styles.css: Has tiers grid styles');
+assert(stylesKarma.includes('.karma-tier--gold'), 'styles.css: Has Gold tier styles');
+assert(stylesKarma.includes('.karma-tier--silver'), 'styles.css: Has Silver tier styles');
+assert(stylesKarma.includes('.karma-tier--bronze'), 'styles.css: Has Bronze tier styles');
+assert(stylesKarma.includes('.karma-calculator'), 'styles.css: Has calculator styles');
+assert(stylesKarma.includes('.karma-slider__input'), 'styles.css: Has slider input styles');
+assert(stylesKarma.includes('.karma-alert-note'), 'styles.css: Has karma alert note styles');
+// Responsive
+assert(stylesKarma.includes('.karma-factors-grid') && stylesKarma.includes('max-width: 768px'), 'styles.css: Has karma responsive styles');
+
+// 29. GOOD KARMA NAV — All pages link to Good Karma
+console.log('\n🧭 Good Karma Navigation');
+ALL_PAGES.push('good-karma.html');
+for (const page of ALL_PAGES) {
+    if (!fs.existsSync(path.join(ROOT, page))) continue;
+    const html = readFile(page);
+    assert(html.includes('good-karma.html'), `${page}: Links to Good Karma page`);
+}
+
+// 30. SITEMAP includes Good Karma
+if (fs.existsSync(path.join(ROOT, 'sitemap.xml'))) {
+    const sitemap = readFile('sitemap.xml');
+    assert(sitemap.includes('good-karma.html'), 'sitemap.xml: Includes Good Karma page');
+}
+
 // RESULTS
 console.log('\n' + '='.repeat(50));
 console.log(`\n📊 RESULTS: ${passed} passed, ${failed} failed\n`);
