@@ -49,31 +49,31 @@
 </head>
 <body>
     <!-- Skip Navigation -->
-    <div class="skip-nav">
-        <a href="#main-content" class="skip-link">Skip to main content</a>
-    </div>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Navigation -->
-    <header class="header" role="banner">
-        <nav class="nav container" aria-label="Main navigation">
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar" aria-label="Main navigation">
+        <div class="nav-glass-effect"></div>
+        <div class="container">
             <div class="nav-brand">
                 <a href="index.html" aria-label="Manay Home">
                     <span class="logo" aria-hidden="true">ಮನೆ</span>
                     <span class="brand-name">Manay</span>
                 </a>
             </div>
-            <ul class="nav-links">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="for-landlords.html" class="nav-link">For Landlords</a></li>
-                <li><a href="for-tenants.html" class="nav-link">For Tenants</a></li>
-                <li><a href="good-karma.html" class="nav-link" aria-current="page">Good Karma</a></li>
-                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
-            </ul>
-            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="for-landlords.html" class="nav-link">For Landlords</a>
+                <a href="for-tenants.html" class="nav-link">For Tenants</a>
+                <a href="good-karma.html" class="nav-link" aria-current="page">Good Karma</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="index.html#waitlist" class="nav-link cta-button">Join Waitlist</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu" tabindex="0">
                 <span></span><span></span><span></span>
             </button>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
     <main id="main-content">
         <!-- Hero Section -->
