@@ -55,11 +55,11 @@ Good Karma is a **mutual reputation system** for rentals. Both tenants and landl
 | **Deposit** | 2 months (legal standard) + deposit protection via Manay escrow | 1.5 months | **1 month** (half the legal cap) |
 | **Rent increase cap** | Market rate | 8% max/year | **5% max/year** |
 | **Verified badge** | None yet | ✅ Verified Tenant | ✅ **Gold Verified Tenant** |
-| **Listing access** | Standard | Priority | **First access** |
+| **Listing access** | Standard — browse available homes | Priority | **First access** |
 | **Subscription discount** | Full price | 20% off | **40% off** |
 | **Credit score reporting** | Not included | Monthly | **Monthly + weighted boost** |
 | **HRA receipts** | On request | Within 48 hours | **Within 24 hours** |
-| **Zero-Chase Payments** | ✅ | ✅ | ✅ |
+| **Move-in/move-out photos** | ✅ Timestamped for your protection | ✅ | ✅ |
 | **Annual inspection** | ✅ Included | ✅ | ✅ |
 
 ### Landlord Perks

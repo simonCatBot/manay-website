@@ -583,7 +583,7 @@ if (fs.existsSync(path.join(ROOT, 'good-karma.html'))) {
     assert(!karma.includes('No inspection discount'), 'good-karma.html: No "No inspection discount" negative phrasing');
 
     // Bronze has additive perks
-    assert(karma.includes('Deposit protection') || karma.includes('Zero-Chase'), 'good-karma.html: Bronze tenant has positive perks listed');
+    assert(karma.includes('Deposit protection') || karma.includes('move-in/move-out'), 'good-karma.html: Bronze tenant has positive perks listed');
     assert(karma.includes('Kaveri 2.0') || karma.includes('Dispute documentation'), 'good-karma.html: Bronze landlord has positive perks listed');
 
     // Tier taglines exist
