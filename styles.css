@@ -3690,7 +3690,15 @@ textarea:focus-visible {
 .karma-tier__score {
     font-size: 0.875rem;
     color: #9ca3af;
+    margin-bottom: 0.25rem;
+}
+
+.karma-tier__tagline {
+    font-size: 0.8125rem;
+    color: #d1d5db;
+    font-style: italic;
     margin-bottom: 1.25rem;
+    line-height: 1.4;
 }
 
 .karma-tier__perks {
