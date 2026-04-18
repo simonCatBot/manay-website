@@ -600,7 +600,7 @@ if (fs.existsSync(path.join(ROOT, 'good-karma.html'))) {
 
     // Mutual benefit section exists
     assert(karma.includes('mutual-benefit-heading'), 'good-karma.html: Has mutual benefit section');
-    assert(karma.includes('When Gold Meets Gold'), 'good-karma.html: Has "When Gold Meets Gold" heading');
+    assert(karma.includes('When Good Karma Meets Good Karma'), 'good-karma.html: Has "When Good Karma Meets Good Karma" heading');
 
     // Gold + Gold benefits
     assert(karma.includes('1-month deposit instead of 2') || karma.includes('1-month deposit'), 'good-karma.html: Gold+Gold mentions reduced deposit');
