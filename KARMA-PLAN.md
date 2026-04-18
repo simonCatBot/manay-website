@@ -1,20 +1,10 @@
-# Good Karma — Feature Plan
+# Good Karma — Feature Plan (Revised)
 
 ## Concept
 
-Good Karma is a **mutual reputation system** for rentals. Both tenants and landlords earn Karma points based on measurable behaviors. High Karma = perks. Low Karma = consequences. It's trust, quantified.
+Good Karma is a **mutual reputation system** for rentals. Both tenants and landlords earn Karma points based on measurable behaviors. Higher Karma unlocks real perks that save real money — but cost Manay almost nothing in marginal terms.
 
 **Nobody in India does this.** This is Manay's most defensible differentiator.
-
----
-
-## Why This Works
-
-1. **Incentivizes good behavior** — tenants pay on time, maintain homes; landlords maintain properties, don't harass
-2. **Information asymmetry killer** — currently tenants walk into rentals blind; landlords screen tenants one-way. Karma makes reputation two-way
-3. **Network effect** — more users = more data = better signals = more value. Each Karma profile makes the system smarter
-4. **Defensible** — requires transaction data (payments, inspections, disputes) that only Manay has
-5. **Bangalore-specific** — with 2026 law compliance as a Karma factor, this is locked to Manay's legal positioning
 
 ---
 
@@ -22,185 +12,174 @@ Good Karma is a **mutual reputation system** for rentals. Both tenants and landl
 
 ### Tenant Karma (0-100)
 
-| Factor | Weight | How It's Measured | Points |
-|--------|--------|-------------------|--------|
-| **Payment Punctuality** | 35% | On-time rent payments via UPI mandate | 0-35 pts |
-| **Home Upkeep** | 25% | Quarterly third-party inspection scores | 0-25 pts |
-| **Lease Compliance** | 15% | No early termination,遵守 agreement terms | 0-15 pts |
-| **Dispute Record** | 10% | No landlord disputes filed against tenant | 0-10 pts |
-| **Duration Bonus** | 10% | Cumulative months of tenancy (loyalty) | 0-10 pts |
-| **Community Score** | 5% | RWA/neighbor feedback (optional) | 0-5 pts |
-
-**Scoring:**
-- 90-100: 🟢 **Karma Gold** — top-tier tenant
-- 70-89: 🟡 **Karma Silver** — reliable tenant
-- 50-69: 🟠 **Karma Bronze** — average tenant
-- Below 50: 🔴 **Karma Alert** — risk signals
+| Factor | Weight | How It's Measured | Max Points |
+|--------|--------|-------------------|------------|
+| **Payment Punctuality** | 35% | On-time rent via UPI mandate | 0-35 |
+| **Home Upkeep** | 25% | Quarterly third-party inspection scores | 0-25 |
+| **Lease Compliance** | 15% | No early termination,遵守 terms | 0-15 |
+| **Dispute Record** | 10% | No landlord disputes filed | 0-10 |
+| **Duration Bonus** | 10% | Cumulative months of tenancy | 0-10 |
+| **Community Score** | 5% | RWA/neighbor feedback | 0-5 |
 
 ### Landlord Karma (0-100)
 
-| Factor | Weight | How It's Measured | Points |
-|--------|--------|-------------------|--------|
-| **Compliance** | 30% | 2026 law compliance (deposit cap, Kaveri 2.0, agreement) | 0-30 pts |
-| **Maintenance** | 25% | Response time to repair requests, property condition | 0-25 pts |
-| **Fair Practices** | 20% | No unjustified eviction, no illegal charges, deposit returned on time | 0-20 pts |
-| **Inspection Score** | 15% | Property condition at quarterly inspection | 0-15 pts |
-| **Tenant Satisfaction** | 10% | Exit survey ratings from tenants | 0-10 pts |
-
-**Scoring:**
-- 90-100: 🟢 **Karma Gold** — preferred landlord
-- 70-89: 🟡 **Karma Silver** — good landlord
-- 50-69: 🟠 **Karma Bronze** — average landlord
-- Below 50: 🔴 **Karma Alert** — red flag landlord
+| Factor | Weight | How It's Measured | Max Points |
+|--------|--------|-------------------|------------|
+| **Legal Compliance** | 30% | 2026 law: deposit cap, Kaveri 2.0, agreements | 0-30 |
+| **Maintenance Response** | 25% | Repair response time, property condition | 0-25 |
+| **Fair Practices** | 20% | No illegal charges, deposit returned on time | 0-20 |
+| **Property Condition** | 15% | Quarterly inspection scores (landlord side) | 0-15 |
+| **Tenant Satisfaction** | 10% | Exit survey ratings | 0-10 |
 
 ---
 
-## Karma Perks (What You Earn)
+## Tier Thresholds
 
-### Tenant Perks (by Karma Tier)
+| Tier | Score Range | Vibe |
+|------|------------|------|
+| **🟢 Gold** | 90-100 | "You're the tenant landlords want to keep" / "Tenants seek you out" |
+| **🟡 Silver** | 70-89 | "You've proven yourself — trusted perks unlock" |
+| **🟠 Bronze** | 50-69 | "You're in — more than any broker offers" |
+| **🔴 Alert** | Below 50 | "Needs attention — but not permanent" |
 
-| Perk | Gold (90+) | Silver (70-89) | Bronze (50-69) |
-|------|-----------|---------------|----------------|
-| **Rent negotiation power** | Strong — show Karma to new landlord | Moderate | Weak |
-| **Rent increase cap** | Landlord agrees to ≤5% annual increase | ≤8% | Market rate |
-| **Priority listing access** | First to see new Manay listings | Second | Normal |
-| **Deposit discount** | 1 month deposit (vs 2 month cap) | 1.5 months | 2 months (legal max) |
-| **Manay subscription** | Free tenant plan | 50% off | Full price |
-| **Credit score boost** | Maximum reporting weight | Standard | Minimum weight |
+---
 
-### Landlord Perks (by Karma Tier)
+## Perks Model (Revised — No Free Subscriptions)
 
-| Perk | Gold (90+) | Silver (70-89) | Bronze (50-69) |
-|------|-----------|---------------|----------------|
-| **Tenant attraction** | "Karma Gold Landlord" badge on listing | "Verified Landlord" | No badge |
-| **Faster tenant matching** | Priority in Manay's matching queue | Standard | Deprioritized |
-| **Manay subscription** | Free landlord plan | 50% off | Full price |
-| **Dispute support** | Priority Rent Tribunal support | Standard | Basic |
-| **RWA recognition** | "Compliant Landlord" certificate | Basic certificate | None |
+**Design principle:** Karma enhances your subscription, doesn't replace it. Every tier is additive — Bronze is the foundation, not the bottom.
+
+### Tenant Perks
+
+| Perk | Bronze (50-69) | Silver (70-89) | Gold (90+) |
+|------|----------------|----------------|------------|
+| **Deposit** | 2 months (legal standard) + deposit protection via Manay escrow | 1.5 months | **1 month** (half the legal cap) |
+| **Rent increase cap** | Market rate | 8% max/year | **5% max/year** |
+| **Verified badge** | None yet | ✅ Verified Tenant | ✅ **Gold Verified Tenant** |
+| **Listing access** | Standard | Priority | **First access** |
+| **Subscription discount** | Full price | 20% off | **40% off** |
+| **Credit score reporting** | Not included | Monthly | **Monthly + weighted boost** |
+| **HRA receipts** | On request | Within 48 hours | **Within 24 hours** |
+| **Zero-Chase Payments** | ✅ | ✅ | ✅ |
+| **Annual inspection** | ✅ Included | ✅ | ✅ |
+
+### Landlord Perks
+
+| Perk | Bronze (50-69) | Silver (70-89) | Gold (90+) |
+|------|----------------|----------------|------------|
+| **Verified badge** | None yet | ✅ Verified Landlord | ✅ **Gold Landlord** |
+| **Listing placement** | Standard | Priority matching | **Top placement** |
+| **Inspection frequency** | 1x/year | 2x/year | **4x/year** |
+| **Inspection discount** | None | 10% off | **25% off** |
+| **Subscription discount** | Full price | 20% off | **40% off** |
+| **Compliance certificate** | No | Digital | **Digital + printable** |
+| **Rent Tribunal support** | Documentation ready | Standard | **Priority** |
+| **Zero-Chase Payments** | ✅ | ✅ | ✅ |
+| **Kaveri 2.0 registration** | ✅ Handled | ✅ | ✅ |
+| **Dispute documentation** | ✅ Ready when needed | ✅ | ✅ |
+
+---
+
+## Cost to Manay (Near-Zero Marginal Cost)
+
+| Perk | Actual Cost | Perceived Value |
+|------|------------|-----------------|
+| Verified badge | ₹0 (database label) | High trust signal |
+| Profile/listing priority | ₹0 (sort order) | Feels exclusive |
+| Rent increase cap | ₹0 (lease clause) | Real money saved |
+| Deposit reduction | ₹0 (lease clause) | ₹25K+ saved on ₹25K/mo rental |
+| HRA receipt speed | ₹0 (automated PDF) | Tax savings |
+| Credit score reporting | ₹10-30/month | Credit building |
+| Inspection frequency | ₹500-1500/visit | Verification, trust |
+| Inspection discount | Revenue reduction, not new cost | Feels like a deal |
+| Subscription discount | Revenue reduction | Feels like a reward |
+| Compliance certificate | ₹0 (generated PDF) | Authority signal |
+
+**Key insight:** Almost everything costs ₹0 in marginal cost. The few things that cost real money (inspections, credit reporting) are either already in the plan or discounted. But from the user's perspective, they're getting ₹25,000+ in value.
+
+---
+
+## Mutual Benefit: When Gold Meets Gold
+
+**Gold Landlord + Gold Tenant = a rental relationship that actually works.**
+
+### Why Gold Landlords Want Gold Tenants
+- Verified payment history → never chase rent
+- Clean inspection reports → home is maintained
+- No disputes → no legal costs
+- **Renewing a Gold tenant is cheaper than finding a new one** (₹50K+ in vacancy/advertising/makeup costs saved)
+
+### Why Gold Tenants Want Gold Landlords
+- Compliant agreements → no illegal clauses
+- Fast maintenance → things get fixed
+- Verified track record → **your deposit comes back**
+- **You can actually enjoy where you live**
+
+### The Win-Win
+- 1-month deposit instead of 2 (tenant saves ₹25K)
+- Rent capped at 5% (no surprise hikes)
+- Quarterly inspections = shared record = no "wall was already damaged" arguments
+- Renewal becomes automatic — why leave when everything works?
+- Disputes rarely happen — problems get resolved before they escalate
+
+### Real Money Math (₹25,000/mo rental)
+- Tenant saves: ₹25,000 on deposit (1 month vs 2)
+- Landlord saves: ₹50,000+ in vacancy costs (no turnover)
+- Both save: Zero disputes, zero legal fees, zero stress
 
 ---
 
 ## Quarterly Home Inspection Program
 
-**The mechanism that makes Karma real.**
-
 ### How It Works
-1. Manay schedules a third-party inspection every 3 months
-2. Inspector visits property (30-45 min assessment)
-3. Standard checklist: walls, plumbing, electrical, flooring, fixtures, appliances, cleanliness
-4. Both landlord and tenant receive the report
-5. Scores feed into Karma calculation
-6. Disputes about condition are resolved with inspection data (not he-said/she-said)
+1. Manay schedules inspection (7 days' notice to both parties)
+2. Certified inspector visits (30-45 min)
+3. 8 categories scored, photos documented
+4. Digital report to both landlord and tenant
+5. Disputes within 7 days, otherwise scores stand
+6. Scores feed directly into Karma
 
-### Inspection Checklist (what's scored)
-- **Walls & Paint**: condition, damage, unauthorized modifications
-- **Plumbing**: leaks, fixtures, water damage
-- **Electrical**: switches, wiring safety, appliance condition
-- **Flooring**: tiles, carpet, damage
-- **Doors & Windows**: locks, hinges, glass condition
-- **Cleanliness**: general upkeep, pest control
-- **Safety**: fire extinguisher, smoke detector (if applicable)
-- **Unauthorized changes**: structural modifications, additional occupants
+### Inspection Categories
+1. 🧱 Walls & Paint
+2. 🚿 Plumbing
+3. ⚡ Electrical
+4. 🔲 Flooring
+5. 🚪 Doors & Windows
+6. ✨ Cleanliness
+7. 🔥 Safety
+8. 🏗️ Unauthorized Modifications
 
-### Scoring
-- Each category: 1-5 stars
-- Overall: weighted average
-- Photos attached to report
-- Both parties sign off (or dispute within 7 days)
-
-### Who Does the Inspection?
-- **Phase 1:** Manay team / verified partners (Bangalore home inspection services)
-- **Phase 2:** Trained inspectors via Manay app
-- **Phase 3:** Self-inspection with photo documentation + random audits
+### Frequency by Tier
+| Tier | Inspections/Year |
+|------|-----------------|
+| Gold | 4 (quarterly) |
+| Silver | 2 (semi-annual) |
+| Bronze | 1 (annual) |
 
 ---
 
-## Good Karma Page Structure
+## Implementation
 
-### Hero Section
-- Gradient hero (matches site: indigo→purple→pink)
-- Title: "Good Karma for Good Rentals"
-- Subtitle: "Earn trust. Earn perks. The first mutual reputation system for Indian rentals."
-- Badge/icon showing Karma score visual (circular gauge or star)
+### Files Created/Modified
+- `good-karma.html` — 8-section page
+- `styles.css` — karma page + teaser styles + light section fixes
+- `index.html` — karma teaser section + nav link
+- `sitemap.xml` — good-karma.html added
+- All pages — nav/footer links updated
+- `tests/run_tests.js` — 371 total tests
 
-### How Karma Works (3-step flow)
-1. **Live your rental right** — pay on time, maintain the home, follow the agreement
-2. **Get verified quarterly** — third-party inspection scores your home upkeep
-3. **Earn Karma, unlock perks** — rent discounts, priority access, lower deposits
-
-### Tenant Karma Section
-- Score breakdown card (6 factors with visual bars/progress)
-- Perks table (Gold / Silver / Bronze)
-- Example Karma profile (mockup)
-
-### Landlord Karma Section
-- Score breakdown card (5 factors)
-- Perks table
-- Why Karma matters for landlords ("Attract better tenants")
-
-### Quarterly Inspection Section
-- How it works (timeline: schedule → inspect → score → karma update)
-- What's inspected (8-category grid with icons)
-- Sample inspection report preview
-
-### Karma Calculator (Interactive)
-- Sliders for each factor
-- Real-time Karma score calculation
-- Shows which tier you'd reach
-- "See what perks you'd unlock"
-
-### Social Proof / CTA
-- "Be among the first to earn Good Karma" 
-- WhatsApp CTA + Waitlist
-- "Karma Gold landlords get verified first"
+### Page Sections
+1. Hero with tier badges
+2. How Karma Works (3-step flow)
+3. Tenant Karma Score (6 factors)
+4. Landlord Karma Score (5 factors)
+5. Tenant Perks (Gold/Silver/Bronze with taglines)
+6. Landlord Perks (Gold/Silver/Bronze with taglines)
+7. Quarterly Inspection (4-step timeline + 8-category grid)
+8. When Gold Meets Gold (mutual benefit section)
+9. Karma Calculator (interactive sliders)
+10. Why Karma Matters (4 icon cards)
+11. CTA
 
 ---
 
-## Design Principles
-
-1. **Feels like a game, not a grade** — Karma should feel rewarding, not punitive
-2. **Red for warnings, green for good** — consistent with main site's red warning cards
-3. **No shaming** — low scores shown as "improving" not "bad"
-4. **Both sides benefit** — tenant AND landlord karma, always paired
-5. **Quantified but human** — scores with explanations, not just numbers
-6. **Matches main site** — indigo→purple→pink gradients, same nav, same footer, same card styles
-
-### Color Coding
-- Karma Gold: #10b981 (emerald green) — achievement, premium
-- Karma Silver: #8b5cf6 (purple, matches site) — solid, reliable
-- Karma Bronze: #f59e0b (amber) — baseline, improving
-- Karma Alert: #ef4444 (red, matches site warnings) — attention needed
-
----
-
-## Implementation Plan
-
-### Files to Create/Modify
-1. **`good-karma.html`** — new page
-2. **`styles.css`** — add Karma page styles
-3. **`index.html`** — add nav link, hero mention
-4. **`pricing.html`** — add Karma perks reference
-5. **`for-landlords.html`** — add Karma landlord reference
-6. **`for-tenants.html`** — add Karma tenant reference
-7. **`sitemap.xml`** — add good-karma.html
-8. **`tests/run_tests.js`** — add Karma page tests
-
-### CSS Classes Needed
-- `.karma-hero` — hero section
-- `.karma-tier` — Gold/Silver/Bronze/Alert tier cards
-- `.karma-factor` — individual scoring factor with progress bar
-- `.karma-perks-table` — perks comparison
-- `.karma-inspection` — inspection timeline
-- `.karma-inspection-grid` — 8-category inspection checklist
-- `.karma-calculator` — interactive calculator section
-- `.karma-tier--gold`, `--silver`, `--bronze`, `--alert` — tier color variants
-
-### Karma Calculator (JavaScript)
-- Interactive sliders for each scoring factor
-- Real-time score calculation with weighted formula
-- Visual tier indicator that updates live
-- Perks unlock display
-
----
-
-*This is a planning document. Implementation follows.*
+*Last updated: 2026-04-17 — reflects revised perks model (no free subscriptions, additive tiers, mutual benefit section)*
