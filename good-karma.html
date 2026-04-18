@@ -314,17 +314,70 @@
                 </div>
 
                 <div class="section-toggle" role="tablist" aria-label="User type for Karma perks" style="justify-content: center; margin-bottom: 2rem;">
-                    <button class="section-toggle-btn active" data-target="tenant-perks" role="tab" aria-selected="true" id="karma-tenant-toggle">
-                        <i class="fas fa-home" aria-hidden="true"></i>
-                        For Tenants
-                    </button>
-                    <button class="section-toggle-btn" data-target="landlord-perks" role="tab" aria-selected="false" id="karma-landlord-toggle">
+                    <button class="section-toggle-btn active" data-target="landlord-perks" role="tab" aria-selected="true" id="karma-landlord-toggle">
                         <i class="fas fa-building" aria-hidden="true"></i>
                         For Landlords
                     </button>
+                    <button class="section-toggle-btn" data-target="tenant-perks" role="tab" aria-selected="false" id="karma-tenant-toggle">
+                        <i class="fas fa-home" aria-hidden="true"></i>
+                        For Tenants
+                    </button>
                 </div>
 
-                <div id="tenant-perks" class="karma-perks-panel">
+                <div id="landlord-perks" class="karma-perks-panel">
+                    <h3 class="karma-perks-subheading" style="font-size: 1.375rem; font-weight: 600; color: #f9fafb; text-align: center; margin-bottom: 1.5rem;">Landlord Perks — Every Tier Adds More Value</h3>
+                    <div class="karma-tiers-grid">
+                        <!-- Gold -->
+                        <div class="karma-tier karma-tier--gold">
+                            <div class="karma-tier__badge">✦</div>
+                            <h3 class="karma-tier__name">Karma Gold</h3>
+                            <p class="karma-tier__score">90 – 100</p>
+                            <p class="karma-tier__tagline">Tenants seek you out — that's the Gold advantage</p>
+                            <ul class="karma-tier__perks">
+                                <li><strong>Karma Gold Landlord</strong> verified badge</li>
+                                <li><strong>Top placement</strong> in Manay listings</li>
+                                <li><strong>Quarterly inspections</strong> (4x/year)</li>
+                                <li><strong>25% off</strong> inspection fees</li>
+                                <li><strong>40% off</strong> Manay subscription</li>
+                                <li><strong>Compliance certificate</strong> — digital + printable</li>
+                                <li><strong>Priority Rent Tribunal</strong> support</li>
+                            </ul>
+                        </div>
+
+                        <!-- Silver -->
+                        <div class="karma-tier karma-tier--silver">
+                            <div class="karma-tier__badge">✦</div>
+                            <h3 class="karma-tier__name">Karma Silver</h3>
+                            <p class="karma-tier__score">70 – 89</p>
+                            <p class="karma-tier__tagline">You're a trusted landlord — verified and recognized</p>
+                            <ul class="karma-tier__perks">
+                                <li><strong>Verified Landlord</strong> badge</li>
+                                <li><strong>Priority matching</strong> with good tenants</li>
+                                <li><strong>Semi-annual inspections</strong> (2x/year)</li>
+                                <li><strong>10% off</strong> inspection fees</li>
+                                <li><strong>20% off</strong> Manay subscription</li>
+                                <li><strong>Digital compliance</strong> certificate</li>
+                            </ul>
+                        </div>
+
+                        <!-- Bronze -->
+                        <div class="karma-tier karma-tier--bronze">
+                            <div class="karma-tier__badge">✦</div>
+                            <h3 class="karma-tier__name">Karma Bronze</h3>
+                            <p class="karma-tier__score">50 – 69</p>
+                            <p class="karma-tier__tagline">You're on the system — better than 99% of landlords</p>
+                            <ul class="karma-tier__perks">
+                                <li><strong>Annual inspection</strong> (1x/year) included</li>
+                                <li><strong>Standard</strong> tenant matching</li>
+                                <li><strong>Zero-Chase Payments</strong> — rent on time, every time</li>
+                                <li><strong>Kaveri 2.0 registration</strong> handled</li>
+                                <li><strong>Dispute documentation</strong> ready when needed</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tenant-perks" class="karma-perks-panel" hidden>
                     <h3 class="karma-perks-subheading" style="font-size: 1.375rem; font-weight: 600; color: #f9fafb; text-align: center; margin-bottom: 1.5rem;">Tenant Perks — Every Tier Adds More Value</h3>
                     <div class="karma-tiers-grid">
                         <!-- Gold -->
@@ -374,59 +427,6 @@
                                 <li><strong>Standard listing</strong> access — browse available homes</li>
                                 <li><strong>Move-in/move-out photos</strong> timestamped for your protection</li>
                                 <li><strong>HRA receipts</strong> on request</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="landlord-perks" class="karma-perks-panel" hidden>
-                    <h3 class="karma-perks-subheading" style="font-size: 1.375rem; font-weight: 600; color: #f9fafb; text-align: center; margin-bottom: 1.5rem;">Landlord Perks — Every Tier Adds More Value</h3>
-                    <div class="karma-tiers-grid">
-                        <!-- Gold -->
-                        <div class="karma-tier karma-tier--gold">
-                            <div class="karma-tier__badge">✦</div>
-                            <h3 class="karma-tier__name">Karma Gold</h3>
-                            <p class="karma-tier__score">90 – 100</p>
-                            <p class="karma-tier__tagline">Tenants seek you out — that's the Gold advantage</p>
-                            <ul class="karma-tier__perks">
-                                <li><strong>Karma Gold Landlord</strong> verified badge</li>
-                                <li><strong>Top placement</strong> in Manay listings</li>
-                                <li><strong>Quarterly inspections</strong> (4x/year)</li>
-                                <li><strong>25% off</strong> inspection fees</li>
-                                <li><strong>40% off</strong> Manay subscription</li>
-                                <li><strong>Compliance certificate</strong> — digital + printable</li>
-                                <li><strong>Priority Rent Tribunal</strong> support</li>
-                            </ul>
-                        </div>
-
-                        <!-- Silver -->
-                        <div class="karma-tier karma-tier--silver">
-                            <div class="karma-tier__badge">✦</div>
-                            <h3 class="karma-tier__name">Karma Silver</h3>
-                            <p class="karma-tier__score">70 – 89</p>
-                            <p class="karma-tier__tagline">You're a trusted landlord — verified and recognized</p>
-                            <ul class="karma-tier__perks">
-                                <li><strong>Verified Landlord</strong> badge</li>
-                                <li><strong>Priority matching</strong> with good tenants</li>
-                                <li><strong>Semi-annual inspections</strong> (2x/year)</li>
-                                <li><strong>10% off</strong> inspection fees</li>
-                                <li><strong>20% off</strong> Manay subscription</li>
-                                <li><strong>Digital compliance</strong> certificate</li>
-                            </ul>
-                        </div>
-
-                        <!-- Bronze -->
-                        <div class="karma-tier karma-tier--bronze">
-                            <div class="karma-tier__badge">✦</div>
-                            <h3 class="karma-tier__name">Karma Bronze</h3>
-                            <p class="karma-tier__score">50 – 69</p>
-                            <p class="karma-tier__tagline">You're on the system — better than 99% of landlords</p>
-                            <ul class="karma-tier__perks">
-                                <li><strong>Annual inspection</strong> (1x/year) included</li>
-                                <li><strong>Standard</strong> tenant matching</li>
-                                <li><strong>Zero-Chase Payments</strong> — rent on time, every time</li>
-                                <li><strong>Kaveri 2.0 registration</strong> handled</li>
-                                <li><strong>Dispute documentation</strong> ready when needed</li>
                             </ul>
                         </div>
                     </div>
