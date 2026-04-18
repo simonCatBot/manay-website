@@ -2570,6 +2570,11 @@ textarea:focus-visible {
     display: none;
 }
 
+/* Karma Perks Toggle Panels */
+.karma-perks-panel[hidden] {
+    display: none;
+}
+
 /* High Contrast Mode Enhancement */
 @media (prefers-contrast: high) {
     .feature-card,
