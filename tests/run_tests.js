@@ -565,9 +565,9 @@ if (fs.existsSync(path.join(ROOT, 'good-karma.html'))) {
     assert(karma.includes('Semi-annual inspections') || karma.includes('2x/year'), 'good-karma.html: Silver landlord has semi-annual inspections');
     assert(karma.includes('Annual inspection') || karma.includes('1x/year'), 'good-karma.html: Bronze landlord has annual inspection');
 
-    // Inspection discounts by tier
-    assert(karma.includes('25% off'), 'good-karma.html: Gold has 25% off inspection fees');
-    assert(karma.includes('10% off'), 'good-karma.html: Silver has 10% off inspection fees');
+    // Inspection frequency upgraded by Karma (not separate fees)
+    assert(karma.includes('upgraded from Max'), 'good-karma.html: Gold inspection frequency upgraded from Max');
+    assert(karma.includes('upgraded from Pro'), 'good-karma.html: Silver/Pro inspection frequency upgraded from Pro');
 
     // Deposit tiers (tenant)
     assert(karma.includes('1-month deposit'), 'good-karma.html: Gold tenant gets 1-month deposit');

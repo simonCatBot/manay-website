@@ -44,9 +44,9 @@ Good Karma is a **mutual reputation system** for rentals. Both tenants and landl
 
 ---
 
-## Perks Model (Revised — No Free Subscriptions)
+## Perks Model (Revised — Inspections in Plans, Karma Upgrades Frequency)
 
-**Design principle:** Karma enhances your subscription, doesn't replace it. Every tier is additive — Bronze is the foundation, not the bottom.
+**Design principle:** Inspections are included in Pro and Max plans (Pro = 1x/year, Max = 2x/year). Karma upgrades your inspection frequency beyond your plan tier. Karma enhances your subscription, doesn't replace it.
 
 ### Tenant Perks
 
@@ -59,8 +59,8 @@ Good Karma is a **mutual reputation system** for rentals. Both tenants and landl
 | **Subscription discount** | Full price | 20% off | **40% off** |
 | **Credit score reporting** | Not included | Monthly | **Monthly + weighted boost** |
 | **HRA receipts** | On request | Within 48 hours | **Within 24 hours** |
+| **Inspection frequency** | 1x/year (Pro baseline) | 2x/year (upgraded from Pro) | **4x/year** (upgraded from Max) |
 | **Move-in/move-out photos** | ✅ Timestamped for your protection | ✅ | ✅ |
-| **Annual inspection** | ✅ Included | ✅ | ✅ |
 
 ### Landlord Perks
 
@@ -68,8 +68,7 @@ Good Karma is a **mutual reputation system** for rentals. Both tenants and landl
 |------|----------------|----------------|------------|
 | **Verified badge** | None yet | ✅ Verified Landlord | ✅ **Gold Landlord** |
 | **Listing placement** | Standard | Priority matching | **Top placement** |
-| **Inspection frequency** | 1x/year | 2x/year | **4x/year** |
-| **Inspection discount** | None | 10% off | **25% off** |
+| **Inspection frequency** | 1x/year (Pro baseline) | 2x/year (upgraded from Pro) | **4x/year** (upgraded from Max) |
 | **Subscription discount** | Full price | 20% off | **40% off** |
 | **Compliance certificate** | No | Digital | **Digital + printable** |
 | **Rent Tribunal support** | Documentation ready | Standard | **Priority** |
