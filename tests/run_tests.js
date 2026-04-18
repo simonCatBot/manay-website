@@ -527,6 +527,8 @@ assert(stylesKarma.includes('.karma-tier--bronze'), 'styles.css: Has Bronze tier
 assert(stylesKarma.includes('.karma-calculator'), 'styles.css: Has calculator styles');
 assert(stylesKarma.includes('.karma-slider__input'), 'styles.css: Has slider input styles');
 assert(stylesKarma.includes('.karma-alert-note'), 'styles.css: Has karma alert note styles');
+assert(stylesKarma.includes('.karma-tier__tagline'), 'styles.css: Has karma tier tagline styles');
+assert(stylesKarma.includes('.karma-teaser'), 'styles.css: Has karma teaser styles');
 // Responsive
 assert(stylesKarma.includes('.karma-factors-grid') && stylesKarma.includes('max-width: 768px'), 'styles.css: Has karma responsive styles');
 
@@ -543,6 +545,93 @@ for (const page of ALL_PAGES) {
 if (fs.existsSync(path.join(ROOT, 'sitemap.xml'))) {
     const sitemap = readFile('sitemap.xml');
     assert(sitemap.includes('good-karma.html'), 'sitemap.xml: Includes Good Karma page');
+}
+
+// 31. GOOD KARMA — Perks content (revised model)
+console.log('\n🎁 Good Karma Perks Content');
+if (fs.existsSync(path.join(ROOT, 'good-karma.html'))) {
+    const karma = readFile('good-karma.html');
+
+    // No free subscriptions offered
+    assert(!karma.includes('Free Manay subscription'), 'good-karma.html: No "Free Manay subscription" perk');
+    assert(!karma.includes('Free subscription'), 'good-karma.html: No "Free subscription" perk');
+
+    // Subscription discounts instead of free
+    assert(karma.includes('40% off'), 'good-karma.html: Gold tier has 40% off subscription');
+    assert(karma.includes('20% off'), 'good-karma.html: Silver tier has 20% off subscription');
+
+    // Inspection frequency by tier (landlord)
+    assert(karma.includes('Quarterly inspections') || karma.includes('4x/year'), 'good-karma.html: Gold landlord has quarterly inspections');
+    assert(karma.includes('Semi-annual inspections') || karma.includes('2x/year'), 'good-karma.html: Silver landlord has semi-annual inspections');
+    assert(karma.includes('Annual inspection') || karma.includes('1x/year'), 'good-karma.html: Bronze landlord has annual inspection');
+
+    // Inspection discounts by tier
+    assert(karma.includes('25% off'), 'good-karma.html: Gold has 25% off inspection fees');
+    assert(karma.includes('10% off'), 'good-karma.html: Silver has 10% off inspection fees');
+
+    // Deposit tiers (tenant)
+    assert(karma.includes('1-month deposit'), 'good-karma.html: Gold tenant gets 1-month deposit');
+    assert(karma.includes('1.5-month deposit'), 'good-karma.html: Silver tenant gets 1.5-month deposit');
+
+    // Rent cap tiers (tenant)
+    assert(karma.includes('capped at 5%'), 'good-karma.html: Gold tenant has 5% rent cap');
+    assert(karma.includes('capped at 8%'), 'good-karma.html: Silver tenant has 8% rent cap');
+
+    // Bronze has positive framing (not "no badge" or "full price")
+    assert(!karma.includes('No badge yet'), 'good-karma.html: No "No badge yet" negative phrasing');
+    assert(!karma.includes('Full price Manay'), 'good-karma.html: No "Full price Manay" negative phrasing');
+    assert(!karma.includes('No inspection discount'), 'good-karma.html: No "No inspection discount" negative phrasing');
+
+    // Bronze has additive perks
+    assert(karma.includes('Deposit protection') || karma.includes('Zero-Chase'), 'good-karma.html: Bronze tenant has positive perks listed');
+    assert(karma.includes('Kaveri 2.0') || karma.includes('Dispute documentation'), 'good-karma.html: Bronze landlord has positive perks listed');
+
+    // Tier taglines exist
+    assert(karma.includes('karma-tier__tagline'), 'good-karma.html: Has tier tagline elements');
+
+    // Section headers say "adds more value" not just perks
+    assert(karma.includes('Every Tier Adds More Value'), 'good-karma.html: Section headers say "Every Tier Adds More Value"');
+}
+
+// 32. GOOD KARMA — Mutual benefit section
+console.log('\n🤝 Good Karma Mutual Benefit');
+if (fs.existsSync(path.join(ROOT, 'good-karma.html'))) {
+    const karma = readFile('good-karma.html');
+
+    // Mutual benefit section exists
+    assert(karma.includes('mutual-benefit-heading'), 'good-karma.html: Has mutual benefit section');
+    assert(karma.includes('When Gold Meets Gold'), 'good-karma.html: Has "When Gold Meets Gold" heading');
+
+    // Gold + Gold benefits
+    assert(karma.includes('1-month deposit instead of 2') || karma.includes('1-month deposit'), 'good-karma.html: Gold+Gold mentions reduced deposit');
+    assert(karma.includes('5%'), 'good-karma.html: Gold+Gold mentions 5% rent cap');
+    assert(karma.includes('renew'), 'good-karma.html: Mutual section mentions renewal');
+
+    // Why landlords want Gold tenants
+    assert(karma.includes('saves you money') || karma.includes('save you money'), 'good-karma.html: Explains why Gold tenants save landlords money');
+    assert(karma.includes('vacancy') || karma.includes('Renewing'), 'good-karma.html: Mentions vacancy cost or renewal benefit');
+
+    // Why tenants want Gold landlords
+    assert(karma.includes('deposit comes back') || karma.includes('deposit returned'), 'good-karma.html: Explains why Gold landlords return deposits');
+    assert(karma.includes('maintained') || karma.includes('fixed') || karma.includes('maintenance'), 'good-karma.html: Mentions maintenance benefits for tenants');
+
+    // Dispute prevention
+    assert(karma.includes('Disputes Rarely') || karma.includes('problems get resolved'), 'good-karma.html: Mentions dispute prevention');
+
+    // Real money saved
+    assert(karma.includes('Real Money') || karma.includes('₹25,000'), 'good-karma.html: Shows real money savings');
+}
+
+// 33. GOOD KARMA — Homepage teaser section
+console.log('\n🏠 Good Karma Homepage Teaser');
+if (fs.existsSync(path.join(ROOT, 'index.html'))) {
+    const index = readFile('index.html');
+    assert(index.includes('karma-teaser'), 'index.html: Has karma teaser section');
+    assert(index.includes('Good Karma'), 'index.html: Teaser mentions Good Karma');
+    assert(index.includes('good-karma.html'), 'index.html: Teaser links to good-karma.html');
+    assert(index.includes('karma-teaser__badge--gold'), 'index.html: Teaser has Gold badge');
+    assert(index.includes('karma-teaser__badge--silver'), 'index.html: Teaser has Silver badge');
+    assert(index.includes('karma-teaser__badge--bronze'), 'index.html: Teaser has Bronze badge');
 }
 
 // RESULTS
