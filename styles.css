@@ -84,6 +84,38 @@
         --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
         --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
     }
+
+    /* Light section cards need dark backgrounds in dark mode */
+    .guide-section--light .icon-card {
+        background: #1f2937;
+        border: 1px solid #374151;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    .guide-section--light .icon-card:hover {
+        border-color: var(--primary-light);
+    }
+    .guide-section--light .checklist-item {
+        background: #1f2937;
+        border: 1px solid #374151;
+    }
+    .guide-section--light .legal-tip {
+        background: rgba(99, 102, 241, 0.1);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+    .guide-section--light .warning-card {
+        background: rgba(239, 68, 68, 0.1);
+        border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+    .step-item {
+        background: #1f2937;
+    }
+    .karma-tier {
+        background: #1f2937;
+    }
+    .karma-alert-note {
+        background: rgba(239, 68, 68, 0.1);
+        border: 1px solid rgba(239, 68, 68, 0.2);
+    }
 }
 
 /* High Contrast Mode */
@@ -3674,6 +3706,28 @@ textarea:focus-visible {
 .karma-tier--bronze {
     background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(245, 158, 11, 0.05));
     border: 2px solid rgba(245, 158, 11, 0.3);
+}
+
+/* Dark section text helpers (responsive) */
+.dark-heading {
+    color: #f9fafb;
+}
+
+.dark-desc {
+    color: #9ca3af;
+}
+
+.karma-tag {
+    color: #10b981;
+}
+
+@media (max-width: 768px) {
+    .dark-heading {
+        color: #f9fafb;
+    }
+    .dark-desc {
+        color: #d1d5db;
+    }
 }
 
 .karma-tier__badge {
