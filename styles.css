@@ -2787,7 +2787,7 @@ textarea:focus-visible {
 }
 
 .guide-section--light .guide-section-header__title {
-    color: var(--text-primary);
+    color: #374151;
 }
 
 .guide-section--dark .guide-section-header__title {
@@ -2803,7 +2803,7 @@ textarea:focus-visible {
 }
 
 .guide-section--light .guide-section-header__desc {
-    color: var(--text-secondary);
+    color: #6b7280;
 }
 
 /* Icon Card Grid */
@@ -2869,7 +2869,7 @@ textarea:focus-visible {
 }
 
 .guide-section--light .icon-card__title {
-    color: var(--text-primary);
+    color: #374151;
 }
 
 .icon-card__text {
@@ -2879,7 +2879,7 @@ textarea:focus-visible {
 }
 
 .guide-section--light .icon-card__text {
-    color: var(--text-secondary);
+    color: #6b7280;
 }
 
 /* Step Flow (Process) */
@@ -2946,11 +2946,11 @@ textarea:focus-visible {
 
 /* Fix step-flow text in light sections */
 .guide-section--light .step-item__title {
-    color: var(--text-primary);
+    color: #374151;
 }
 
 .guide-section--light .step-item__text {
-    color: var(--text-secondary);
+    color: #6b7280;
 }
 
 .guide-section--light .step-item__number {
@@ -3028,7 +3028,7 @@ textarea:focus-visible {
 }
 
 .guide-section--light .checklist-item__text {
-    color: var(--text-primary);
+    color: #374151;
 }
 
 /* Warning/Pitfall Cards */
@@ -3096,7 +3096,7 @@ textarea:focus-visible {
 }
 
 .guide-section--light .legal-tip__text {
-    color: var(--text-secondary);
+    color: #6b7280;
 }
 
 .guide-section--light .legal-tip__title {
@@ -3669,7 +3669,7 @@ textarea:focus-visible {
 }
 
 .karma-factor--light .karma-factor__title {
-    color: var(--text-primary);
+    color: #374151;
 }
 
 .karma-factor__weight {
@@ -3679,7 +3679,7 @@ textarea:focus-visible {
 }
 
 .karma-factor--light .karma-factor__weight {
-    color: var(--text-secondary);
+    color: #6b7280;
 }
 
 .karma-factor__bar {
@@ -3708,7 +3708,7 @@ textarea:focus-visible {
 }
 
 .karma-factor--light .karma-factor__desc {
-    color: var(--text-secondary);
+    color: #6b7280;
 }
 
 /* Karma Tiers Grid */
