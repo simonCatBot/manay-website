@@ -123,36 +123,77 @@
 
 ---
 
-## Priority Roadmap (What to Build Next)
+## Priority Roadmap — WhatsApp-First MVP
 
-### Phase 1: Pre-Launch Trust (2-4 weeks)
-1. **Update sitemap.xml + robots.txt** → manay.in URLs, all 6 pages
-2. **Add FAQ schema markup** → Google rich results for rental queries
-3. **Add social proof section** → waitlist count, 3 early testimonials, "As seen in" logos
-4. **Add product preview section** → mock screens of the actual app UI
-5. **Add About/Founders section** → story, team, mission
-6. **Launch blog** → 5 posts targeting Bangalore rental SEO keywords
+**Key insight:** The MVP isn't an app — it's WhatsApp + Website. Manay's first version operates through WhatsApp Business API for rent collection, agreement coordination, and tenant communication, with the website as the trust/education/conversion layer. This means:
+- No app needed at launch
+- WhatsApp IS the product interface
+- Website's job: build trust, educate, convert to WhatsApp conversations
+- Product preview = showing the WhatsApp flow, not app screens
 
-### Phase 2: Conversion & Community (4-8 weeks)
-7. **Add referral mechanic** to waitlist ("Share, get priority")
-8. **Create WhatsApp community** → "Bangalore Renters Community"
+### Phase 1: WhatsApp-Ready Website (2-4 weeks)
+
+**1. Fix SEO Infrastructure** *(critical for discoverability)*
+- Update sitemap.xml → manay.in URLs, all 6 pages + lastmod dates
+- Update robots.txt → manay.in sitemap URL
+- Add JSON-LD FAQ schema to FAQ section → Google rich results
+- Add structured data for guide pages
+
+**2. Make WhatsApp the Primary CTA** *(aligns with MVP)*
+- Replace "Join Waitlist" hero CTA with "Chat on WhatsApp" as primary action
+- Add WhatsApp floating action button (replaces or supplements existing FAB)
+- Add WhatsApp Business link in hero, nav, footer, and CTA sections
+- Keep waitlist as secondary CTA ("Or join the waitlist")
+- Add "How it works: via WhatsApp" section showing the message flow
+
+**3. Add Social Proof & Trust** *(critical for conversion)*
+- Add "Early access" badge/count on hero ("Join X landlords already on Manay")
+- Add trust badges section: "Karnataka 2026 Compliant", "UPI Secure", "Kaveri 2.0 Ready"
+- Add "As seen in" placeholder (even startup media coverage counts)
+- Add 2-3 early adopter testimonials (from waitlist interviews)
+
+**4. Show the WhatsApp Product Flow** *(replaces app preview)*
+- Add "How Manay Works via WhatsApp" section with step-by-step mockups:
+  1. Send "Hi" to Manay on WhatsApp
+  2. Choose: I'm a Landlord / I'm a Tenant
+  3. Manay guides you through agreement, rent collection, receipts
+  4. Get automatic reminders, HRA receipts, compliance updates
+- Use chat-bubble style UI to show the WhatsApp conversation flow
+
+**5. Add About/Founders Section** *(trust & press-readiness)*
+- Add About page or hero section: who's behind Manay, why Bangalore rentals
+- Founder story, mission, the personal "why"
+- Makes the site press-ready and investor-ready
+
+**6. Launch Blog** *(SEO & authority)*
+- Add /blog page with 5 initial posts:
+  - "Karnataka's 2026 Rent Law: Everything Landlords Need to Know"
+  - "How to Get Your Security Deposit Back in Bangalore"
+  - "2-Month Deposit Cap: What It Means for You"
+  - "Bangalore Rental Agreement: Online vs Broker"
+  - "Why WhatsApp is the Future of Rent Management"
+- Target keywords: Bangalore rental, Karnataka rent law, deposit cap, HRA receipt
+
+### Phase 2: WhatsApp Community & Conversion (4-8 weeks)
+7. **Add WhatsApp community link** → "Bangalore Renters Community" group
+8. **Add referral mechanic** → "Share this WhatsApp link with your landlord"
 9. **Add competitor pricing comparison** to pricing page
-9. **Create press/media page** → downloadable logos, founder bio
-10. **Add "Coming to Android & iOS" badges**
+10. **Create press/media page** → downloadable logos, founder bio
 11. **Add Kannada touches** → taglines, section headings
+12. **WhatsApp Business auto-flows** → pre-built message templates for common queries
 
 ### Phase 3: Content & Authority (8-16 weeks)
-12. **Blog cadence** → 2 posts/week on rental law, tips, Bangalore market
-13. **YouTube channel** → "Karnataka Rent Law Explained" series
-14. **RWA partnerships** → 3-5 society pilots in South/Central Bangalore
-15. **LinkedIn thought leadership** → founder posts on rental reform
-16. **Press outreach** → pitch to YourStory, Inc42, Deccan Herald on the 2026 law angle
+13. **Blog cadence** → 2 posts/week on rental law, tips, Bangalore market
+14. **WhatsApp broadcast lists** → weekly rental law updates to subscribers
+15. **RWA partnerships** → 3-5 society pilots via WhatsApp onboarding
+16. **LinkedIn thought leadership** → founder posts on rental reform
+17. **Press outreach** → pitch to YourStory, Inc42, Deccan Herald on the 2026 law angle
 
-### Phase 4: Launch (when product is ready)
-17. **Product Hunt launch** → timed with app release
-18. **Google/AWS startup credits** → free infrastructure
-19. **RWA launch events** → onboarding 5 societies simultaneously
-20. **Referral program** → "Invite your landlord, both get 1 month free"
+### Phase 4: App Launch (when ready)
+18. **Transition WhatsApp power users to app** → "Get the full experience"
+19. **Product Hunt launch** → timed with app release
+20. **RWA launch events** → onboarding 5 societies simultaneously
+21. **Referral program** → "Invite your landlord, both get 1 month free"
 
 ---
 
@@ -174,15 +215,16 @@ The playbook: Legal compliance gets you in the door. Zero-Chase Payments keeps y
 
 ---
 
-## Key Metrics to Track
+## Key Metrics to Track (WhatsApp-First)
 
 | Metric | Target (6 months) | Target (12 months) |
 |--------|-------------------|---------------------|
+| WhatsApp conversations started | 500 | 5,000 |
 | Waitlist signups | 2,000 | 10,000 |
 | Blog organic traffic | 5,000/mo | 50,000/mo |
+| WhatsApp community members | 200 | 2,000 |
 | RWA partnerships | 5 | 25 |
-| DAU at launch | 500 | 5,000 |
-| MRR | ₹50K | ₹5L |
+| MRR (via WhatsApp flows) | ₹50K | ₹5L |
 
 ---
 

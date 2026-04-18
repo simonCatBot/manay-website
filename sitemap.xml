@@ -6,26 +6,50 @@
 
   <!-- Homepage -->
   <url>
-    <loc>https://simoncatbot.github.io/manay-website/</loc>
-    <lastmod>2026-03-21</lastmod>
+    <loc>https://manay.in/</loc>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
+  <!-- Pricing -->
+  <url>
+    <loc>https://manay.in/pricing.html</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Landlord Guide -->
+  <url>
+    <loc>https://manay.in/for-landlords.html</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Tenant Guide -->
+  <url>
+    <loc>https://manay.in/for-tenants.html</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Privacy Policy -->
   <url>
-    <loc>https://simoncatbot.github.io/manay-website/privacy-policy.html</loc>
-    <lastmod>2026-03-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://manay.in/privacy-policy.html</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 
   <!-- Terms of Service -->
   <url>
-    <loc>https://simoncatbot.github.io/manay-website/terms-of-service.html</loc>
-    <lastmod>2026-03-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://manay.in/terms-of-service.html</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 
 </urlset>

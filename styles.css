@@ -3071,6 +3071,309 @@ textarea:focus-visible {
     }
 }
 
+/* WhatsApp CTA Section */
+.whatsapp-cta {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    padding: 4rem 0;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.whatsapp-cta::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.whatsapp-cta .container {
+    position: relative;
+    z-index: 1;
+}
+
+.whatsapp-cta__title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.whatsapp-cta__text {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 500px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+}
+
+.whatsapp-cta__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: #ffffff;
+    color: #128C7E;
+    border-radius: 50px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.whatsapp-cta__button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-cta__button i {
+    font-size: 1.375rem;
+}
+
+.whatsapp-cta__secondary {
+    display: block;
+    margin-top: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.875rem;
+}
+
+.whatsapp-cta__secondary a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: underline;
+}
+
+/* Trust Badges */
+.trust-badges {
+    padding: 3rem 0;
+    background: var(--bg-secondary);
+    text-align: center;
+}
+
+.trust-badges__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease;
+}
+
+.trust-badge:hover {
+    transform: translateY(-2px);
+}
+
+.trust-badge__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.trust-badge__icon--compliant {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+    color: var(--primary-color);
+}
+
+.trust-badge__icon--secure {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(20, 184, 166, 0.1));
+    color: #10b981;
+}
+
+.trust-badge__icon--verified {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(234, 88, 12, 0.1));
+    color: #f59e0b;
+}
+
+.trust-badge__text {
+    text-align: left;
+}
+
+.trust-badge__title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.trust-badge__desc {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+}
+
+/* WhatsApp Product Flow */
+.whatsapp-flow {
+    padding: 5rem 0;
+    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+    color: #f9fafb;
+    position: relative;
+    overflow: hidden;
+}
+
+.whatsapp-flow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(37, 211, 102, 0.3), transparent);
+}
+
+.whatsapp-flow__title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 0.75rem;
+}
+
+.whatsapp-flow__subtitle {
+    font-size: 1.125rem;
+    color: #9ca3af;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto 3rem;
+}
+
+.chat-bubble {
+    max-width: 380px;
+    margin: 0 auto 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: chatBubbleIn 0.5s ease forwards;
+}
+
+.chat-bubble:nth-child(1) { animation-delay: 0.2s; }
+.chat-bubble:nth-child(2) { animation-delay: 0.6s; }
+.chat-bubble:nth-child(3) { animation-delay: 1.0s; }
+.chat-bubble:nth-child(4) { animation-delay: 1.4s; }
+.chat-bubble:nth-child(5) { animation-delay: 1.8s; }
+
+@keyframes chatBubbleIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.chat-bubble--user {
+    background: #DCF8C6;
+    color: #1a1a1a;
+    border-radius: 12px 12px 4px 12px;
+    padding: 0.75rem 1rem;
+    margin-left: 3rem;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    position: relative;
+}
+
+.chat-bubble--user::before {
+    content: '';
+    position: absolute;
+    right: -8px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 8px solid #DCF8C6;
+    border-top: 8px solid transparent;
+}
+
+.chat-bubble--manay {
+    background: #ffffff;
+    color: #1a1a1a;
+    border-radius: 12px 12px 12px 4px;
+    padding: 0.75rem 1rem;
+    margin-right: 3rem;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    position: relative;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.chat-bubble--manay::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-right: 8px solid #ffffff;
+    border-top: 8px solid transparent;
+}
+
+.chat-bubble__label {
+    font-size: 0.6875rem;
+    color: #9ca3af;
+    margin-bottom: 0.25rem;
+}
+
+.chat-bubble__label--user {
+    text-align: right;
+}
+
+.chat-bubble__label--manay {
+    text-align: left;
+    color: #25D366;
+    font-weight: 600;
+}
+
+.chat-bubble__time {
+    font-size: 0.6875rem;
+    color: #9ca3af;
+    margin-top: 0.25rem;
+    text-align: right;
+}
+
+/* Trust Badges & WhatsApp CTA Responsive */
+@media (max-width: 768px) {
+    .whatsapp-cta__title {
+        font-size: 1.5rem;
+    }
+
+    .whatsapp-cta__text {
+        font-size: 1rem;
+    }
+
+    .whatsapp-cta__button {
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .trust-badges__grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .trust-badge {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .whatsapp-flow__title {
+        font-size: 1.75rem;
+    }
+
+    .chat-bubble--user,
+    .chat-bubble--manay {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+}
+
 /* Guide Page Responsive */
 @media (max-width: 768px) {
     .guide-hero__title {

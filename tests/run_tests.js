@@ -276,6 +276,141 @@ if (fs.existsSync(path.join(ROOT, 'pricing.html'))) {
     assert(!pricingHtml.includes('₹499'), 'pricing.html: No ₹499 on Digital Agreement');
 }
 
+// 19. SITEMAP & ROBOTS.TXT — Updated for manay.in
+console.log('\n🗺️  Sitemap & robots.txt');
+assert(fs.existsSync(path.join(ROOT, 'sitemap.xml')), 'sitemap.xml exists');
+assert(fs.existsSync(path.join(ROOT, 'robots.txt')), 'robots.txt exists');
+if (fs.existsSync(path.join(ROOT, 'sitemap.xml'))) {
+    const sitemap = readFile('sitemap.xml');
+    // Should use manay.in, not GitHub Pages
+    assert(sitemap.includes('manay.in'), 'sitemap.xml: Uses manay.in URLs');
+    assert(!sitemap.includes('simoncatbot.github.io'), 'sitemap.xml: No GitHub Pages URLs');
+    // Should include all 6 pages
+    assert(sitemap.includes('pricing.html'), 'sitemap.xml: Includes pricing page');
+    assert(sitemap.includes('for-landlords.html'), 'sitemap.xml: Includes landlord guide');
+    assert(sitemap.includes('for-tenants.html'), 'sitemap.xml: Includes tenant guide');
+    assert(sitemap.includes('privacy-policy.html'), 'sitemap.xml: Includes privacy policy');
+    assert(sitemap.includes('terms-of-service.html'), 'sitemap.xml: Includes terms of service');
+    assert(sitemap.includes('lastmod'), 'sitemap.xml: Has lastmod dates');
+}
+if (fs.existsSync(path.join(ROOT, 'robots.txt'))) {
+    const robots = readFile('robots.txt');
+    assert(robots.includes('manay.in'), 'robots.txt: References manay.in');
+    assert(!robots.includes('simoncatbot.github.io'), 'robots.txt: No GitHub Pages URLs');
+    assert(robots.includes('Sitemap:'), 'robots.txt: Has Sitemap directive');
+}
+
+// 20. FAQ SCHEMA — JSON-LD FAQPage on index.html
+console.log('\n📋 FAQ Schema');
+if (fs.existsSync(path.join(ROOT, 'index.html'))) {
+    const index = readFile('index.html');
+    assert(index.includes('"@type": "FAQPage"'), 'index.html: Has FAQPage schema');
+    assert(index.includes('"@type": "Question"'), 'index.html: Has Question schema entries');
+    assert(index.includes('"acceptedAnswer"'), 'index.html: Has acceptedAnswer entries');
+    // Should have all 5 FAQ items
+    const questionCount = (index.match(/"@type": "Question"/g) || []).length;
+    assert(questionCount >= 5, `index.html: Has at least 5 FAQ questions (found ${questionCount})`);
+    // FAQ schema should match visible FAQ content
+    assert(index.includes('Zero-Chase'), 'index.html: FAQ schema includes Zero-Chase question');
+    assert(index.includes('Digital Agreement'), 'index.html: FAQ schema includes Digital Agreement question');
+    assert(index.includes('Karnataka'), 'index.html: FAQ schema includes Karnataka compliance question');
+}
+
+// 21. WHATSAPP CTA — Homepage has WhatsApp as primary CTA
+console.log('\n💬 WhatsApp CTA');
+if (fs.existsSync(path.join(ROOT, 'index.html'))) {
+    const index = readFile('index.html');
+    // WhatsApp CTA section
+    assert(index.includes('whatsapp-cta'), 'index.html: Has WhatsApp CTA section');
+    assert(index.includes('wa.me') || index.includes('whatsapp.com'), 'index.html: Has WhatsApp link');
+    // Should have WhatsApp CTA heading
+    assert(index.includes('whatsapp-cta-heading'), 'index.html: WhatsApp CTA has accessible heading');
+    // Should have WhatsApp icon
+    assert(index.includes('fa-whatsapp'), 'index.html: Has WhatsApp icon');
+    // Waitlist still exists as secondary
+    assert(index.includes('waitlist'), 'index.html: Waitlist still present as secondary CTA');
+}
+
+// 22. WHATSAPP PRODUCT FLOW — Chat bubble section showing conversation
+console.log('\n🧩 WhatsApp Product Flow');
+if (fs.existsSync(path.join(ROOT, 'index.html'))) {
+    const index = readFile('index.html');
+    // Product flow section
+    assert(index.includes('whatsapp-flow'), 'index.html: Has WhatsApp flow section');
+    assert(index.includes('chat-bubble'), 'index.html: Has chat bubble UI elements');
+    assert(index.includes('chat-bubble--user'), 'index.html: Has user chat bubbles');
+    assert(index.includes('chat-bubble--manay'), 'index.html: Has Manay chat bubbles');
+    // Conversation content should mention key features
+    assert(index.includes('Zero-Chase') || index.includes('Zero Chase'), 'index.html: Chat mentions Zero-Chase');
+    assert(index.includes('UPI Mandate') || index.includes('UPI mandate'), 'index.html: Chat mentions UPI Mandate');
+}
+
+// 23. TRUST BADGES — Compliance trust section
+console.log('\n🛡️  Trust Badges');
+if (fs.existsSync(path.join(ROOT, 'index.html'))) {
+    const index = readFile('index.html');
+    // Trust badges section
+    assert(index.includes('trust-badges'), 'index.html: Has trust badges section');
+    assert(index.includes('trust-badge'), 'index.html: Has trust badge cards');
+    // Should have the 3 specific badges
+    assert(index.includes('trust-badge__icon--compliant'), 'index.html: Has compliance badge');
+    assert(index.includes('trust-badge__icon--secure'), 'index.html: Has UPI secure badge');
+    assert(index.includes('trust-badge__icon--verified'), 'index.html: Has verified/digital badge');
+    // Badge content
+    assert(index.includes('2026'), 'index.html: Trust badges mention 2026 law');
+}
+
+// 24. WHATSAPP CSS — Styles for new sections exist
+console.log('\n🎨 WhatsApp & Trust Badge Styles');
+const styles = readFile('styles.css');
+// WhatsApp CTA styles
+assert(styles.includes('.whatsapp-cta'), 'styles.css: Has WhatsApp CTA styles');
+assert(styles.includes('.whatsapp-cta__button'), 'styles.css: Has WhatsApp button styles');
+// WhatsApp flow styles
+assert(styles.includes('.chat-bubble'), 'styles.css: Has chat bubble styles');
+assert(styles.includes('.chat-bubble--user'), 'styles.css: Has user bubble styles');
+assert(styles.includes('.chat-bubble--manay'), 'styles.css: Has Manay bubble styles');
+// Trust badge styles
+assert(styles.includes('.trust-badges'), 'styles.css: Has trust badges styles');
+assert(styles.includes('.trust-badge'), 'styles.css: Has trust badge card styles');
+// WhatsApp CTA should use WhatsApp green
+assert(styles.includes('#25D366'), 'styles.css: Uses WhatsApp green (#25D366)');
+// Chat bubble animations
+assert(styles.includes('chatBubbleIn'), 'styles.css: Has chat bubble entrance animation');
+
+// 25. STRATEGY DOCS — Key documents exist
+console.log('\n📄 Strategy Documents');
+assert(fs.existsSync(path.join(ROOT, 'GROWTH-ANALYSIS.md')), 'GROWTH-ANALYSIS.md exists');
+assert(fs.existsSync(path.join(ROOT, 'WHATSAPP-MVP-ANALYSIS.md')), 'WHATSAPP-MVP-ANALYSIS.md exists');
+assert(fs.existsSync(path.join(ROOT, 'WHATSAPP-STRATEGY.md')), 'WHATSAPP-STRATEGY.md exists');
+if (fs.existsSync(path.join(ROOT, 'GROWTH-ANALYSIS.md'))) {
+    const growth = readFile('GROWTH-ANALYSIS.md');
+    assert(growth.includes('WhatsApp'), 'GROWTH-ANALYSIS.md: References WhatsApp strategy');
+    assert(growth.includes('Phase 1'), 'GROWTH-ANALYSIS.md: Has Phase 1 plan');
+}
+if (fs.existsSync(path.join(ROOT, 'WHATSAPP-STRATEGY.md'))) {
+    const strategy = readFile('WHATSAPP-STRATEGY.md');
+    assert(strategy.includes('WhatsApp Flows'), 'WHATSAPP-STRATEGY.md: Covers WhatsApp Flows');
+    assert(strategy.includes('credit score') || strategy.includes('Credit Score'), 'WHATSAPP-STRATEGY.md: Covers credit score hook');
+    assert(strategy.includes('RWA'), 'WHATSAPP-STRATEGY.md: Covers RWA partnerships');
+    assert(strategy.includes('concierge') || strategy.includes('Concierge'), 'WHATSAPP-STRATEGY.md: Covers concierge MVP');
+}
+
+// 26. Pricing Page — Hero matches site gradient
+console.log('\n🎨 Pricing Page Consistency');
+if (fs.existsSync(path.join(ROOT, 'pricing.html'))) {
+    const pricing = readFile('pricing.html');
+    // Hero should use indigo->purple->pink gradient like other pages
+    assert(pricing.includes('#6366f1'), 'pricing.html: Hero uses indigo gradient');
+    assert(pricing.includes('#ec4899'), 'pricing.html: Hero uses pink gradient');
+    // Should have back-to-top button
+    assert(pricing.includes('back-to-top'), 'pricing.html: Has back-to-top button');
+    // Nav should NOT have inline styles on active link
+    assert(!pricing.includes('style="color: var(--primary-color)"'), 'pricing.html: No inline style on nav active link');
+    // Footer should not have inline-styled brand link
+    assert(!pricing.includes('style="text-decoration: none; display: flex'), 'pricing.html: Footer brand uses consistent markup');
+}
+
 // 19. GUIDE PAGES — Color scheme uses CSS variables
 console.log('\n🎨 Color Scheme Consistency');
 const stylesContent = readFile('styles.css');
