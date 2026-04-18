@@ -29,13 +29,6 @@
     -->
 </head>
 <body>
-    <!-- Page Loader -->
-    <div class="page-loader" id="pageLoader">
-        <div class="loader-spinner"></div>
-        <p>Loading...</p>
-    </div>
-
-    <!-- Skip to main content -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Cookie Consent Banner -->
@@ -49,10 +42,10 @@
         </div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar" aria-label="Main navigation">
+        <div class="nav-glass-effect"></div>
         <div class="container">
-                        <div class="nav-brand">
+            <div class="nav-brand">
                 <a href="index.html" aria-label="Manay Home">
                     <span class="logo" aria-hidden="true">ಮನೆ</span>
                     <span class="brand-name">Manay</span>
@@ -62,10 +55,11 @@
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="for-landlords.html" class="nav-link">For Landlords</a>
                 <a href="for-tenants.html" class="nav-link">For Tenants</a>
+                <a href="good-karma.html" class="nav-link">Good Karma</a>
                 <a href="pricing.html" class="nav-link">Pricing</a>
                 <a href="index.html#waitlist" class="nav-link cta-button">Join Waitlist</a>
             </div>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu">
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu" tabindex="0">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -246,27 +240,27 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <a href="index.html" class="footer-logo-link">
-                        <span class="logo">ಮನೆ</span>
-                        <span class="brand-name">Manay</span>
-                    </a>
+                    <span class="logo" aria-hidden="true">ಮನೆ</span>
+                    <span class="brand-name">Manay</span>
                     <p>Your Home. Your Rules.</p>
-                    <p class="contact-email"><i class="fas fa-envelope"></i> <a href="mailto:hello@manay.in">hello@manay.in</a></p>
+                    <p class="contact-email"><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:hello@manay.in">hello@manay.in</a></p>
+                </div>
+                <div class="footer-links">
+                    <h4>Product</h4>
+                    <a href="for-landlords.html">For Landlords</a>
+                    <a href="for-tenants.html">For Tenants</a>
+                    <a href="good-karma.html">Good Karma</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="index.html#waitlist">Waitlist</a>
                 </div>
                 <div class="footer-links">
                     <h4>Legal</h4>
                     <a href="privacy-policy.html">Privacy Policy</a>
                     <a href="terms-of-service.html">Terms of Service</a>
-                </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <a href="for-landlords.html">For Landlords</a>
-                    <a href="for-tenants.html">For Tenants</a>
-                    <a href="pricing.html">Pricing</a>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -276,5 +270,9 @@
     </footer>
 
     <script src="script.js"></script>
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-chevron-up" aria-hidden="true"></i>
+        <span class="back-to-top-tooltip">Back to top</span>
+    </button>
 </body>
 </html>
