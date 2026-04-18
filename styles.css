@@ -139,6 +139,14 @@
     .karma-tier {
         background: #374151;
     }
+    .karma-factor--light {
+        background: #374151;
+        border: 1px solid #4b5563;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    .karma-factor--light .karma-factor__bar {
+        background: #4b5563;
+    }
     .karma-alert-note {
         background: rgba(239, 68, 68, 0.15);
         border: 1px solid rgba(239, 68, 68, 0.25);
