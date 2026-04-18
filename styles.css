@@ -2827,9 +2827,9 @@ textarea:focus-visible {
 }
 
 .guide-section--light .icon-card {
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
 }
 
 .guide-section--light .icon-card:hover {
@@ -2998,8 +2998,8 @@ textarea:focus-visible {
 }
 
 .guide-section--light .checklist-item {
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
 }
 
 .guide-section--dark .checklist-item {
@@ -3109,6 +3109,52 @@ textarea:focus-visible {
     padding: 4rem 0;
     text-align: center;
     color: white;
+}
+
+/* Legal Pages (Privacy, Terms) */
+.legal-section {
+    padding: 4rem 0;
+    color: var(--text-primary);
+}
+
+.legal-section h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.legal-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.legal-section h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.legal-section p {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.legal-section ul {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+.legal-section li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.legal-date {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
 }
 
 .guide-cta__title {
@@ -3644,9 +3690,9 @@ textarea:focus-visible {
 }
 
 .karma-factor--light {
-    background: white;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
 }
 
 .karma-factor__header {
@@ -3691,7 +3737,7 @@ textarea:focus-visible {
 }
 
 .karma-factor--light .karma-factor__bar {
-    background: #e5e7eb;
+    background: var(--border-color);
 }
 
 .karma-factor__fill {
